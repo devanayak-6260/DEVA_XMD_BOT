@@ -1,0 +1,1 @@
+const config=require('../config'); module.exports=async(sock,msg)=>sock.sendMessage(msg.key.remoteJid,{text:`👑 *${config.ownerName||'DEVA'}*\n📱 +${String(config.ownerNumber||'').replace(/\D/g,'')||'Not set'}\n🤖 ${config.botName}`},{quoted:msg});
