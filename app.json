@@ -1,0 +1,21 @@
+{
+  "name": "DEVA XMD-BOT",
+  "description": "WhatsApp Bot with pairing code and auto features",
+  "repository": "",
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "baileys",
+    "deva-xmd"
+  ],
+  "env": {
+    "PHONE_NUMBER": {
+      "description": "WhatsApp number with country code",
+      "required": true
+    },
+    "OWNER_NUMBER": {
+      "description": "Bot owner number",
+      "required": false
+    }
+  }
+}

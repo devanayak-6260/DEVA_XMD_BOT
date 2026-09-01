@@ -1,0 +1,27 @@
+{
+  "name": "deva-xmd-bot",
+  "version": "4.0.0",
+  "description": "DEVA XMD-BOT Ultra Pro build",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "7.0.0-rc14",
+    "chalk": "^4.1.2",
+    "dotenv": "^16.4.7",
+    "pino": "^9.6.0",
+    "sharp": "^0.33.5",
+    "ffprobe-static": "3.1.0",
+    "ffmpeg-static": "^5.2.0",
+    "performance-now": "^2.1.0",
+    "axios": "^1.4.0",
+    "yt-search": "^2.10.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "aptoide_scrapper_fixed": "1.0.2",
+    "youtubei.js": "^18.0.0"
+  }
+}
