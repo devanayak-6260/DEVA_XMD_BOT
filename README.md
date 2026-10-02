@@ -1,143 +1,104 @@
-⚡ DEVA XMD-BOT
+👑 DEVA XMD BOT
 
 <p align="center">
-  <b>👑 ULTRA PRO BOT v4.0</b><br>
-  WhatsApp Bot • Node.js + Baileys
+  <b>⚡ DEVA XMD BOT • WHATSAPP AUTOMATION ⚡</b>
+</p><p align="center">
+  A Powerful WhatsApp Bot with Smart Features
 </p>---
 
-✨ About
+✨ About DEVA XMD BOT
 
-DEVA XMD-BOT is a WhatsApp automation bot with media tools, automation, status controls, owner controls and a professional menu system.
-
-- 👑 Owner: DEVA-NAYAK
-- ⚡ Default Prefix: "."
-- 🌐 Mode: Public
-- 🟢 Pairing: Pairing Code
-- 🕒 Timezone: Asia/Kolkata
-
----
+DEVA XMD BOT is a WhatsApp automation bot built with Node.js and Baileys. It includes various automation features, commands, status tools, and media utilities for convenient WhatsApp management.
 
 🚀 Features
 
-🤖 Automation
-
-- Auto React
-- Auto Read
-- Auto Status Seen
-- Auto Status Like
-- Always Online
-- Auto Call Reject
-- Anti Delete
-- Auto Typing
-- Auto Recording
-
-🎨 Media Tools
-
-- Sticker Creation
-- Video to Sticker
-- Sticker to Image
-- Image to URL
-- Full Profile Picture
-- View Once Media Helper
-
-📥 Download / Media
-
-- Instagram Public Media
-- Instagram Reels
-- Video Download
-- Song Download
-
-⚙️ Bot Controls
-
-- Settings Panel
-- Public / Private Mode
-- Prefix Control
-- Owner Command
-- Alive Command
-- Ping Command
-- Uptime Command
-- Menu Command
-
-📱 Status Features
-
-- Status Reply
-- Status Save
-- Status View
-- Status Like
-- Status Reaction
-
----
+- 🤖 AutoReply
+- ❤️ AutoReact
+- 👀 Status Seen
+- ⚡ StatusReply
+- 📥 Status Saver
+- 🗑️ Anti-Delete
+- 📝 Profile Info
+- 📸 Instagram Downloader
+- 🎵 Song Downloader
+- 🔧 Settings Panel
+- 🌐 Public & Private Mode
+- 📱 WhatsApp Pairing Code
+- 💬 Smart Chat Replies
+- ⚙️ Easy Configuration
 
 📦 Installation
 
-1. Clone Repository
+1. Clone the repository
 
-git clone YOUR_REPOSITORY_URL
+git clone YOUR_GITHUB_REPOSITORY_LINK
 
-2. Open Folder
+2. Open the project folder
 
-cd DEVA_XMD_BOT
+cd DEVA-XMD-BOT
 
-3. Install Dependencies
+3. Install dependencies
 
 npm install
 
-4. Start Bot
+4. Start the bot
 
 npm start
 
 5. Connect WhatsApp
 
-- Get the pairing code from the bot console.
-- Open WhatsApp.
-- Go to Linked Devices.
-- Select Link a Device.
-- Enter or use the displayed pairing instructions.
+Follow the pairing instructions shown in the terminal to connect your WhatsApp account.
 
----
+⚙️ Settings
 
-🛠️ Configuration
+Configure your bot using "settings.json".
 
-Bot settings are managed through "settings.json".
+- "prefix" — Command prefix
+- "mode" — Public or private mode
+- "autoreply" — Automatic replies
+- "autoreact" — Automatic reactions
+- "statusreply" — Status replies
+- "antidelete" — Anti-delete
+- "online" — Online presence
+- "typing" — Typing indicator
+- "recording" — Recording indicator
 
-- Prefix
-- Mode
-- Auto React
-- Auto Read
-- Always Online
-- Auto Typing
-- Auto Recording
-- Anti Delete
-- Status Reply
+📂 Project Structure
 
----
-
-📁 Project Structure
-
-DEVA_XMD_BOT/
-│
+DEVA-XMD-BOT/
 ├── assets/
 │   └── deva-menu.png
-│
 ├── index.js
-├── package.json
 ├── phone.js
 ├── settings.json
+├── package.json
 └── README.md
 
----
+🔐 Requirements
 
-🔐 Security
+- Node.js 20+
+- npm
+- WhatsApp account
+- Internet connection
 
-- Never share your WhatsApp session files.
-- Keep API keys private.
-- Do not upload private credentials to GitHub.
-- Use a secure hosting environment.
+🌟 Bot Information
 
----
-
-⚡ Powered By
-
-👑 DEVA XMD-BOT
+Bot Name: DEVA XMD BOT
 Developer: DEVA-NAYAK
-🚀 WhatsApp Automation Bot
+Version: V4.1
+Platform: Node.js
+Language: JavaScript
+Library: Baileys
+Mode: Public
+
+⚠️ Disclaimer
+
+This project is an independent WhatsApp automation bot and is not affiliated with or officially supported by WhatsApp. Use it responsibly and follow WhatsApp's terms of service.
+
+❤️ Credits
+
+Developed by DEVA-NAYAK
+
+<p align="center">
+  ⚡ POWERED BY DEVA XMD BOT ⚡
+</p>
