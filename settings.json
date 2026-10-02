@@ -1,0 +1,18 @@
+{
+  "online": true,
+  "status": true,
+  "read": false,
+  "typing": false,
+  "recording": false,
+  "callreject": false,
+  "antidelete": false,
+  "mode": "public",
+  "prefix": "",
+  "statuslike": false,
+  "autoreact": false,
+  "autoreply": false,
+  "sreact": false,
+  "statusreply": false,
+  "apify_token": "apify_api_j7LENi4hXpq8FkQ39s3vWP1ViFdE313YEjad",
+  "grouptextdelete": false
+}
