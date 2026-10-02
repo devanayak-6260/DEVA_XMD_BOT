@@ -1,34 +1,26 @@
-<div align="center">
+⚡ DEVA XMD-BOT
 
-# ⚡ DEVA XMD-BOT
-### 👑 ULTRA PRO BOT v4.0
+<p align="center">
+  <b>👑 ULTRA PRO BOT v4.0</b><br>
+  WhatsApp Bot • Node.js + Baileys
+</p>---
 
-<img src="media/menu.jpg" alt="DEVA XMD-BOT Menu" width="700">
+✨ About
 
-**WhatsApp Bot • Node.js + Baileys**
+DEVA XMD-BOT is a WhatsApp automation bot with media tools, automation, status controls, owner controls and a professional menu system.
 
-[![Node.js](https://img.shields.io/badge/Node.js-20%2B-brightgreen?style=for-the-badge&logo=node.js)](https://nodejs.org/)
-[![Version](https://img.shields.io/badge/Version-4.0.0-purple?style=for-the-badge)](#)
-
-</div>
-
----
-
-## ✨ About
-
-**DEVA XMD-BOT** is a WhatsApp bot with media tools, automation, status controls, owner controls and a professional menu system.
-
-> 👑 **Owner:** DEVA-NAYAK  
-> ⚡ **Default Prefix:** `.`  
-> 🌐 **Mode:** Public  
-> 🟢 **Pairing:** Pairing Code  
-> 🕒 **Timezone:** Asia/Kolkata
+- 👑 Owner: DEVA-NAYAK
+- ⚡ Default Prefix: "."
+- 🌐 Mode: Public
+- 🟢 Pairing: Pairing Code
+- 🕒 Timezone: Asia/Kolkata
 
 ---
 
-## 🚀 Features
+🚀 Features
 
-### 🤖 Automation
+🤖 Automation
+
 - Auto React
 - Auto Read
 - Auto Status Seen
@@ -36,193 +28,116 @@
 - Always Online
 - Auto Call Reject
 - Anti Delete
-- Auto Typing toggle
-- Auto Recording toggle
+- Auto Typing
+- Auto Recording
 
-### 🎨 Media Tools
-- Sticker creation
-- Video → Sticker
-- Sticker → Image
-- Image → URL
-- Full profile-picture helper
-- View-once media helper
+🎨 Media Tools
 
-### 📥 Download / Media
-- Instagram public media
-- Pinterest media
-- Song/media tools
-- APK handler
+- Sticker Creation
+- Video to Sticker
+- Sticker to Image
+- Image to URL
+- Full Profile Picture
+- View Once Media Helper
 
-> **Note:** Third-party downloader features depend on external providers/APIs and may stop working if those providers change.
+📥 Download / Media
 
-### ⚙️ Bot Controls
-- Public / Private mode
-- Live prefix change
-- Owner controls
-- Settings
-- Uptime / status information
+- Instagram Public Media
+- Instagram Reels
+- Video Download
+- Song Download
 
----
+⚙️ Bot Controls
 
-## 📋 Commands
+- Settings Panel
+- Public / Private Mode
+- Prefix Control
+- Owner Command
+- Alive Command
+- Ping Command
+- Uptime Command
+- Menu Command
 
-### ⚡ General
-```text
-.menu
-.ping
-.uptime
-.settings
-```
+📱 Status Features
 
-### 🛠️ Tools
-```text
-.clear
-```
-
-### 🎨 Media
-```text
-.sticker
-.v2sticker
-.toimg
-.url
-.fullpp
-.vv
-```
-
-### 📥 Download
-```text
-.insta
-.instagram
-.pin
-.pinterest
-.song
-.apk
-```
-
-### ✨ Auto System
-```text
-.autoreact on/off
-.read on/off
-.setreact ❤️🔥👍
-.statuslike on/off
-.statuslike ❤️🔥
-.statusseen on/off
-.online on/off
-.typing on/off
-.recording on/off
-.callreject on/off
-.antidelete on/off
-```
-
-### 🔧 Mode
-```text
-.mode
-.mode public
-.mode private
-```
-
-### 🔑 Prefix
-```text
-.prefix
-.prefix !
-```
-
-### 👑 Owner
-```text
-.owner
-```
+- Status Reply
+- Status Save
+- Status View
+- Status Like
+- Status Reaction
 
 ---
 
-## 🧩 Installation
+📦 Installation
 
-### Requirements
-- Node.js **20+**
-- npm
-- WhatsApp account for pairing
+1. Clone Repository
 
-### Install
-```bash
+git clone YOUR_REPOSITORY_URL
+
+2. Open Folder
+
+cd DEVA_XMD_BOT
+
+3. Install Dependencies
+
 npm install
-```
 
-### Configure `.env`
-```env
-PHONE_NUMBER=91XXXXXXXXXX
-OWNER_NUMBER=91XXXXXXXXXX
-PREFIX=.
-```
+4. Start Bot
 
-### Start
-```bash
 npm start
-```
 
-The start command runs:
-```text
-node index.js
-```
+5. Connect WhatsApp
 
----
-
-## 🔐 Pairing & Session
-
-This build supports **WhatsApp pairing code**.
-
-If an old session becomes corrupted or authentication errors occur, remove the existing session/auth data and pair the account again.
-
-**Never publish private session credentials, tokens or `.env` secrets in a public repository.**
+- Get the pairing code from the bot console.
+- Open WhatsApp.
+- Go to Linked Devices.
+- Select Link a Device.
+- Enter or use the displayed pairing instructions.
 
 ---
 
-## 🖼️ Menu Preview
+🛠️ Configuration
 
-The menu image is included here:
+Bot settings are managed through "settings.json".
 
-```text
-media/menu.jpg
-```
-
-The bot automatically uses this image when sending the menu if the file exists.
+- Prefix
+- Mode
+- Auto React
+- Auto Read
+- Always Online
+- Auto Typing
+- Auto Recording
+- Anti Delete
+- Status Reply
 
 ---
 
-## 📁 Project Structure
+📁 Project Structure
 
-```text
-DEVA XMD-BOT/
-├── commands/
-├── lib/
-├── media/
-│   ├── menu.jpg
-│   └── ping-thumb.jpg
-├── config.js
+DEVA_XMD_BOT/
+│
+├── assets/
+│   └── deva-menu.png
+│
 ├── index.js
 ├── package.json
-├── app.json
-├── Dockerfile
+├── phone.js
+├── settings.json
 └── README.md
-```
 
 ---
 
-## ⚠️ Important
+🔐 Security
 
-- Keep `.env` and WhatsApp session credentials private.
-- Third-party media providers can change or become unavailable.
-- Keep Node.js/dependencies updated when compatible.
-- Avoid spam or automation that can violate WhatsApp rules or cause account restrictions.
+- Never share your WhatsApp session files.
+- Keep API keys private.
+- Do not upload private credentials to GitHub.
+- Use a secure hosting environment.
 
 ---
 
-## ❤️ Credits
+⚡ Powered By
 
-<div align="center">
-
-### 👑 DEVA-NAYAK
-
-**DEVA XMD-BOT — ULTRA PRO**
-
-Made with ❤️ for WhatsApp automation.
-
-</div>
+👑 DEVA XMD-BOT
+Developer: DEVA-NAYAK
+🚀 WhatsApp Automation Bot
