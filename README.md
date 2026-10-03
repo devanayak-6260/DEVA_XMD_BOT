@@ -1,4 +1,3 @@
-::: {align="center"}
 # 👑 DEVA XMD BOT
 
 ### WhatsApp Automation • Node.js • Panel Deployment
