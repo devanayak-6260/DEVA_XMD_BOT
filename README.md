@@ -1,49 +1,53 @@
+::: {align="center"}
 # 👑 DEVA XMD BOT
 
-```{=html}
-<p align="center">
-```
-`<b>`{=html}A WhatsApp Automation Bot`</b>`{=html}`<br>`{=html} Fast •
-Smart • Easy to Deploy
-```{=html}
-</p>
-```
+### WhatsApp Automation • Node.js • Panel Deployment
+
+**Fast · Simple · Configurable**
+
+[![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Platform](https://img.shields.io/badge/Platform-Node.js%20Hosting-5865F2)](#-panel-deployment)
+[![License](https://img.shields.io/badge/License-See%20Repository-lightgrey)](#-disclaimer)
+
+**Developed by DEVA-NAYAK**
+:::
 
 ------------------------------------------------------------------------
 
-## 📌 About
+## 📖 About
 
-**DEVA XMD BOT** is a WhatsApp automation project built with Node.js. It
-is designed to provide useful chat automation, status tools, and bot
-commands through a WhatsApp connection.
+**DEVA XMD BOT** is a WhatsApp automation project built with Node.js.
+This repository is intended for running the bot on a compatible Node.js
+environment, including VPS and hosting panels.
 
-**Developer:** DEVA-NAYAK\
-**Repository:** https://github.com/devanayak-6260/DEVA_XMD_BOT
+Repository:
+[DEVA_XMD_BOT](https://github.com/devanayak-6260/DEVA_XMD_BOT)
+
+> Available commands, integrations, and settings depend on the current
+> source code and its configuration.
 
 ## ✨ Features
 
--   🤖 Automated chat replies (AutoReply)
--   ❤️ Auto reactions (where enabled)
--   👀 WhatsApp status-related features
--   📥 Media downloader commands (if configured)
--   🎵 Song command (if configured)
--   ⚙️ Configurable bot settings and command prefix
--   🔗 WhatsApp pairing through a supported connection flow
+-   🤖 WhatsApp chat automation
+-   💬 AutoReply support, if enabled in the project
+-   ❤️ Auto-reaction and status-related tools, if configured
+-   📥 Media commands and integrations, where supported
+-   ⚙️ Configurable command prefix and bot settings
+-   🔗 WhatsApp device pairing
+-   ☁️ Node.js hosting and panel deployment
 
-> Available commands and features depend on the code and configuration
-> in the repository. Some features may require external APIs.
+Some features may require external APIs or additional configuration.
 
 ## 📋 Requirements
 
--   Node.js 20 or newer (use the version supported by the project
-    dependencies)
+-   Node.js 20 or a version compatible with the project's dependencies
 -   npm
 -   Git
 -   A WhatsApp account
--   A computer, VPS, or Node.js-compatible hosting service
--   Internet connection
+-   Internet access
+-   A VPS or Node.js-compatible hosting panel
 
-## 🚀 Quick Start
+## 🚀 Quick Installation
 
 ### 1. Clone the repository
 
@@ -51,7 +55,7 @@ commands through a WhatsApp connection.
 git clone https://github.com/devanayak-6260/DEVA_XMD_BOT.git
 ```
 
-### 2. Open the project folder
+### 2. Enter the project directory
 
 ``` bash
 cd DEVA_XMD_BOT
@@ -65,19 +69,19 @@ npm install
 
 ### 4. Configure the bot
 
-Check the repository for its configuration files and setup instructions.
-If the project uses `phone.js`, enter your WhatsApp number in
-international format, including the country code, without `+`, spaces,
-or dashes.
+Review the configuration files included in the repository. If the
+project uses `phone.js`, set your WhatsApp number in the format expected
+by the source code.
 
-Example format:
+Example:
 
 ``` js
 module.exports = "91XXXXXXXXXX";
 ```
 
-Replace `91XXXXXXXXXX` with your own number. Do not publish your
-personal number or session credentials in a public repository.
+Replace the placeholder with your own number, including the country
+code, without `+`, spaces, or dashes. Do not publish your personal
+number in a public repository.
 
 ### 5. Start the bot
 
@@ -85,22 +89,32 @@ personal number or session credentials in a public repository.
 npm start
 ```
 
-Follow the terminal prompts to connect WhatsApp. If the project displays
-a pairing code, open WhatsApp → **Linked Devices** → **Link a Device**
-and follow the on-screen pairing instructions.
+Follow the connection or pairing instructions displayed by the bot. If a
+pairing code is provided, open WhatsApp → **Linked Devices** and follow
+the **Link with phone number** flow shown in your WhatsApp app.
 
-## ☁️ Deploy on a VPS or Hosting
+## ☁️ Panel Deployment
 
-1.  Create a Node.js application or VPS instance.
+This section describes a general setup for Node.js hosting panels,
+including Pterodactyl-based panels. Panel menus and options may vary by
+provider.
 
-2.  Upload or clone this repository.
+### Method A: Deploy the repository directly
 
-3.  Select a compatible Node.js version (Node.js 20+ is a practical
-    starting point).
+1.  Create or open a Node.js server in your hosting panel.
 
-4.  Install dependencies with `npm install`.
+2.  Make sure Git and a compatible Node.js version are available.
 
-5.  Configure the bot's required settings and environment variables.
+3.  Upload the repository files or use the panel's Git deployment
+    feature.
+
+4.  Open the server's console or terminal.
+
+5.  Install dependencies:
+
+    ``` bash
+    npm install
+    ```
 
 6.  Set the startup command to:
 
@@ -108,73 +122,92 @@ and follow the on-screen pairing instructions.
     npm start
     ```
 
-7.  Start the service and complete WhatsApp pairing if prompted.
+7.  Start the server and complete WhatsApp pairing if prompted.
 
-8.  Enable the hosting provider's process manager or restart option, if
-    available.
+### Method B: Use a separate GitHub launcher
 
-Keep the bot's session/authentication files on persistent storage. If
-the host deletes local files on restart or redeploy, the bot may need to
-be paired again.
+A launcher can clone or update the repository, install its dependencies,
+configure a local phone-number file, and start the bot. Keep the
+launcher in the panel's main directory, outside the cloned
+`DEVA_XMD_BOT` folder.
 
-## 🧰 Optional GitHub Launcher
+If your launcher file is named `index.js`, use this startup command:
 
-You can use a separate launcher script to clone or update the
-repository, install dependencies, write a local phone configuration, and
-start the bot. Keep this launcher outside the cloned bot folder to avoid
-overwriting it.
+``` bash
+node index.js
+```
 
-Before running it, replace the placeholder phone number with your own
-number. Never commit that number or your authentication/session files to
-a public repository.
+The launcher must match the bot's actual configuration format. For
+example, writing a `phone.js` file will only work if the bot source code
+imports and reads that file. Check the repository before using this
+method.
 
-## ⚙️ Configuration
+### Recommended server settings
 
-Configuration filenames and supported options can vary by repository
-version. Before changing settings:
+-   **Runtime:** Node.js 20+ (confirm dependency compatibility)
+-   **Startup file:** `index.js` for a launcher, or the project's
+    configured start command
+-   **Install command:** `npm install`
+-   **Storage:** Persistent storage for WhatsApp authentication/session
+    data
+-   **Restart policy:** Enable the hosting panel's restart option if
+    available
 
--   Review the project's configuration files.
--   Use only options that are implemented by the current code.
--   Keep API keys and tokens in environment variables where supported.
--   Restart the bot after configuration changes, if required.
+A script-level restart loop cannot bring the whole server back if the
+hosting panel stops or suspends the server. Use the provider's restart
+policy and ensure the selected plan permits long-running processes.
 
 ## 🔐 Security & Privacy
 
--   Never share your WhatsApp pairing code, session folder, or
-    authentication credentials.
--   Do not commit `.env`, session files, personal phone numbers, or API
-    keys to GitHub.
--   Use a private repository for sensitive project material.
--   Only use the bot with accounts and groups where you have permission.
--   Follow WhatsApp's terms and applicable laws. Automated messaging can
-    affect other users, so avoid spam and unwanted messages.
--   Revoke and replace any API key or token that has accidentally been
-    exposed.
+-   Never share pairing codes, authentication/session folders, API keys,
+    or access tokens.
+-   Do not upload `.env`, session files, personal phone numbers, or
+    credentials to a public GitHub repository.
+-   Use environment variables for secrets when supported.
+-   Keep authentication data on persistent, private storage.
+-   If a token or credential is exposed, revoke it and create a
+    replacement.
+-   Use automation responsibly and follow WhatsApp's terms and
+    applicable laws.
+
+## 🧰 Configuration
+
+Configuration options can differ between repository versions. Review the
+actual project files before changing values. Only configure options that
+are supported by the installed source code.
+
+After making changes, restart the bot if the project requires it.
 
 ## 🛠️ Troubleshooting
 
-**`npm install` fails** - Confirm Node.js and npm are installed and
-compatible. - Check the error output for missing system packages or
-dependency issues. - Retry only after resolving the reported issue.
+  -----------------------------------------------------------------------
+  Issue                               What to check
+  ----------------------------------- -----------------------------------
+  `npm install` fails                 Node.js version, network access,
+                                      dependency error output
 
-**Bot does not connect** - Confirm the server has internet access. -
-Check that the phone number is in the expected international format. -
-Follow the pairing instructions shown by the running project. - Avoid
-running multiple copies of the same session at once.
+  Pairing does not complete           Number format, WhatsApp Linked
+                                      Devices flow, console logs
 
-**Bot stops after some time** - Check the hosting provider's logs,
-resource limits, and sleep policy. - Use a process manager or hosting
-restart policy where supported. - Ensure the plan allows a continuously
-running Node.js process.
+  Bot disconnects                     Hosting logs, network stability,
+                                      session storage
 
-**Commands or external downloads do not work** - Check the command
-prefix and current project configuration. - Some commands may require
-working third-party APIs, which can change or become unavailable. -
-Review the terminal logs for the specific error.
+  Bot restarts repeatedly             Startup command, missing
+                                      configuration, runtime errors
+
+  Commands do not respond             Correct prefix, enabled settings,
+                                      current source code
+
+  Downloader/API command fails        Third-party API availability and
+                                      required configuration
+  -----------------------------------------------------------------------
+
+When requesting help, share the relevant error logs but remove phone
+numbers, pairing codes, tokens, and session information.
 
 ## 🔄 Updating
 
-To update an existing clone:
+Stop the running bot before updating an existing clone:
 
 ``` bash
 git pull
@@ -182,31 +215,29 @@ npm install
 npm start
 ```
 
-Stop the existing bot process before starting the updated version. Back
-up session and configuration files securely before updating.
+Back up session and configuration data securely before updating. Avoid
+running two copies of the same WhatsApp session simultaneously.
 
-## 🤝 Contributing
+## 🤝 Support & Contributions
 
-Suggestions, bug reports, and improvements are welcome. When reporting
-an issue, include the error message and relevant logs, but remove phone
-numbers, tokens, pairing codes, and session data.
+For bugs or suggestions, provide a clear description and the relevant
+error output. Remove private credentials and account information before
+sharing logs.
 
-## 📜 Disclaimer
+## ⚠️ Disclaimer
 
-This project is provided for learning and personal automation. You are
-responsible for how you use it, protecting your account, and complying
-with WhatsApp's terms and applicable laws. No uninterrupted uptime or
-third-party API availability is guaranteed.
+This project is provided for personal automation and learning. You are
+responsible for its configuration, account security, and use. Continuous
+uptime, third-party API availability, and compatibility with every
+hosting provider are not guaranteed. Follow WhatsApp's terms and all
+applicable laws.
 
-## 👑 Credits
+------------------------------------------------------------------------
 
-**DEVA XMD BOT**\
-Developed by **DEVA-NAYAK**
+::: {align="center"}
+### 👑 DEVA XMD BOT
 
-```{=html}
-<p align="center">
-```
-`<b>`{=html}⚡ Powered by DEVA XMD BOT ⚡`</b>`{=html}
-```{=html}
-</p>
-```
+**Developed by DEVA-NAYAK**
+
+*⚡ Powered by DEVA XMD BOT ⚡*
+:::
