@@ -25,13 +25,22 @@ hosting panels.
 
 ## ✨ Features
 
--   🤖 WhatsApp chat automation
--   💬 AutoReply support, if enabled
--   ❤️ Auto-reaction and status tools, if configured
--   📥 Media commands and integrations, where supported
--   ⚙️ Configurable settings and command prefix
--   🔗 WhatsApp device pairing
--   ☁️ Node.js and panel deployment
+  ❤️ AutoReact
+- 👀 Auto Status Seen
+- 💬 StatusReply
+- 🔄 AutoRead
+- 🛡️ Anti-Delete
+- 📥 Instagram Downloader
+- 🎵 Song Downloader
+- ⚡ Fast Response
+- 🌐 Public & Private Mode
+- ⚙️ Custom Prefix
+- 👑 Owner Commands
+- 📱 Pairing Code Login
+- 🔧 Easy Configuration
+- ☁️ Panel Deployment
+- 🔄 Auto Restart Support
+- 🔐 Session Management
 
 ## 📋 Requirements
 
