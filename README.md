@@ -243,7 +243,6 @@ applicable laws.
 
 ------------------------------------------------------------------------
 
-::: {align="center"}
 ### 👑 DEVA XMD BOT
 
 **Developed by DEVA-NAYAK**
