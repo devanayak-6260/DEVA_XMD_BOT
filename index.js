@@ -2233,7 +2233,7 @@ async function start(sessionPhone = PHONE_NUMBER, sessionDir = AUTH_DIR, pairing
                 ? "Music server did not return a valid result. Please try another song or retry later."
                 : "The music server or audio link is unavailable right now. Please try again later.";
             await sock.sendMessage(jid, {
-              text: `❌ *Song download failed*\\n\\n${detail}`
+              text: `❌ *Song download failed* ${detail}`
             }, { quoted });
           }
 
