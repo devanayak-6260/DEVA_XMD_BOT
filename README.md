@@ -65,19 +65,52 @@ npm install
 npm start
 ```
 
-### Option 2: Use the `index.js` installer
+### Option 2: Run the `index.js` installer
 
-If you are using the provided `index.js` setup script, save it in a folder and run:
+Save the installer below as `index.js` in an empty folder. Install [Node.js 20+](https://nodejs.org/) and Git first, then set `PHONE_NUMBER` to your own WhatsApp number in international format (digits only, no `+` or spaces). **Do not put your real phone number in a public README or share your pairing code/session files.**
+
+```js
+const { execSync, spawn } = require("child_process");
+const fs = require("fs");
+
+const REPO = "https://github.com/devanayak-6260/DEVA_XMD_BOT.git";
+const PHONE_NUMBER = "YOUR_WHATSAPP_NUMBER"; // country code + number, digits only
+const BOT_DIR = "./DEVA_XMD_BOT";
+
+try {
+  if (!fs.existsSync(BOT_DIR)) {
+    execSync(`git clone ${REPO} ${BOT_DIR}`, { stdio: "inherit" });
+  } else {
+    execSync("git pull", { cwd: BOT_DIR, stdio: "inherit" });
+  }
+
+  fs.writeFileSync(
+    `${BOT_DIR}/phone.js`,
+    `module.exports = "${PHONE_NUMBER}";\n`
+  );
+
+  execSync("npm install", { cwd: BOT_DIR, stdio: "inherit" });
+
+  const bot = spawn("npm", ["start"], {
+    cwd: BOT_DIR,
+    stdio: "inherit"
+  });
+
+  bot.on("exit", code => {
+    console.log("Bot stopped with code:", code);
+  });
+} catch (error) {
+  console.error("Error:", error.message);
+}
+```
+
+Run the installer:
 
 ```bash
 node index.js
 ```
 
-The script clones or updates the bot repository, writes a `phone.js` configuration file, installs dependencies, and runs `npm start`.
-
-**Before running it:** open `index.js` and replace the `PHONE_NUMBER` value with your own WhatsApp number in international format, without `+` or spaces. Do not publish your personal number, pairing codes, API keys, or WhatsApp session files in a public repository. Only link a WhatsApp account you own or are authorized to use.
-
-If the bot folder already exists, make sure the script runs `git pull` from inside that folder; otherwise the update command may fail.
+The script clones (or updates) the repository, writes `phone.js`, installs the bot's dependencies, and runs `npm start`. Only use this with a WhatsApp account you own or are authorized to link. Keep the installer and generated `phone.js` private if they contain your personal number.
 
 ## 🔐 Configuration & Security
 
