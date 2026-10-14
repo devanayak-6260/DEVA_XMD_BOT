@@ -47,12 +47,16 @@
 
 ## 📦 Installation
 
-```bash
-# 1. Clone your repository
-git clone https://github.com/YOUR-USERNAME/DEVA-XMD-BOT.git
+### Option 1: Install manually
 
-# 2. Open the project folder
-cd DEVA-XMD-BOT
+**Requirements:** Git and [Node.js 20+](https://nodejs.org/).
+
+```bash
+# 1. Clone the DEVA XMD BOT repository
+git clone https://github.com/devanayak-6260/DEVA_XMD_BOT.git
+
+# 2. Enter the project directory
+cd DEVA_XMD_BOT
 
 # 3. Install dependencies
 npm install
@@ -61,7 +65,19 @@ npm install
 npm start
 ```
 
-Replace `YOUR-USERNAME` with your GitHub username and adjust the repository name if needed.
+### Option 2: Use the `index.js` installer
+
+If you are using the provided `index.js` setup script, save it in a folder and run:
+
+```bash
+node index.js
+```
+
+The script clones or updates the bot repository, writes a `phone.js` configuration file, installs dependencies, and runs `npm start`.
+
+**Before running it:** open `index.js` and replace the `PHONE_NUMBER` value with your own WhatsApp number in international format, without `+` or spaces. Do not publish your personal number, pairing codes, API keys, or WhatsApp session files in a public repository. Only link a WhatsApp account you own or are authorized to use.
+
+If the bot folder already exists, make sure the script runs `git pull` from inside that folder; otherwise the update command may fail.
 
 ## 🔐 Configuration & Security
 
