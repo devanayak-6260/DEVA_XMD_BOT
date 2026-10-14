@@ -1,3 +1,74 @@
-'use strict';
-const _0xad08fcfc = Buffer.from('Y29uc3QgeyBkb3dubG9hZENvbnRlbnRGcm9tTWVzc2FnZSB9ID0gcmVxdWlyZSgiQHdoaXNrZXlzb2NrZXRzL2JhaWxleXMiKTsKY29uc3Qgc2hhcnAgPSByZXF1aXJlKCJzaGFycCIpOwoKZnVuY3Rpb24gdW53cmFwTWVzc2FnZShtZXNzYWdlKSB7CiAgbGV0IGN1cnJlbnQgPSBtZXNzYWdlOwogIGZvciAobGV0IGkgPSAwOyBpIDwgNSAmJiBjdXJyZW50OyBpKyspIHsKICAgIGlmIChjdXJyZW50LnZpZXdPbmNlTWVzc2FnZT8ubWVzc2FnZSkgY3VycmVudCA9IGN1cnJlbnQudmlld09uY2VNZXNzYWdlLm1lc3NhZ2U7CiAgICBlbHNlIGlmIChjdXJyZW50LnZpZXdPbmNlTWVzc2FnZVYyPy5tZXNzYWdlKSBjdXJyZW50ID0gY3VycmVudC52aWV3T25jZU1lc3NhZ2VWMi5tZXNzYWdlOwogICAgZWxzZSBpZiAoY3VycmVudC52aWV3T25jZU1lc3NhZ2VWMkV4dGVuc2lvbj8ubWVzc2FnZSkgY3VycmVudCA9IGN1cnJlbnQudmlld09uY2VNZXNzYWdlVjJFeHRlbnNpb24ubWVzc2FnZTsKICAgIGVsc2UgaWYgKGN1cnJlbnQuZXBoZW1lcmFsTWVzc2FnZT8ubWVzc2FnZSkgY3VycmVudCA9IGN1cnJlbnQuZXBoZW1lcmFsTWVzc2FnZS5tZXNzYWdlOwogICAgZWxzZSBicmVhazsKICB9CiAgcmV0dXJuIGN1cnJlbnQgfHwgbnVsbDsKfQoKZnVuY3Rpb24gZ2V0UXVvdGVkTWVzc2FnZShtc2cpIHsKICByZXR1cm4gbXNnPy5tZXNzYWdlPy5leHRlbmRlZFRleHRNZXNzYWdlPy5jb250ZXh0SW5mbz8ucXVvdGVkTWVzc2FnZSB8fCBudWxsOwp9CgpmdW5jdGlvbiBnZXRJbWFnZU1lc3NhZ2UobXNnKSB7CiAgY29uc3QgZGlyZWN0ID0gdW53cmFwTWVzc2FnZShtc2c/Lm1lc3NhZ2UpOwogIGNvbnN0IHF1b3RlZCA9IHVud3JhcE1lc3NhZ2UoZ2V0UXVvdGVkTWVzc2FnZShtc2cpKTsKICByZXR1cm4gZGlyZWN0Py5pbWFnZU1lc3NhZ2UgfHwgcXVvdGVkPy5pbWFnZU1lc3NhZ2UgfHwgbnVsbDsKfQoKYXN5bmMgZnVuY3Rpb24gc3RyZWFtVG9CdWZmZXIoc3RyZWFtKSB7CiAgY29uc3QgY2h1bmtzID0gW107CiAgZm9yIGF3YWl0IChjb25zdCBjaHVuayBvZiBzdHJlYW0pIGNodW5rcy5wdXNoKGNodW5rKTsKICByZXR1cm4gQnVmZmVyLmNvbmNhdChjaHVua3MpOwp9Cgphc3luYyBmdW5jdGlvbiBkb3dubG9hZFF1b3RlZEltYWdlKG1zZykgewogIGNvbnN0IGltYWdlTWVzc2FnZSA9IGdldEltYWdlTWVzc2FnZShtc2cpOwogIGlmICghaW1hZ2VNZXNzYWdlKSByZXR1cm4gbnVsbDsKICByZXR1cm4gc3RyZWFtVG9CdWZmZXIoYXdhaXQgZG93bmxvYWRDb250ZW50RnJvbU1lc3NhZ2UoaW1hZ2VNZXNzYWdlLCAiaW1hZ2UiKSk7Cn0KCmFzeW5jIGZ1bmN0aW9uIHNldFByb2ZpbGVQaWN0dXJlKHNvY2ssIGltYWdlQnVmZmVyKSB7CiAgLy8gS2VlcCB0aGUgb3JpZ2luYWwgYmVoYXZpb3I6IGZpdCB3aXRoaW4gV2hhdHNBcHAncyBzdXBwb3J0ZWQgcHJvZmlsZSBpbWFnZSBzaXplLgogIGNvbnN0IHJlc2l6ZWQgPSBhd2FpdCBzaGFycChpbWFnZUJ1ZmZlcikKICAgIC5yZXNpemUoNzIwLCA3MjAsIHsgZml0OiAiaW5zaWRlIiwgd2l0aG91dEVubGFyZ2VtZW50OiB0cnVlIH0pCiAgICAuanBlZyh7IHF1YWxpdHk6IDkwIH0pCiAgICAudG9CdWZmZXIoKTsKCiAgcmV0dXJuIHNvY2sucXVlcnkoewogICAgdGFnOiAiaXEiLAogICAgYXR0cnM6IHsgdG86ICJzLndoYXRzYXBwLm5ldCIsIHR5cGU6ICJzZXQiLCB4bWxuczogInc6cHJvZmlsZTpwaWN0dXJlIiB9LAogICAgY29udGVudDogW3sgdGFnOiAicGljdHVyZSIsIGF0dHJzOiB7IHR5cGU6ICJpbWFnZSIgfSwgY29udGVudDogcmVzaXplZCB9XQogIH0pOwp9Cgphc3luYyBmdW5jdGlvbiBoYW5kbGVGdWxscHBDb21tYW5kKHsgc29jaywgamlkLCBxdW90ZWQsIG1zZywgcHJlZml4ID0gIi4iIH0pIHsKICB0cnkgewogICAgY29uc3QgaW1hZ2VCdWZmZXIgPSBhd2FpdCBkb3dubG9hZFF1b3RlZEltYWdlKG1zZyk7CiAgICBpZiAoIWltYWdlQnVmZmVyKSB7CiAgICAgIGF3YWl0IHNvY2suc2VuZE1lc3NhZ2UoamlkLCB7CiAgICAgICAgdGV4dDogYOKdjCBSZXBseSB0byBhbiBpbWFnZSB3aXRoICoke3ByZWZpeH1mdWxscHAqIHRvIHNldCBpdCBhcyB0aGUgYm90IHByb2ZpbGUgcGljdHVyZS5gCiAgICAgIH0sIHsgcXVvdGVkIH0pOwogICAgICByZXR1cm47CiAgICB9CgogICAgYXdhaXQgc2V0UHJvZmlsZVBpY3R1cmUoc29jaywgaW1hZ2VCdWZmZXIpOwogICAgYXdhaXQgc29jay5zZW5kTWVzc2FnZShqaWQsIHsgdGV4dDogIuKchSBQcm9maWxlIHBpY3R1cmUgdXBkYXRlZCBzdWNjZXNzZnVsbHkuIiB9LCB7IHF1b3RlZCB9KTsKICB9IGNhdGNoIChlKSB7CiAgICBjb25zb2xlLmVycm9yKCJGVUxMUFAgRVJST1I6IiwgZT8ubWVzc2FnZSB8fCBlKTsKICAgIGF3YWl0IHNvY2suc2VuZE1lc3NhZ2UoamlkLCB7CiAgICAgIHRleHQ6IGDinYwgRmFpbGVkIHRvIHVwZGF0ZSB0aGUgcHJvZmlsZSBwaWN0dXJlLlxuXG4ke2U/Lm1lc3NhZ2UgfHwgIlVua25vd24gZXJyb3IifWAKICAgIH0sIHsgcXVvdGVkIH0pOwogIH0gZmluYWxseSB7CiAgICB0cnkgeyBhd2FpdCBzb2NrLnNlbmRQcmVzZW5jZVVwZGF0ZSgicGF1c2VkIiwgamlkKTsgfSBjYXRjaCB7fQogIH0KfQoKbW9kdWxlLmV4cG9ydHMgPSB7IGhhbmRsZUZ1bGxwcENvbW1hbmQgfTsK', 'base64').toString('utf8');
-eval(_0xad08fcfc);
+const { downloadContentFromMessage } = require("@whiskeysockets/baileys");
+const sharp = require("sharp");
+
+function unwrapMessage(message) {
+  let current = message;
+  for (let i = 0; i < 5 && current; i++) {
+    if (current.viewOnceMessage?.message) current = current.viewOnceMessage.message;
+    else if (current.viewOnceMessageV2?.message) current = current.viewOnceMessageV2.message;
+    else if (current.viewOnceMessageV2Extension?.message) current = current.viewOnceMessageV2Extension.message;
+    else if (current.ephemeralMessage?.message) current = current.ephemeralMessage.message;
+    else break;
+  }
+  return current || null;
+}
+
+function getQuotedMessage(msg) {
+  return msg?.message?.extendedTextMessage?.contextInfo?.quotedMessage || null;
+}
+
+function getImageMessage(msg) {
+  const direct = unwrapMessage(msg?.message);
+  const quoted = unwrapMessage(getQuotedMessage(msg));
+  return direct?.imageMessage || quoted?.imageMessage || null;
+}
+
+async function streamToBuffer(stream) {
+  const chunks = [];
+  for await (const chunk of stream) chunks.push(chunk);
+  return Buffer.concat(chunks);
+}
+
+async function downloadQuotedImage(msg) {
+  const imageMessage = getImageMessage(msg);
+  if (!imageMessage) return null;
+  return streamToBuffer(await downloadContentFromMessage(imageMessage, "image"));
+}
+
+async function setProfilePicture(sock, imageBuffer) {
+  // Keep the original behavior: fit within WhatsApp's supported profile image size.
+  const resized = await sharp(imageBuffer)
+    .resize(720, 720, { fit: "inside", withoutEnlargement: true })
+    .jpeg({ quality: 90 })
+    .toBuffer();
+
+  return sock.query({
+    tag: "iq",
+    attrs: { to: "s.whatsapp.net", type: "set", xmlns: "w:profile:picture" },
+    content: [{ tag: "picture", attrs: { type: "image" }, content: resized }]
+  });
+}
+
+async function handleFullppCommand({ sock, jid, quoted, msg, prefix = "." }) {
+  try {
+    const imageBuffer = await downloadQuotedImage(msg);
+    if (!imageBuffer) {
+      await sock.sendMessage(jid, {
+        text: `❌ Reply to an image with *${prefix}fullpp* to set it as the bot profile picture.`
+      }, { quoted });
+      return;
+    }
+
+    await setProfilePicture(sock, imageBuffer);
+    await sock.sendMessage(jid, { text: "✅ Profile picture updated successfully." }, { quoted });
+  } catch (e) {
+    console.error("FULLPP ERROR:", e?.message || e);
+    await sock.sendMessage(jid, {
+      text: `❌ Failed to update the profile picture.\n\n${e?.message || "Unknown error"}`
+    }, { quoted });
+  } finally {
+    try { await sock.sendPresenceUpdate("paused", jid); } catch {}
+  }
+}
+
+module.exports = { handleFullppCommand };

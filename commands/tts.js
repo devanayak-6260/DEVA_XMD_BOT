@@ -1,3 +1,75 @@
-'use strict';
-const _0xdb15f4b4 = Buffer.from('InVzZSBzdHJpY3QiOwoKLy8gRnJlZSBUVFMgdXNpbmcgR29vZ2xlIFRyYW5zbGF0ZSdzIHB1YmxpYyB0ZXh0LXRvLXNwZWVjaCBlbmRwb2ludC4KLy8gTm8gQVBJIGtleSBvciBhZGRpdGlvbmFsIG5wbSBwYWNrYWdlIGlzIHJlcXVpcmVkLiBBdmFpbGFiaWxpdHkvcmF0ZSBsaW1pdHMKLy8gYXJlIGNvbnRyb2xsZWQgYnkgdGhlIHVwc3RyZWFtIHNlcnZpY2UgYW5kIG1heSBjaGFuZ2UuCmNvbnN0IE1BWF9URVhUX0xFTkdUSCA9IDE4MDsKCmFzeW5jIGZ1bmN0aW9uIGhhbmRsZVR0c0NvbW1hbmQoeyBzb2NrLCBqaWQsIHF1b3RlZCwgcHJlZml4Q29tbWFuZCwgcHJlZml4ID0gIi4iLCBjbGVhckFjdGlvblByZXNlbmNlID0gYXN5bmMgKCkgPT4ge30gfSkgewogIHRyeSB7CiAgICBjb25zdCB0YWlsID0gU3RyaW5nKHByZWZpeENvbW1hbmQgfHwgIiIpLnRyaW0oKS5yZXBsYWNlKC9edHRzXGIvaSwgIiIpLnRyaW0oKTsKICAgIGlmICghdGFpbCkgewogICAgICBhd2FpdCBzb2NrLnNlbmRNZXNzYWdlKGppZCwgewogICAgICAgIHRleHQ6IGDwn5SKICpERVZBIFhNRCBCT1Qg4oCUIEZyZWUgVFRTKlxuXG5Vc2U6ICR7cHJlZml4fXR0cyA8dGV4dD5cbkhpbmRpOiAke3ByZWZpeH10dHMgaGkg4KSo4KSu4KS44KWN4KSk4KWHLCDgpJXgpYjgpLjgpYcg4KS54KWLP1xuRW5nbGlzaDogJHtwcmVmaXh9dHRzIGVuIEhlbGxvLCBob3cgYXJlIHlvdT9cblxuTWF4aW11bSAke01BWF9URVhUX0xFTkdUSH0gY2hhcmFjdGVycyBwZXIgbWVzc2FnZS5gCiAgICAgIH0sIHsgcXVvdGVkIH0pOwogICAgICByZXR1cm47CiAgICB9CgogICAgbGV0IGxhbmd1YWdlID0gImhpIjsKICAgIGxldCBzcG9rZW5UZXh0ID0gdGFpbDsKICAgIC8vIEEgc3VwcG9ydGVkIGxhbmd1YWdlIGNvZGUgaXMgb3B0aW9uYWw7IG90aGVyd2lzZSB0aGUgZnVsbCB0ZXh0IGlzIHNwb2tlbi4KICAgIGNvbnN0IGxhbmdNYXRjaCA9IHRhaWwubWF0Y2goL14oaGl8ZW58Ym58dGF8dGV8bXJ8Z3V8cGF8dXJ8ZXN8ZnJ8ZGV8amF8a298YXIpXHMrKFtcc1xTXSspJC9pKTsKICAgIGlmIChsYW5nTWF0Y2gpIHsKICAgICAgbGFuZ3VhZ2UgPSBsYW5nTWF0Y2hbMV0udG9Mb3dlckNhc2UoKTsKICAgICAgc3Bva2VuVGV4dCA9IGxhbmdNYXRjaFsyXS50cmltKCk7CiAgICB9CgogICAgaWYgKCFzcG9rZW5UZXh0KSB7CiAgICAgIGF3YWl0IHNvY2suc2VuZE1lc3NhZ2UoamlkLCB7IHRleHQ6IGDinYwgVGV4dCBtaXNzaW5nLiBVc2U6ICR7cHJlZml4fXR0cyA8dGV4dD5gIH0sIHsgcXVvdGVkIH0pOwogICAgICByZXR1cm47CiAgICB9CiAgICBpZiAoc3Bva2VuVGV4dC5sZW5ndGggPiBNQVhfVEVYVF9MRU5HVEgpIHsKICAgICAgYXdhaXQgc29jay5zZW5kTWVzc2FnZShqaWQsIHsgdGV4dDogYOKdjCBUZXh0IHRvbyBsb25nLiBQbGVhc2Uga2VlcCBpdCB1bmRlciAke01BWF9URVhUX0xFTkdUSH0gY2hhcmFjdGVycy5gIH0sIHsgcXVvdGVkIH0pOwogICAgICByZXR1cm47CiAgICB9CgogICAgY29uc3QgZW5kcG9pbnQgPSBuZXcgVVJMKCJodHRwczovL3RyYW5zbGF0ZS5nb29nbGUuY29tL3RyYW5zbGF0ZV90dHMiKTsKICAgIGVuZHBvaW50LnNlYXJjaFBhcmFtcy5zZXQoImllIiwgIlVURi04Iik7CiAgICBlbmRwb2ludC5zZWFyY2hQYXJhbXMuc2V0KCJjbGllbnQiLCAidHctb2IiKTsKICAgIGVuZHBvaW50LnNlYXJjaFBhcmFtcy5zZXQoInRsIiwgbGFuZ3VhZ2UpOwogICAgZW5kcG9pbnQuc2VhcmNoUGFyYW1zLnNldCgicSIsIHNwb2tlblRleHQpOwoKICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2goZW5kcG9pbnQsIHsKICAgICAgaGVhZGVyczogewogICAgICAgICJVc2VyLUFnZW50IjogIk1vemlsbGEvNS4wIChMaW51eDsgQW5kcm9pZCAxMCkgQXBwbGVXZWJLaXQvNTM3LjM2IENocm9tZS8xMjAuMC4wLjAgTW9iaWxlIFNhZmFyaS81MzcuMzYiLAogICAgICAgICJSZWZlcmVyIjogImh0dHBzOi8vdHJhbnNsYXRlLmdvb2dsZS5jb20vIgogICAgICB9LAogICAgICBzaWduYWw6IEFib3J0U2lnbmFsLnRpbWVvdXQoMjUwMDApCiAgICB9KTsKCiAgICBpZiAoIXJlc3BvbnNlLm9rKSB0aHJvdyBuZXcgRXJyb3IoYFRUUyBzZXJ2aWNlIHJldHVybmVkIEhUVFAgJHtyZXNwb25zZS5zdGF0dXN9YCk7CiAgICBjb25zdCBjb250ZW50VHlwZSA9IChyZXNwb25zZS5oZWFkZXJzLmdldCgiY29udGVudC10eXBlIikgfHwgIiIpLnRvTG93ZXJDYXNlKCk7CiAgICBjb25zdCBhdWRpbyA9IEJ1ZmZlci5mcm9tKGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCkpOwogICAgaWYgKCFhdWRpby5sZW5ndGggfHwgKGNvbnRlbnRUeXBlICYmICFjb250ZW50VHlwZS5pbmNsdWRlcygiYXVkaW8iKSAmJiAhY29udGVudFR5cGUuaW5jbHVkZXMoIm1wZWciKSkpIHsKICAgICAgdGhyb3cgbmV3IEVycm9yKCJUVFMgc2VydmljZSBkaWQgbm90IHJldHVybiBhdWRpbyIpOwogICAgfQoKICAgIC8vIEdvb2dsZSBUcmFuc2xhdGUgcmV0dXJucyBNUDMgZGF0YS4gU2VuZCBpdCBhcyBhIHJlZ3VsYXIgYXVkaW8gYXR0YWNobWVudDsKICAgIC8vIFdoYXRzQXBwIHZvaWNlLW5vdGUgKFBUVCkgbWVzc2FnZXMgcmVxdWlyZSBhbiBPcHVzL09HRyBwYXlsb2FkLCBub3QgTVAzLgogICAgYXdhaXQgc29jay5zZW5kTWVzc2FnZShqaWQsIHsKICAgICAgYXVkaW8sCiAgICAgIG1pbWV0eXBlOiAiYXVkaW8vbXBlZyIsCiAgICAgIGZpbGVOYW1lOiAiZGV2YS10dHMubXAzIiwKICAgICAgcHR0OiBmYWxzZQogICAgfSwgeyBxdW90ZWQgfSk7CiAgfSBjYXRjaCAoZXJyb3IpIHsKICAgIGNvbnNvbGUuZXJyb3IoIlRUUyBFUlJPUjoiLCBlcnJvcj8ubWVzc2FnZSB8fCBlcnJvcik7CiAgICBhd2FpdCBzb2NrLnNlbmRNZXNzYWdlKGppZCwgewogICAgICB0ZXh0OiBg4p2MICpUVFMgZmFpbGVkLipcblxuRnJlZSBUVFMgc2VydmljZSBtYXkgYmUgYnVzeSBvciB1bmF2YWlsYWJsZS4gUGxlYXNlIHRyeSBhZ2FpbiBsYXRlci5cbiR7U3RyaW5nKGVycm9yPy5tZXNzYWdlIHx8ICIiKS5zbGljZSgwLCAxODApfWAKICAgIH0sIHsgcXVvdGVkIH0pOwogIH0gZmluYWxseSB7CiAgICBhd2FpdCBjbGVhckFjdGlvblByZXNlbmNlKHNvY2ssIGppZCkuY2F0Y2goKCkgPT4ge30pOwogIH0KfQoKbW9kdWxlLmV4cG9ydHMgPSB7IGhhbmRsZVR0c0NvbW1hbmQgfTsK', 'base64').toString('utf8');
-eval(_0xdb15f4b4);
+"use strict";
+
+// Free TTS using Google Translate's public text-to-speech endpoint.
+// No API key or additional npm package is required. Availability/rate limits
+// are controlled by the upstream service and may change.
+const MAX_TEXT_LENGTH = 180;
+
+async function handleTtsCommand({ sock, jid, quoted, prefixCommand, prefix = ".", clearActionPresence = async () => {} }) {
+  try {
+    const tail = String(prefixCommand || "").trim().replace(/^tts\b/i, "").trim();
+    if (!tail) {
+      await sock.sendMessage(jid, {
+        text: `🔊 *DEVA XMD BOT — Free TTS*\n\nUse: ${prefix}tts <text>\nHindi: ${prefix}tts hi नमस्ते, कैसे हो?\nEnglish: ${prefix}tts en Hello, how are you?\n\nMaximum ${MAX_TEXT_LENGTH} characters per message.`
+      }, { quoted });
+      return;
+    }
+
+    let language = "hi";
+    let spokenText = tail;
+    // A supported language code is optional; otherwise the full text is spoken.
+    const langMatch = tail.match(/^(hi|en|bn|ta|te|mr|gu|pa|ur|es|fr|de|ja|ko|ar)\s+([\s\S]+)$/i);
+    if (langMatch) {
+      language = langMatch[1].toLowerCase();
+      spokenText = langMatch[2].trim();
+    }
+
+    if (!spokenText) {
+      await sock.sendMessage(jid, { text: `❌ Text missing. Use: ${prefix}tts <text>` }, { quoted });
+      return;
+    }
+    if (spokenText.length > MAX_TEXT_LENGTH) {
+      await sock.sendMessage(jid, { text: `❌ Text too long. Please keep it under ${MAX_TEXT_LENGTH} characters.` }, { quoted });
+      return;
+    }
+
+    const endpoint = new URL("https://translate.google.com/translate_tts");
+    endpoint.searchParams.set("ie", "UTF-8");
+    endpoint.searchParams.set("client", "tw-ob");
+    endpoint.searchParams.set("tl", language);
+    endpoint.searchParams.set("q", spokenText);
+
+    const response = await fetch(endpoint, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 Chrome/120.0.0.0 Mobile Safari/537.36",
+        "Referer": "https://translate.google.com/"
+      },
+      signal: AbortSignal.timeout(25000)
+    });
+
+    if (!response.ok) throw new Error(`TTS service returned HTTP ${response.status}`);
+    const contentType = (response.headers.get("content-type") || "").toLowerCase();
+    const audio = Buffer.from(await response.arrayBuffer());
+    if (!audio.length || (contentType && !contentType.includes("audio") && !contentType.includes("mpeg"))) {
+      throw new Error("TTS service did not return audio");
+    }
+
+    // Google Translate returns MP3 data. Send it as a regular audio attachment;
+    // WhatsApp voice-note (PTT) messages require an Opus/OGG payload, not MP3.
+    await sock.sendMessage(jid, {
+      audio,
+      mimetype: "audio/mpeg",
+      fileName: "deva-tts.mp3",
+      ptt: false
+    }, { quoted });
+  } catch (error) {
+    console.error("TTS ERROR:", error?.message || error);
+    await sock.sendMessage(jid, {
+      text: `❌ *TTS failed.*\n\nFree TTS service may be busy or unavailable. Please try again later.\n${String(error?.message || "").slice(0, 180)}`
+    }, { quoted });
+  } finally {
+    await clearActionPresence(sock, jid).catch(() => {});
+  }
+}
+
+module.exports = { handleTtsCommand };

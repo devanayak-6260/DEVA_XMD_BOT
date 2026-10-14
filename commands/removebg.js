@@ -1,3 +1,93 @@
-'use strict';
-const _0xb7ca9d00 = Buffer.from('InVzZSBzdHJpY3QiOwoKY29uc3QgeyBkb3dubG9hZENvbnRlbnRGcm9tTWVzc2FnZSB9ID0gcmVxdWlyZSgiQHdoaXNrZXlzb2NrZXRzL2JhaWxleXMiKTsKCmZ1bmN0aW9uIHVud3JhcE1lc3NhZ2UobWVzc2FnZSkgewogIGxldCBjdXJyZW50ID0gbWVzc2FnZTsKICBmb3IgKGxldCBpID0gMDsgaSA8IDUgJiYgY3VycmVudDsgaSsrKSB7CiAgICBpZiAoY3VycmVudC5lcGhlbWVyYWxNZXNzYWdlPy5tZXNzYWdlKSBjdXJyZW50ID0gY3VycmVudC5lcGhlbWVyYWxNZXNzYWdlLm1lc3NhZ2U7CiAgICBlbHNlIGlmIChjdXJyZW50LnZpZXdPbmNlTWVzc2FnZT8ubWVzc2FnZSkgY3VycmVudCA9IGN1cnJlbnQudmlld09uY2VNZXNzYWdlLm1lc3NhZ2U7CiAgICBlbHNlIGlmIChjdXJyZW50LnZpZXdPbmNlTWVzc2FnZVYyPy5tZXNzYWdlKSBjdXJyZW50ID0gY3VycmVudC52aWV3T25jZU1lc3NhZ2VWMi5tZXNzYWdlOwogICAgZWxzZSBpZiAoY3VycmVudC52aWV3T25jZU1lc3NhZ2VWMkV4dGVuc2lvbj8ubWVzc2FnZSkgY3VycmVudCA9IGN1cnJlbnQudmlld09uY2VNZXNzYWdlVjJFeHRlbnNpb24ubWVzc2FnZTsKICAgIGVsc2UgYnJlYWs7CiAgfQogIHJldHVybiBjdXJyZW50IHx8IG51bGw7Cn0KCmZ1bmN0aW9uIGdldFF1b3RlZE1lc3NhZ2UobXNnKSB7CiAgcmV0dXJuIG1zZz8ubWVzc2FnZT8uZXh0ZW5kZWRUZXh0TWVzc2FnZT8uY29udGV4dEluZm8/LnF1b3RlZE1lc3NhZ2UgfHwKICAgIG1zZz8ubWVzc2FnZT8uaW1hZ2VNZXNzYWdlPy5jb250ZXh0SW5mbz8ucXVvdGVkTWVzc2FnZSB8fCBudWxsOwp9CgpmdW5jdGlvbiBnZXRJbWFnZU1lc3NhZ2UobXNnKSB7CiAgY29uc3QgZGlyZWN0ID0gdW53cmFwTWVzc2FnZShtc2c/Lm1lc3NhZ2UpOwogIGNvbnN0IHF1b3RlZCA9IHVud3JhcE1lc3NhZ2UoZ2V0UXVvdGVkTWVzc2FnZShtc2cpKTsKICByZXR1cm4gZGlyZWN0Py5pbWFnZU1lc3NhZ2UgfHwgcXVvdGVkPy5pbWFnZU1lc3NhZ2UgfHwgbnVsbDsKfQoKYXN5bmMgZnVuY3Rpb24gc3RyZWFtVG9CdWZmZXIoc3RyZWFtKSB7CiAgY29uc3QgY2h1bmtzID0gW107CiAgZm9yIGF3YWl0IChjb25zdCBjaHVuayBvZiBzdHJlYW0pIGNodW5rcy5wdXNoKGNodW5rKTsKICByZXR1cm4gQnVmZmVyLmNvbmNhdChjaHVua3MpOwp9Cgphc3luYyBmdW5jdGlvbiBoYW5kbGVSZW1vdmVCZ0NvbW1hbmQoeyBzb2NrLCBqaWQsIHF1b3RlZCwgbXNnLCBwcmVmaXggPSAiLiIsIGNsZWFyQWN0aW9uUHJlc2VuY2UgPSBhc3luYyAoKSA9PiB7fSB9KSB7CiAgdHJ5IHsKICAgIGNvbnN0IGltYWdlTWVzc2FnZSA9IGdldEltYWdlTWVzc2FnZShtc2cpOwogICAgaWYgKCFpbWFnZU1lc3NhZ2UpIHsKICAgICAgYXdhaXQgc29jay5zZW5kTWVzc2FnZShqaWQsIHsKICAgICAgICB0ZXh0OiBg4p2MIFJlcGx5IHRvIGEgcGhvdG8gd2l0aCAqJHtwcmVmaXh9cmVtb3ZlYmcqIG9yIHNlbmQgYSBwaG90byB3aXRoIHRoZSBjYXB0aW9uICoke3ByZWZpeH1yZW1vdmViZyouYAogICAgICB9LCB7IHF1b3RlZCB9KTsKICAgICAgcmV0dXJuOwogICAgfQoKICAgIGNvbnN0IGFwaUtleSA9IFN0cmluZyhwcm9jZXNzLmVudi5SRU1PVkVfQkdfQVBJX0tFWSB8fCAiIikudHJpbSgpOwogICAgaWYgKCFhcGlLZXkpIHsKICAgICAgYXdhaXQgc29jay5zZW5kTWVzc2FnZShqaWQsIHsKICAgICAgICB0ZXh0OiAi4pqZ77iPICpSZW1vdmUgQmFja2dyb3VuZCBzZXR1cCByZXF1aXJlZCpcblxuQWRkIHlvdXIgUmVtb3ZlLmJnIEFQSSBrZXkgYXMgdGhlIGVudmlyb25tZW50IHZhcmlhYmxlOlxuKlJFTU9WRV9CR19BUElfS0VZKlxuXG5UaGVuIHJlc3RhcnQgdGhlIGJvdCBhbmQgdXNlIC5yZW1vdmViZyBhZ2Fpbi4gVGhlIEFQSSBtYXkgaGF2ZSB1c2FnZSBsaW1pdHMgb3IgY2hhcmdlcy4iCiAgICAgIH0sIHsgcXVvdGVkIH0pOwogICAgICByZXR1cm47CiAgICB9CgogICAgYXdhaXQgc29jay5zZW5kTWVzc2FnZShqaWQsIHsgdGV4dDogIuKPsyAqUmVtb3ZpbmcgcGhvdG8gYmFja2dyb3VuZC4uLioiIH0sIHsgcXVvdGVkIH0pOwogICAgY29uc3QgaW1hZ2VCdWZmZXIgPSBhd2FpdCBzdHJlYW1Ub0J1ZmZlcihhd2FpdCBkb3dubG9hZENvbnRlbnRGcm9tTWVzc2FnZShpbWFnZU1lc3NhZ2UsICJpbWFnZSIpKTsKICAgIGlmICghaW1hZ2VCdWZmZXIubGVuZ3RoKSB0aHJvdyBuZXcgRXJyb3IoIkNvdWxkIG5vdCBkb3dubG9hZCB0aGUgaW1hZ2UuIFBsZWFzZSB0cnkgYW5vdGhlciBwaG90by4iKTsKCiAgICBjb25zdCBmb3JtID0gbmV3IEZvcm1EYXRhKCk7CiAgICBmb3JtLmFwcGVuZCgiaW1hZ2VfZmlsZSIsIG5ldyBCbG9iKFtpbWFnZUJ1ZmZlcl0sIHsgdHlwZTogaW1hZ2VNZXNzYWdlLm1pbWV0eXBlIHx8ICJpbWFnZS9qcGVnIiB9KSwgInBob3RvLmpwZyIpOwogICAgZm9ybS5hcHBlbmQoInNpemUiLCAiYXV0byIpOwoKICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2goImh0dHBzOi8vYXBpLnJlbW92ZS5iZy92MS4wL3JlbW92ZWJnIiwgewogICAgICBtZXRob2Q6ICJQT1NUIiwKICAgICAgaGVhZGVyczogeyAiWC1BcGktS2V5IjogYXBpS2V5LCAiQWNjZXB0IjogImltYWdlL3BuZyIgfSwKICAgICAgYm9keTogZm9ybSwKICAgICAgc2lnbmFsOiBBYm9ydFNpZ25hbC50aW1lb3V0KDkwMDAwKQogICAgfSk7CgogICAgaWYgKCFyZXNwb25zZS5vaykgewogICAgICBjb25zdCBkZXRhaWwgPSAoYXdhaXQgcmVzcG9uc2UudGV4dCgpKS5zbGljZSgwLCAzNTApOwogICAgICBpZiAocmVzcG9uc2Uuc3RhdHVzID09PSA0MDEgfHwgcmVzcG9uc2Uuc3RhdHVzID09PSA0MDMpIHRocm93IG5ldyBFcnJvcigiQVBJIGtleSBpcyBpbnZhbGlkIG9yIG5vdCBhdXRob3JpemVkLiBDaGVjayBSRU1PVkVfQkdfQVBJX0tFWS4iKTsKICAgICAgaWYgKHJlc3BvbnNlLnN0YXR1cyA9PT0gNDAyKSB0aHJvdyBuZXcgRXJyb3IoIlJlbW92ZS5iZyBBUEkgY3JlZGl0cyBhcmUgZXhoYXVzdGVkIG9yIHBheW1lbnQgaXMgcmVxdWlyZWQuIik7CiAgICAgIGlmIChyZXNwb25zZS5zdGF0dXMgPT09IDQyOSkgdGhyb3cgbmV3IEVycm9yKCJSZW1vdmUuYmcgcmF0ZSBsaW1pdCByZWFjaGVkLiBQbGVhc2UgdHJ5IGFnYWluIGxhdGVyLiIpOwogICAgICB0aHJvdyBuZXcgRXJyb3IoYFJlbW92ZS5iZyBBUEkgZXJyb3IgKCR7cmVzcG9uc2Uuc3RhdHVzfSkuICR7ZGV0YWlsfWApOwogICAgfQoKICAgIGNvbnN0IG91dHB1dCA9IEJ1ZmZlci5mcm9tKGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCkpOwogICAgaWYgKCFvdXRwdXQubGVuZ3RoKSB0aHJvdyBuZXcgRXJyb3IoIlRoZSBiYWNrZ3JvdW5kLXJlbW92YWwgc2VydmljZSByZXR1cm5lZCBhbiBlbXB0eSBpbWFnZS4iKTsKICAgIGF3YWl0IHNvY2suc2VuZE1lc3NhZ2UoamlkLCB7CiAgICAgIGltYWdlOiBvdXRwdXQsCiAgICAgIG1pbWV0eXBlOiAiaW1hZ2UvcG5nIiwKICAgICAgZmlsZU5hbWU6ICJkZXZhLXJlbW92ZWQtYmFja2dyb3VuZC5wbmciLAogICAgICBjYXB0aW9uOiAi4pyFICpCYWNrZ3JvdW5kIHJlbW92ZWQgc3VjY2Vzc2Z1bGx5ISoiCiAgICB9LCB7IHF1b3RlZCB9KTsKICB9IGNhdGNoIChlKSB7CiAgICBjb25zb2xlLmVycm9yKCJSRU1PVkVCRyBFUlJPUjoiLCBlPy5tZXNzYWdlIHx8IGUpOwogICAgYXdhaXQgc29jay5zZW5kTWVzc2FnZShqaWQsIHsKICAgICAgdGV4dDogYOKdjCAqUmVtb3ZlQkcgZmFpbGVkLipcblxuJHtTdHJpbmcoZT8ubWVzc2FnZSB8fCAiUGxlYXNlIHRyeSBhbm90aGVyIHBob3RvLiIpLnNsaWNlKDAsIDQ1MCl9YAogICAgfSwgeyBxdW90ZWQgfSk7CiAgfSBmaW5hbGx5IHsKICAgIGF3YWl0IGNsZWFyQWN0aW9uUHJlc2VuY2Uoc29jaywgamlkKS5jYXRjaCgoKSA9PiB7fSk7CiAgfQp9Cgptb2R1bGUuZXhwb3J0cyA9IHsgaGFuZGxlUmVtb3ZlQmdDb21tYW5kIH07Cg==', 'base64').toString('utf8');
-eval(_0xb7ca9d00);
+"use strict";
+
+const { downloadContentFromMessage } = require("@whiskeysockets/baileys");
+
+function unwrapMessage(message) {
+  let current = message;
+  for (let i = 0; i < 5 && current; i++) {
+    if (current.ephemeralMessage?.message) current = current.ephemeralMessage.message;
+    else if (current.viewOnceMessage?.message) current = current.viewOnceMessage.message;
+    else if (current.viewOnceMessageV2?.message) current = current.viewOnceMessageV2.message;
+    else if (current.viewOnceMessageV2Extension?.message) current = current.viewOnceMessageV2Extension.message;
+    else break;
+  }
+  return current || null;
+}
+
+function getQuotedMessage(msg) {
+  return msg?.message?.extendedTextMessage?.contextInfo?.quotedMessage ||
+    msg?.message?.imageMessage?.contextInfo?.quotedMessage || null;
+}
+
+function getImageMessage(msg) {
+  const direct = unwrapMessage(msg?.message);
+  const quoted = unwrapMessage(getQuotedMessage(msg));
+  return direct?.imageMessage || quoted?.imageMessage || null;
+}
+
+async function streamToBuffer(stream) {
+  const chunks = [];
+  for await (const chunk of stream) chunks.push(chunk);
+  return Buffer.concat(chunks);
+}
+
+async function handleRemoveBgCommand({ sock, jid, quoted, msg, prefix = ".", clearActionPresence = async () => {} }) {
+  try {
+    const imageMessage = getImageMessage(msg);
+    if (!imageMessage) {
+      await sock.sendMessage(jid, {
+        text: `❌ Reply to a photo with *${prefix}removebg* or send a photo with the caption *${prefix}removebg*.`
+      }, { quoted });
+      return;
+    }
+
+    const apiKey = String(process.env.REMOVE_BG_API_KEY || "").trim();
+    if (!apiKey) {
+      await sock.sendMessage(jid, {
+        text: "⚙️ *Remove Background setup required*\n\nAdd your Remove.bg API key as the environment variable:\n*REMOVE_BG_API_KEY*\n\nThen restart the bot and use .removebg again. The API may have usage limits or charges."
+      }, { quoted });
+      return;
+    }
+
+    await sock.sendMessage(jid, { text: "⏳ *Removing photo background...*" }, { quoted });
+    const imageBuffer = await streamToBuffer(await downloadContentFromMessage(imageMessage, "image"));
+    if (!imageBuffer.length) throw new Error("Could not download the image. Please try another photo.");
+
+    const form = new FormData();
+    form.append("image_file", new Blob([imageBuffer], { type: imageMessage.mimetype || "image/jpeg" }), "photo.jpg");
+    form.append("size", "auto");
+
+    const response = await fetch("https://api.remove.bg/v1.0/removebg", {
+      method: "POST",
+      headers: { "X-Api-Key": apiKey, "Accept": "image/png" },
+      body: form,
+      signal: AbortSignal.timeout(90000)
+    });
+
+    if (!response.ok) {
+      const detail = (await response.text()).slice(0, 350);
+      if (response.status === 401 || response.status === 403) throw new Error("API key is invalid or not authorized. Check REMOVE_BG_API_KEY.");
+      if (response.status === 402) throw new Error("Remove.bg API credits are exhausted or payment is required.");
+      if (response.status === 429) throw new Error("Remove.bg rate limit reached. Please try again later.");
+      throw new Error(`Remove.bg API error (${response.status}). ${detail}`);
+    }
+
+    const output = Buffer.from(await response.arrayBuffer());
+    if (!output.length) throw new Error("The background-removal service returned an empty image.");
+    await sock.sendMessage(jid, {
+      image: output,
+      mimetype: "image/png",
+      fileName: "deva-removed-background.png",
+      caption: "✅ *Background removed successfully!*"
+    }, { quoted });
+  } catch (e) {
+    console.error("REMOVEBG ERROR:", e?.message || e);
+    await sock.sendMessage(jid, {
+      text: `❌ *RemoveBG failed.*\n\n${String(e?.message || "Please try another photo.").slice(0, 450)}`
+    }, { quoted });
+  } finally {
+    await clearActionPresence(sock, jid).catch(() => {});
+  }
+}
+
+module.exports = { handleRemoveBgCommand };

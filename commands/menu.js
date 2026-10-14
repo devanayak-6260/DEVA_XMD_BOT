@@ -1,3 +1,102 @@
-'use strict';
-const _0x31b49e17 = Buffer.from('ZnVuY3Rpb24gYnVpbGRNZW51Q2FwdGlvbih7IGJvdFNldHRpbmdzLCBwcmVmaXggPSAiIiwgdXB0aW1lID0gIiIsIHBsYXRmb3JtID0gcHJvY2Vzcy5wbGF0Zm9ybSB9KSB7CiAgY29uc3Qgb3duZXJOYW1lID0gIkRFVkEtTkFZQUsiOwogIGNvbnN0IG1vZGUgPSBTdHJpbmcoYm90U2V0dGluZ3M/Lm1vZGUgfHwgInB1YmxpYyIpLnRvVXBwZXJDYXNlKCk7CiAgY29uc3QgcGZ4ID0gcHJlZml4OwogIHJldHVybiBg4pWt4pSB44CUIPCfkZEgREVWQSBYTUQgQk9UIOOAleKUgeKVrgrilIMg4pqhICBVTFRSQSBQUk8gQk9UIHY0LjEK4pSj4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSrCuKUgyDwn5GkIE9XTkVSIOKenCAqJHtvd25lck5hbWV9KgrilINodHRwczovL3dhLm1lLzkxNjI2MDAyMTczNQrilIMg8J+SuyBQTEFURk9STSDinpwgJHtwbGF0Zm9ybX0K4pSDIPCflJAgTU9ERSDinpwgJHttb2RlfQrilIMg4pqhIFBSRUZJWCDinpwgJHtwZnh9CuKUgyDij7HvuI8gVVBUSU1FIOKenCAke3VwdGltZX0K4pWw4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSBCuKUgwrila3ilIHilIHjgJQg4pqhIEdFTkVSQUwg44CV4pSB4pSB4pWuCuKUgyDigKIgJHtwZnh9bWVudQrilIMg4oCiICR7cGZ4fXBpbmcK4pSDIOKAoiAke3BmeH1hbGl2ZQrilIMg4oCiICR7cGZ4fXVwdGltZQrilbDilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHila8K4pSDCuKVreKUgeOAlCDimpnvuI8gQk9UIFNFVFRJTkdTIOOAleKUgeKVrgrilIMg4oCiIG1vZGUgcHVibGljL3ByaXZhdGUK4pSDIOKAoiBwcmVmaXgK4pSDIOKAoiBzZXR0aW5ncwrilIMg4oCiICR7cGZ4fXJlc3RhcnQK4pWw4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pWvCuKUgwrila3ilIHjgJQg4pyoIEFVVE8gU1lTVEVNIOOAleKUgeKVrgrilIMg4oCiICR7cGZ4fW9ubGluZSBvbi9vZmYK4pSDIOKAoiAke3BmeH1UeXBpbmcgb24vb2ZmCuKUgyDigKIgJHtwZnh9UmVjb3JkaW5nIG9uL29mZgrilIMg4oCiICR7cGZ4fUNhbGxyZWplY3Qgb24vb2ZmCuKUgyDigKIgJHtwZnh9QW50aWRlbGV0ZSBvbi9vZmYK4pSDIOKAoiAke3BmeH1SZWFkIG9uL29mZgrilIMg4oCiICR7cGZ4fVN0YXR1c1JlcGx5IG9uL29mZgrilIMg4oCiICR7cGZ4fVN0YXR1c1NlbmRlciBvbi9vZmYK4pSDIOKAoiAke3BmeH1TdGF0dXNsaWtlIG9uL29mZgrilIMg4oCiICR7cGZ4fUF1dG9yZWFjdCBvbi9vZmYK4pSDIOKAoiAke3BmeH1TcmVhY3Qgb24vb2ZmCuKVsOKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKVrwrilIMK4pWt4pSB4pSB44CUIPCfkaUgR1JPVVAg44CV4pSB4pSB4pWuCuKUgyDigKIgJHtwZnh9Z3JvdXBpbmZvCuKUgyDigKIgJHtwZnh9VGFnYWxsCuKUgyDigKIgJHtwZnh9a2ljawrilIMg4oCiICR7cGZ4fXByb21vdGUgLyAke3BmeH1kZW1vdGUK4pSDIOKAoiAke3BmeH1Hcm91cFRleHREZWxldGUgb24vb2ZmCuKVsOKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKVrwrilIMK4pWt4pSB4pSB4pSB44CUIPCfjqggTUVESUEg44CV4pSB4pSB4pSB4pWuCuKUgyDigKIgJHtwZnh9U2F2ZQrilIMg4oCiICR7cGZ4fXN0aWNrZXIK4pSDIOKAoiAke3BmeH12dgrilIMg4oCiICR7cGZ4fXVybArilIMg4oCiICR7cGZ4fWZ1bGxwcArilIMg4oCiICR7cGZ4fXN0aWNrZXIK4pSDIOKAoiAke3BmeH1mYW5jeXRleHQK4pSDIOKAoiAke3BmeH10dHMgPHRleHQ+CuKUgyDigKIgJHtwZnh9dG9tcDMgKHJlcGx5IHRvIHZpZGVvKQrilbDilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHila8K4pSDCuKVreKUgeOAlCDwn5a877iPIElNQUdFIEVESVRJTkcg44CV4pSB4pWuCuKUgyDigKIgJHtwZnh9cmVtb3ZlYmcK4pWw4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pWvCuKUgwrila3ilIHilIHjgJQgIPCfk6UgRE9XTkxPQUQg44CV4pSB4pSB4pWuCuKUgyDigKIgJHtwZnh9c29uZwrilIMg4oCiICR7cGZ4fWluc3RhZ3JhbQrilIMg4oCiICR7cGZ4fXBpbnRlcmVzdArilbDilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHilIHila8K4pSDCuKVreKUgeKUgeOAlCDwn5GRIE9XTkVSIOOAleKUgeKUgeKVrgrilIMg4oCiICR7cGZ4fW93bmVyCuKUgyDigKIgJHtwZnh9cGFpciA5MVhYWFhYWFhYWFgK4pSDIOKAoiAke3BmeH1ibG9jawrilIMg4oCiICR7cGZ4fWNsZWFyCuKUgwrilbDilIHwn5K7IENPREVEIEJZIDogREVWQeKdpO+4j2A7Cn0KCm1vZHVsZS5leHBvcnRzID0geyBidWlsZE1lbnVDYXB0aW9uIH07Cgpjb25zdCBmcyA9IHJlcXVpcmUoImZzIik7Cgphc3luYyBmdW5jdGlvbiBoYW5kbGVNZW51Q29tbWFuZCh7IHNvY2ssIGppZCwgcXVvdGVkLCBib3RTZXR0aW5ncywgZm9ybWF0VXB0aW1lLCBtZW51SW1hZ2VQYXRoIH0pIHsKICBjb25zdCBjYXB0aW9uID0gYnVpbGRNZW51Q2FwdGlvbih7CiAgICBib3RTZXR0aW5ncywKICAgIHByZWZpeDogYm90U2V0dGluZ3MucHJlZml4IHx8ICIiLAogICAgdXB0aW1lOiBmb3JtYXRVcHRpbWUoRGF0ZS5ub3coKSAtIGdsb2JhbC5ib3RTdGFydFRpbWUpLAogICAgcGxhdGZvcm06IHByb2Nlc3MucGxhdGZvcm0KICB9KTsKCiAgaWYgKGZzLmV4aXN0c1N5bmMobWVudUltYWdlUGF0aCkpIHsKICAgIGF3YWl0IHNvY2suc2VuZE1lc3NhZ2UoamlkLCB7IGltYWdlOiBmcy5yZWFkRmlsZVN5bmMobWVudUltYWdlUGF0aCksIGNhcHRpb24gfSwgeyBxdW90ZWQgfSk7CiAgfSBlbHNlIHsKICAgIGF3YWl0IHNvY2suc2VuZE1lc3NhZ2UoamlkLCB7IHRleHQ6IGNhcHRpb24gfSwgeyBxdW90ZWQgfSk7CiAgfQp9Cgptb2R1bGUuZXhwb3J0cyA9IHsgaGFuZGxlTWVudUNvbW1hbmQgfTsK', 'base64').toString('utf8');
-eval(_0x31b49e17);
+function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = process.platform }) {
+  const ownerName = "DEVA-NAYAK";
+  const mode = String(botSettings?.mode || "public").toUpperCase();
+  const pfx = prefix;
+  return `╭━〔 👑 DEVA XMD BOT 〕━╮
+┃ ⚡  ULTRA PRO BOT v4.1
+┣━━━━━━━━━━━━━━━━━━━┫
+┃ 👤 OWNER ➜ *${ownerName}*
+┃https://wa.me/916260021735
+┃ 💻 PLATFORM ➜ ${platform}
+┃ 🔐 MODE ➜ ${mode}
+┃ ⚡ PREFIX ➜ ${pfx}
+┃ ⏱️ UPTIME ➜ ${uptime}
+╰━━━━━━━━━━━━━━━━━
+┃
+╭━━〔 ⚡ GENERAL 〕━━╮
+┃ • ${pfx}menu
+┃ • ${pfx}ping
+┃ • ${pfx}alive
+┃ • ${pfx}uptime
+╰━━━━━━━━━━━━━━━━━━╯
+┃
+╭━〔 ⚙️ BOT SETTINGS 〕━╮
+┃ • mode public/private
+┃ • prefix
+┃ • settings
+┃ • ${pfx}restart
+╰━━━━━━━━━━━━━━━━━━╯
+┃
+╭━〔 ✨ AUTO SYSTEM 〕━╮
+┃ • ${pfx}online on/off
+┃ • ${pfx}Typing on/off
+┃ • ${pfx}Recording on/off
+┃ • ${pfx}Callreject on/off
+┃ • ${pfx}Antidelete on/off
+┃ • ${pfx}Read on/off
+┃ • ${pfx}StatusReply on/off
+┃ • ${pfx}StatusSender on/off
+┃ • ${pfx}Statuslike on/off
+┃ • ${pfx}Autoreact on/off
+┃ • ${pfx}Sreact on/off
+╰━━━━━━━━━━━━━━━━━━╯
+┃
+╭━━〔 👥 GROUP 〕━━╮
+┃ • ${pfx}groupinfo
+┃ • ${pfx}Tagall
+┃ • ${pfx}kick
+┃ • ${pfx}promote / ${pfx}demote
+┃ • ${pfx}GroupTextDelete on/off
+╰━━━━━━━━━━━━━━━━━━╯
+┃
+╭━━━〔 🎨 MEDIA 〕━━━╮
+┃ • ${pfx}Save
+┃ • ${pfx}sticker
+┃ • ${pfx}vv
+┃ • ${pfx}url
+┃ • ${pfx}fullpp
+┃ • ${pfx}sticker
+┃ • ${pfx}fancytext
+┃ • ${pfx}tts <text>
+┃ • ${pfx}tomp3 (reply to video)
+╰━━━━━━━━━━━━━━━━━━╯
+┃
+╭━〔 🖼️ IMAGE EDITING 〕━╮
+┃ • ${pfx}removebg
+╰━━━━━━━━━━━━━━━━━━━╯
+┃
+╭━━〔  📥 DOWNLOAD 〕━━╮
+┃ • ${pfx}song
+┃ • ${pfx}instagram
+┃ • ${pfx}pinterest
+╰━━━━━━━━━━━━━━━━━━╯
+┃
+╭━━〔 👑 OWNER 〕━━╮
+┃ • ${pfx}owner
+┃ • ${pfx}pair 91XXXXXXXXXX
+┃ • ${pfx}block
+┃ • ${pfx}clear
+┃
+╰━💻 CODED BY : DEVA❤️`;
+}
+
+module.exports = { buildMenuCaption };
+
+const fs = require("fs");
+
+async function handleMenuCommand({ sock, jid, quoted, botSettings, formatUptime, menuImagePath }) {
+  const caption = buildMenuCaption({
+    botSettings,
+    prefix: botSettings.prefix || "",
+    uptime: formatUptime(Date.now() - global.botStartTime),
+    platform: process.platform
+  });
+
+  if (fs.existsSync(menuImagePath)) {
+    await sock.sendMessage(jid, { image: fs.readFileSync(menuImagePath), caption }, { quoted });
+  } else {
+    await sock.sendMessage(jid, { text: caption }, { quoted });
+  }
+}
+
+module.exports = { handleMenuCommand };

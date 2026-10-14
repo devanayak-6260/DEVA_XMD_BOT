@@ -1,3 +1,45 @@
-'use strict';
-const _0x8bd8e28c = Buffer.from('Y29uc3QgeyBkb3dubG9hZENvbnRlbnRGcm9tTWVzc2FnZSB9ID0gcmVxdWlyZSgnQHdoaXNrZXlzb2NrZXRzL2JhaWxleXMnKTsKCmZ1bmN0aW9uIGlzU3RhdHVzU2VuZGVyUmVxdWVzdCh0ZXh0KSB7CiAgcmV0dXJuIC9eKD86c2VuZHxzZW5kIG1lfHNlbmQgdmlkZW98c2VuZCBwaG90b3xzZW5kIHN0YXR1c3xzZW5kIHRoZSBzdGF0dXN8c2VuZCBpdCkkL2kudGVzdChTdHJpbmcodGV4dCB8fCAnJykudHJpbSgpKTsKfQoKYXN5bmMgZnVuY3Rpb24gc3RyZWFtVG9CdWZmZXIoc3RyZWFtKSB7CiAgY29uc3QgY2h1bmtzID0gW107CiAgZm9yIGF3YWl0IChjb25zdCBjaHVuayBvZiBzdHJlYW0pIGNodW5rcy5wdXNoKGNodW5rKTsKICByZXR1cm4gQnVmZmVyLmNvbmNhdChjaHVua3MpOwp9CgpmdW5jdGlvbiB1bndyYXBNZXNzYWdlKG1lc3NhZ2UpIHsKICBsZXQgY3VycmVudCA9IG1lc3NhZ2U7CiAgZm9yIChsZXQgaSA9IDA7IGkgPCA1ICYmIGN1cnJlbnQ7IGkrKykgewogICAgaWYgKGN1cnJlbnQudmlld09uY2VNZXNzYWdlPy5tZXNzYWdlKSBjdXJyZW50ID0gY3VycmVudC52aWV3T25jZU1lc3NhZ2UubWVzc2FnZTsKICAgIGVsc2UgaWYgKGN1cnJlbnQudmlld09uY2VNZXNzYWdlVjI/Lm1lc3NhZ2UpIGN1cnJlbnQgPSBjdXJyZW50LnZpZXdPbmNlTWVzc2FnZVYyLm1lc3NhZ2U7CiAgICBlbHNlIGlmIChjdXJyZW50LnZpZXdPbmNlTWVzc2FnZVYyRXh0ZW5zaW9uPy5tZXNzYWdlKSBjdXJyZW50ID0gY3VycmVudC52aWV3T25jZU1lc3NhZ2VWMkV4dGVuc2lvbi5tZXNzYWdlOwogICAgZWxzZSBpZiAoY3VycmVudC5lcGhlbWVyYWxNZXNzYWdlPy5tZXNzYWdlKSBjdXJyZW50ID0gY3VycmVudC5lcGhlbWVyYWxNZXNzYWdlLm1lc3NhZ2U7CiAgICBlbHNlIGJyZWFrOwogIH0KICByZXR1cm4gY3VycmVudCB8fCBudWxsOwp9Cgphc3luYyBmdW5jdGlvbiBzZW5kTGF0ZXN0U3RhdHVzKHNvY2ssIGppZCwgc3RhdHVzKSB7CiAgY29uc3QgY29udGVudCA9IHVud3JhcE1lc3NhZ2Uoc3RhdHVzPy5tZXNzYWdlKSB8fCBzdGF0dXM/Lm1lc3NhZ2U7CiAgaWYgKCFjb250ZW50KSB0aHJvdyBuZXcgRXJyb3IoJ05vIHNhdmVkIHN0YXR1cyBpcyBhdmFpbGFibGUnKTsKICBpZiAodHlwZW9mIGNvbnRlbnQuY29udmVyc2F0aW9uID09PSAnc3RyaW5nJykgewogICAgYXdhaXQgc29jay5zZW5kTWVzc2FnZShqaWQsIHsgdGV4dDogY29udGVudC5jb252ZXJzYXRpb24gfSk7CiAgfSBlbHNlIGlmIChjb250ZW50LmV4dGVuZGVkVGV4dE1lc3NhZ2U/LnRleHQpIHsKICAgIGF3YWl0IHNvY2suc2VuZE1lc3NhZ2UoamlkLCB7IHRleHQ6IGNvbnRlbnQuZXh0ZW5kZWRUZXh0TWVzc2FnZS50ZXh0IH0pOwogIH0gZWxzZSBpZiAoY29udGVudC5pbWFnZU1lc3NhZ2UpIHsKICAgIGNvbnN0IG1lZGlhID0gY29udGVudC5pbWFnZU1lc3NhZ2U7CiAgICBjb25zdCBidWZmZXIgPSBhd2FpdCBzdHJlYW1Ub0J1ZmZlcihhd2FpdCBkb3dubG9hZENvbnRlbnRGcm9tTWVzc2FnZShtZWRpYSwgJ2ltYWdlJykpOwogICAgYXdhaXQgc29jay5zZW5kTWVzc2FnZShqaWQsIHsgaW1hZ2U6IGJ1ZmZlciwgY2FwdGlvbjogbWVkaWEuY2FwdGlvbiB8fCB1bmRlZmluZWQgfSk7CiAgfSBlbHNlIGlmIChjb250ZW50LnZpZGVvTWVzc2FnZSkgewogICAgY29uc3QgbWVkaWEgPSBjb250ZW50LnZpZGVvTWVzc2FnZTsKICAgIGNvbnN0IGJ1ZmZlciA9IGF3YWl0IHN0cmVhbVRvQnVmZmVyKGF3YWl0IGRvd25sb2FkQ29udGVudEZyb21NZXNzYWdlKG1lZGlhLCAndmlkZW8nKSk7CiAgICBhd2FpdCBzb2NrLnNlbmRNZXNzYWdlKGppZCwgeyB2aWRlbzogYnVmZmVyLCBjYXB0aW9uOiBtZWRpYS5jYXB0aW9uIHx8IHVuZGVmaW5lZCwgbWltZXR5cGU6IG1lZGlhLm1pbWV0eXBlIHx8ICd2aWRlby9tcDQnIH0pOwogIH0gZWxzZSB7CiAgICB0aHJvdyBuZXcgRXJyb3IoJ1RoaXMgc3RhdHVzIHR5cGUgaXMgbm90IHN1cHBvcnRlZCcpOwogIH0KfQoKbW9kdWxlLmV4cG9ydHMgPSB7IGlzU3RhdHVzU2VuZGVyUmVxdWVzdCwgc2VuZExhdGVzdFN0YXR1cyB9Owo=', 'base64').toString('utf8');
-eval(_0x8bd8e28c);
+const { downloadContentFromMessage } = require('@whiskeysockets/baileys');
+
+function isStatusSenderRequest(text) {
+  return /^(?:send|send me|send video|send photo|send status|send the status|send it)$/i.test(String(text || '').trim());
+}
+
+async function streamToBuffer(stream) {
+  const chunks = [];
+  for await (const chunk of stream) chunks.push(chunk);
+  return Buffer.concat(chunks);
+}
+
+function unwrapMessage(message) {
+  let current = message;
+  for (let i = 0; i < 5 && current; i++) {
+    if (current.viewOnceMessage?.message) current = current.viewOnceMessage.message;
+    else if (current.viewOnceMessageV2?.message) current = current.viewOnceMessageV2.message;
+    else if (current.viewOnceMessageV2Extension?.message) current = current.viewOnceMessageV2Extension.message;
+    else if (current.ephemeralMessage?.message) current = current.ephemeralMessage.message;
+    else break;
+  }
+  return current || null;
+}
+
+async function sendLatestStatus(sock, jid, status) {
+  const content = unwrapMessage(status?.message) || status?.message;
+  if (!content) throw new Error('No saved status is available');
+  if (typeof content.conversation === 'string') {
+    await sock.sendMessage(jid, { text: content.conversation });
+  } else if (content.extendedTextMessage?.text) {
+    await sock.sendMessage(jid, { text: content.extendedTextMessage.text });
+  } else if (content.imageMessage) {
+    const media = content.imageMessage;
+    const buffer = await streamToBuffer(await downloadContentFromMessage(media, 'image'));
+    await sock.sendMessage(jid, { image: buffer, caption: media.caption || undefined });
+  } else if (content.videoMessage) {
+    const media = content.videoMessage;
+    const buffer = await streamToBuffer(await downloadContentFromMessage(media, 'video'));
+    await sock.sendMessage(jid, { video: buffer, caption: media.caption || undefined, mimetype: media.mimetype || 'video/mp4' });
+  } else {
+    throw new Error('This status type is not supported');
+  }
+}
+
+module.exports = { isStatusSenderRequest, sendLatestStatus };

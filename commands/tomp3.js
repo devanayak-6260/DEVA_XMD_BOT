@@ -1,3 +1,180 @@
-'use strict';
-const _0xfb0c51c5 = Buffer.from('InVzZSBzdHJpY3QiOwoKY29uc3QgeyBkb3dubG9hZENvbnRlbnRGcm9tTWVzc2FnZSB9ID0gcmVxdWlyZSgiQHdoaXNrZXlzb2NrZXRzL2JhaWxleXMiKTsKbGV0IGZmbXBlZ1N0YXRpY1BhdGggPSBudWxsOwp0cnkgewogIGZmbXBlZ1N0YXRpY1BhdGggPSByZXF1aXJlKCJmZm1wZWctc3RhdGljIik7Cn0gY2F0Y2ggKGVycm9yKSB7CiAgY29uc29sZS5lcnJvcigiVE9NUDM6IGZmbXBlZy1zdGF0aWMgcGFja2FnZSBjb3VsZCBub3QgYmUgbG9hZGVkOiIsIGVycm9yLm1lc3NhZ2UpOwp9CmNvbnN0IHsgc3Bhd24gfSA9IHJlcXVpcmUoImNoaWxkX3Byb2Nlc3MiKTsKY29uc3QgZnMgPSByZXF1aXJlKCJmcyIpOwpjb25zdCBvcyA9IHJlcXVpcmUoIm9zIik7CmNvbnN0IHBhdGggPSByZXF1aXJlKCJwYXRoIik7CmNvbnN0IGNyeXB0byA9IHJlcXVpcmUoImNyeXB0byIpOwpjb25zdCB7IHBpcGVsaW5lIH0gPSByZXF1aXJlKCJzdHJlYW0vcHJvbWlzZXMiKTsKCmNvbnN0IE1BWF9WSURFT19CWVRFUyA9IDgwICogMTAyNCAqIDEwMjQ7CmNvbnN0IE1BWF9BVURJT19CWVRFUyA9IDY0ICogMTAyNCAqIDEwMjQ7CmNvbnN0IEZGTVBFR19USU1FT1VUX01TID0gMTgwMDAwOwoKZnVuY3Rpb24gdW53cmFwTWVzc2FnZShtZXNzYWdlKSB7CiAgbGV0IGN1cnJlbnQgPSBtZXNzYWdlOwogIGZvciAobGV0IGkgPSAwOyBpIDwgOCAmJiBjdXJyZW50OyBpKyspIHsKICAgIGlmIChjdXJyZW50LmVwaGVtZXJhbE1lc3NhZ2U/Lm1lc3NhZ2UpIGN1cnJlbnQgPSBjdXJyZW50LmVwaGVtZXJhbE1lc3NhZ2UubWVzc2FnZTsKICAgIGVsc2UgaWYgKGN1cnJlbnQudmlld09uY2VNZXNzYWdlPy5tZXNzYWdlKSBjdXJyZW50ID0gY3VycmVudC52aWV3T25jZU1lc3NhZ2UubWVzc2FnZTsKICAgIGVsc2UgaWYgKGN1cnJlbnQudmlld09uY2VNZXNzYWdlVjI/Lm1lc3NhZ2UpIGN1cnJlbnQgPSBjdXJyZW50LnZpZXdPbmNlTWVzc2FnZVYyLm1lc3NhZ2U7CiAgICBlbHNlIGlmIChjdXJyZW50LnZpZXdPbmNlTWVzc2FnZVYyRXh0ZW5zaW9uPy5tZXNzYWdlKSBjdXJyZW50ID0gY3VycmVudC52aWV3T25jZU1lc3NhZ2VWMkV4dGVuc2lvbi5tZXNzYWdlOwogICAgZWxzZSBicmVhazsKICB9CiAgcmV0dXJuIGN1cnJlbnQgfHwgbnVsbDsKfQoKZnVuY3Rpb24gZ2V0UXVvdGVkTWVzc2FnZShtc2cpIHsKICByZXR1cm4gbXNnPy5tZXNzYWdlPy5leHRlbmRlZFRleHRNZXNzYWdlPy5jb250ZXh0SW5mbz8ucXVvdGVkTWVzc2FnZSB8fCBudWxsOwp9Cgphc3luYyBmdW5jdGlvbiBzYXZlVmlkZW9TdHJlYW0odmlkZW9NZXNzYWdlLCBkZXN0aW5hdGlvbikgewogIGNvbnN0IG1lZGlhU3RyZWFtID0gYXdhaXQgZG93bmxvYWRDb250ZW50RnJvbU1lc3NhZ2UodmlkZW9NZXNzYWdlLCAidmlkZW8iKTsKICBsZXQgYnl0ZXMgPSAwOwogIGNvbnN0IGxpbWl0ZXIgPSBuZXcgKHJlcXVpcmUoInN0cmVhbSIpLlRyYW5zZm9ybSkoewogICAgdHJhbnNmb3JtKGNodW5rLCBlbmNvZGluZywgY2FsbGJhY2spIHsKICAgICAgYnl0ZXMgKz0gY2h1bmsubGVuZ3RoOwogICAgICBpZiAoYnl0ZXMgPiBNQVhfVklERU9fQllURVMpIHsKICAgICAgICBjYWxsYmFjayhuZXcgRXJyb3IoIlZpZGVvIGlzIGxhcmdlciB0aGFuIHRoZSA4MCBNQiBsaW1pdC4iKSk7CiAgICAgICAgcmV0dXJuOwogICAgICB9CiAgICAgIGNhbGxiYWNrKG51bGwsIGNodW5rKTsKICAgIH0KICB9KTsKICBhd2FpdCBwaXBlbGluZShtZWRpYVN0cmVhbSwgbGltaXRlciwgZnMuY3JlYXRlV3JpdGVTdHJlYW0oZGVzdGluYXRpb24sIHsgZmxhZ3M6ICJ3eCIgfSkpOwogIGlmICghYnl0ZXMpIHRocm93IG5ldyBFcnJvcigiV2hhdHNBcHAgcmV0dXJuZWQgYW4gZW1wdHkgdmlkZW8gZmlsZS4iKTsKICByZXR1cm4gYnl0ZXM7Cn0KCmZ1bmN0aW9uIGNvbnZlcnRUb01wMyhpbnB1dFBhdGgsIG91dHB1dFBhdGgpIHsKICByZXR1cm4gbmV3IFByb21pc2UoKHJlc29sdmUsIHJlamVjdCkgPT4gewogICAgLy8gU29tZSBob3N0cyBibG9jayB0aGUgZmZtcGVnLXN0YXRpYyBwb3N0aW5zdGFsbCBkb3dubG9hZC4gSW4gdGhhdCBjYXNlLAogICAgLy8gdHJ5IHRoZSBzeXN0ZW0taW5zdGFsbGVkIGZmbXBlZyBmcm9tIFBBVEggYmVmb3JlIHJlcG9ydGluZyBmYWlsdXJlLgogICAgY29uc3QgY2FuZGlkYXRlcyA9IFtdOwogICAgaWYgKGZmbXBlZ1N0YXRpY1BhdGgpIGNhbmRpZGF0ZXMucHVzaChmZm1wZWdTdGF0aWNQYXRoKTsKICAgIGNhbmRpZGF0ZXMucHVzaCgiZmZtcGVnIik7CiAgICBsZXQgaW5kZXggPSAwOwogICAgbGV0IGxhc3RTdGFydEVycm9yID0gbnVsbDsKCiAgICBjb25zdCB0cnlOZXh0QmluYXJ5ID0gKCkgPT4gewogICAgICBpZiAoaW5kZXggPj0gY2FuZGlkYXRlcy5sZW5ndGgpIHsKICAgICAgICBjb25zdCBkZXRhaWwgPSBsYXN0U3RhcnRFcnJvciA/IGAgKCR7bGFzdFN0YXJ0RXJyb3IubWVzc2FnZX0pYCA6ICIiOwogICAgICAgIHJlamVjdChuZXcgRXJyb3IoCiAgICAgICAgICBgRkZtcGVnIGV4ZWN1dGFibGUgdW5hdmFpbGFibGUuIEluc3RhbGwgZmZtcGVnLXN0YXRpYyBzdWNjZXNzZnVsbHkgb3IgaW5zdGFsbCBzeXN0ZW0gRkZtcGVnIGFuZCBlbnN1cmUgaXQgaXMgaW4gUEFUSCR7ZGV0YWlsfS5gCiAgICAgICAgKSk7CiAgICAgICAgcmV0dXJuOwogICAgICB9CgogICAgICBjb25zdCBiaW5hcnkgPSBjYW5kaWRhdGVzW2luZGV4KytdOwogICAgICBjb25zdCBjaGlsZCA9IHNwYXduKGJpbmFyeSwgWwogICAgICAgICItaGlkZV9iYW5uZXIiLCAiLWxvZ2xldmVsIiwgImVycm9yIiwgIi1ub3N0ZGluIiwgIi15IiwKICAgICAgICAiLWkiLCBpbnB1dFBhdGgsCiAgICAgICAgIi12biIsICItbWFwIiwgIjA6YTowPyIsCiAgICAgICAgIi1jb2RlYzphIiwgImxpYm1wM2xhbWUiLCAiLWI6YSIsICIxOTJrIiwKICAgICAgICAiLWYiLCAibXAzIiwgb3V0cHV0UGF0aAogICAgICBdLCB7IHN0ZGlvOiBbImlnbm9yZSIsICJpZ25vcmUiLCAicGlwZSJdIH0pOwoKICAgICAgbGV0IHN0ZGVyciA9ICIiOwogICAgICBsZXQgc2V0dGxlZCA9IGZhbHNlOwogICAgICBsZXQgc3RhcnRlZCA9IGZhbHNlOwogICAgICBsZXQgY2FuZGlkYXRlRmFpbGVkVG9TdGFydCA9IGZhbHNlOwogICAgICBjb25zdCB0aW1lciA9IHNldFRpbWVvdXQoKCkgPT4gewogICAgICAgIGNoaWxkLmtpbGwoIlNJR0tJTEwiKTsKICAgICAgICBpZiAoIXNldHRsZWQpIHsKICAgICAgICAgIHNldHRsZWQgPSB0cnVlOwogICAgICAgICAgcmVqZWN0KG5ldyBFcnJvcigiQ29udmVyc2lvbiB0aW1lZCBvdXQgYWZ0ZXIgMyBtaW51dGVzLiIpKTsKICAgICAgICB9CiAgICAgIH0sIEZGTVBFR19USU1FT1VUX01TKTsKICAgICAgY29uc3QgZmluaXNoID0gKGVycm9yKSA9PiB7CiAgICAgICAgaWYgKHNldHRsZWQpIHJldHVybjsKICAgICAgICBzZXR0bGVkID0gdHJ1ZTsKICAgICAgICBjbGVhclRpbWVvdXQodGltZXIpOwogICAgICAgIGlmIChlcnJvcikgcmVqZWN0KGVycm9yKTsKICAgICAgICBlbHNlIHJlc29sdmUoKTsKICAgICAgfTsKCiAgICAgIGNoaWxkLm9uY2UoInNwYXduIiwgKCkgPT4geyBzdGFydGVkID0gdHJ1ZTsgfSk7CiAgICAgIGNoaWxkLnN0ZGVyci5vbigiZGF0YSIsIGNodW5rID0+IHsgc3RkZXJyID0gKHN0ZGVyciArIGNodW5rLnRvU3RyaW5nKCkpLnNsaWNlKC0zMDAwKTsgfSk7CiAgICAgIGNoaWxkLm9uY2UoImVycm9yIiwgZXJyb3IgPT4gewogICAgICAgIGNsZWFyVGltZW91dCh0aW1lcik7CiAgICAgICAgbGFzdFN0YXJ0RXJyb3IgPSBlcnJvcjsKICAgICAgICAvLyBzcGF3bigpIGNhbiBlbWl0IGJvdGggJ2Vycm9yJyBhbmQgJ2Nsb3NlJy4gSWdub3JlIGNsb3NlIHdoZW4gaXQgbmV2ZXIgc3RhcnRlZC4KICAgICAgICBpZiAoZXJyb3IuY29kZSA9PT0gIkVOT0VOVCIgfHwgZXJyb3IuY29kZSA9PT0gIkVBQ0NFUyIpIHsKICAgICAgICAgIGNhbmRpZGF0ZUZhaWxlZFRvU3RhcnQgPSB0cnVlOwogICAgICAgICAgdHJ5TmV4dEJpbmFyeSgpOwogICAgICAgIH0gZWxzZSB7CiAgICAgICAgICBmaW5pc2gobmV3IEVycm9yKGBDb3VsZCBub3Qgc3RhcnQgRkZtcGVnOiAke2Vycm9yLm1lc3NhZ2V9YCkpOwogICAgICAgIH0KICAgICAgfSk7CiAgICAgIGNoaWxkLm9uY2UoImNsb3NlIiwgY29kZSA9PiB7CiAgICAgICAgaWYgKHNldHRsZWQgfHwgY2FuZGlkYXRlRmFpbGVkVG9TdGFydCkgcmV0dXJuOwogICAgICAgIGlmIChjb2RlID09PSAwKSBmaW5pc2goKTsKICAgICAgICBlbHNlIGlmICghc3RhcnRlZCAmJiBpbmRleCA8IGNhbmRpZGF0ZXMubGVuZ3RoKSB0cnlOZXh0QmluYXJ5KCk7CiAgICAgICAgZWxzZSBmaW5pc2gobmV3IEVycm9yKHN0ZGVyci50cmltKCkgfHwgYEZGbXBlZyBleGl0ZWQgd2l0aCBjb2RlICR7Y29kZX0uYCkpOwogICAgICB9KTsKICAgIH07CgogICAgdHJ5TmV4dEJpbmFyeSgpOwogIH0pOwp9Cgphc3luYyBmdW5jdGlvbiBoYW5kbGVUb01wM0NvbW1hbmQoeyBzb2NrLCBqaWQsIG1zZywgcXVvdGVkLCBwcmVmaXggPSAiLiIsIGNsZWFyQWN0aW9uUHJlc2VuY2UgPSBhc3luYyAoKSA9PiB7fSB9KSB7CiAgbGV0IHdvcmtEaXI7CiAgdHJ5IHsKICAgIGNvbnN0IHF1b3RlZE1lc3NhZ2UgPSB1bndyYXBNZXNzYWdlKGdldFF1b3RlZE1lc3NhZ2UobXNnKSk7CiAgICBjb25zdCB2aWRlb01lc3NhZ2UgPSBxdW90ZWRNZXNzYWdlPy52aWRlb01lc3NhZ2U7CiAgICBpZiAoIXZpZGVvTWVzc2FnZSkgewogICAgICBhd2FpdCBzb2NrLnNlbmRNZXNzYWdlKGppZCwgewogICAgICAgIHRleHQ6IGDwn461ICpWSURFTyBUTyBNUDMqXG5cbuCkteClgOCkoeCkv+Ckr+CliyDgpKrgpLAg4KSw4KS/4KSq4KWN4KSy4KS+4KSIIOCkleCksOCkleClhyAqJHtwcmVmaXh9dG9tcDMqIOCkreClh+CknOClh+CkguClpFxuXG7gpIXgpKfgpL/gpJXgpKTgpK4g4KS14KWA4KSh4KS/4KSv4KWLIOCkhuCkleCkvuCksDogODAgTUJgCiAgICAgIH0sIHsgcXVvdGVkIH0pOwogICAgICByZXR1cm47CiAgICB9CgogICAgaWYgKHZpZGVvTWVzc2FnZS5maWxlTGVuZ3RoICYmIE51bWJlcih2aWRlb01lc3NhZ2UuZmlsZUxlbmd0aCkgPiBNQVhfVklERU9fQllURVMpIHsKICAgICAgYXdhaXQgc29jay5zZW5kTWVzc2FnZShqaWQsIHsgdGV4dDogIuKdjCBWaWRlbyA4MCBNQiDgpLjgpYcg4KSs4KSh4KS84KS+IOCkueCliOClpCDgpJXgpYPgpKrgpK/gpL4g4KSb4KWL4KSf4KS+IOCkteClgOCkoeCkv+Ckr+CliyDgpK3gpYfgpJzgpYfgpILgpaQiIH0sIHsgcXVvdGVkIH0pOwogICAgICByZXR1cm47CiAgICB9CgogICAgYXdhaXQgc29jay5zZW5kTWVzc2FnZShqaWQsIHsgdGV4dDogIuKPsyDgpLXgpYDgpKHgpL/gpK/gpYsg4KSh4KS+4KSJ4KSo4KSy4KWL4KShIOCkleCksOCkleClhyBNUDMg4KSs4KSo4KS+4KSv4KS+IOCknOCkviDgpLDgpLngpL4g4KS54KWILi4uIiB9LCB7IHF1b3RlZCB9KTsKICAgIHdvcmtEaXIgPSBwYXRoLmpvaW4ob3MudG1wZGlyKCksIGBkZXZhLXRvbXAzLSR7Y3J5cHRvLnJhbmRvbUJ5dGVzKDgpLnRvU3RyaW5nKCJoZXgiKX1gKTsKICAgIGZzLm1rZGlyU3luYyh3b3JrRGlyLCB7IHJlY3Vyc2l2ZTogZmFsc2UgfSk7CiAgICBjb25zdCBpbnB1dFBhdGggPSBwYXRoLmpvaW4od29ya0RpciwgImlucHV0LXZpZGVvIik7CiAgICBjb25zdCBvdXRwdXRQYXRoID0gcGF0aC5qb2luKHdvcmtEaXIsICJhdWRpby5tcDMiKTsKCiAgICBhd2FpdCBzYXZlVmlkZW9TdHJlYW0odmlkZW9NZXNzYWdlLCBpbnB1dFBhdGgpOwogICAgYXdhaXQgY29udmVydFRvTXAzKGlucHV0UGF0aCwgb3V0cHV0UGF0aCk7CiAgICBjb25zdCBzdGF0cyA9IGZzLnN0YXRTeW5jKG91dHB1dFBhdGgpOwogICAgaWYgKCFzdGF0cy5zaXplKSB0aHJvdyBuZXcgRXJyb3IoIuCkh+CkuCDgpLXgpYDgpKHgpL/gpK/gpYsg4KSu4KWH4KSCIOCkkeCkoeCkv+Ckr+CliyDgpJ/gpY3gpLDgpYjgpJUg4KSo4KS54KWA4KSCIOCkruCkv+CksuCkvuClpCIpOwogICAgaWYgKHN0YXRzLnNpemUgPiBNQVhfQVVESU9fQllURVMpIHRocm93IG5ldyBFcnJvcigi4KSs4KSo4KWAIOCkueClgeCkiCBNUDMgNjQgTUIg4KS44KWHIOCkrOCkoeCkvOClgCDgpLngpYgsIOCkh+CkuOCksuCkv+CkjyBXaGF0c0FwcCDgpKrgpLAg4KSt4KWH4KSc4KSo4KS+IOCkuOCkguCkreCktSDgpKjgpLngpYDgpIIg4KS54KWI4KWkIik7CgogICAgY29uc3QgYXVkaW8gPSBmcy5yZWFkRmlsZVN5bmMob3V0cHV0UGF0aCk7CiAgICBhd2FpdCBzb2NrLnNlbmRNZXNzYWdlKGppZCwgewogICAgICBhdWRpbywKICAgICAgbWltZXR5cGU6ICJhdWRpby9tcGVnIiwKICAgICAgZmlsZU5hbWU6ICJkZXZhLWF1ZGlvLm1wMyIsCiAgICAgIHB0dDogZmFsc2UKICAgIH0sIHsgcXVvdGVkIH0pOwogIH0gY2F0Y2ggKGVycm9yKSB7CiAgICBjb25zb2xlLmVycm9yKCJUT01QMyBFUlJPUjoiLCBlcnJvcj8uc3RhY2sgfHwgZXJyb3IpOwogICAgbGV0IG1lc3NhZ2UgPSBTdHJpbmcoZXJyb3I/Lm1lc3NhZ2UgfHwgIlVua25vd24gZXJyb3IiKTsKICAgIGlmICgvbm8gc3VjaCBmaWxlfG5vdCBmb3VuZHxFTk9FTlQvaS50ZXN0KG1lc3NhZ2UpICYmIC9mZm1wZWcvaS50ZXN0KG1lc3NhZ2UpKSB7CiAgICAgIG1lc3NhZ2UgPSAi4KSH4KS4IOCkueCli+CkuOCljeCkn+Ckv+CkguCklyDgpKrgpLAgRkZtcGVnIOCkieCkquCksuCkrOCljeCkpyDgpKjgpLngpYDgpIIg4KS54KWI4KWkIG5wbSBpbnN0YWxsIOCkleClhyDgpKzgpL7gpKYgYm90IOCkpuCli+CkrOCkvuCksOCkviDgpLbgpYHgpLDgpYIg4KSV4KSw4KWH4KSC4KWkIjsKICAgIH0gZWxzZSBpZiAoL2xhcmdlciB0aGFuIHRoZSA4MCBNQi9pLnRlc3QobWVzc2FnZSkpIHsKICAgICAgbWVzc2FnZSA9ICLgpLXgpYDgpKHgpL/gpK/gpYsgODAgTUIg4KS44KWHIOCkrOCkoeCkvOCkviDgpLngpYjgpaQg4KSV4KWD4KSq4KSv4KS+IOCkm+Cli+Ckn+CkviDgpLXgpYDgpKHgpL/gpK/gpYsg4KSt4KWH4KSc4KWH4KSC4KWkIjsKICAgIH0gZWxzZSBpZiAoL2RvZXMgbm90IGNvbnRhaW4gYW55IHN0cmVhbXxtYXRjaGVzIG5vIHN0cmVhbXN8ZG9lcyBub3QgY29udGFpbiBhbnkuKmF1ZGlvfE91dHB1dCBmaWxlICMwIGRvZXMgbm90IGNvbnRhaW4gYW55IHN0cmVhbS9pLnRlc3QobWVzc2FnZSkpIHsKICAgICAgbWVzc2FnZSA9ICLgpIfgpLgg4KS14KWA4KSh4KS/4KSv4KWLIOCkruClh+CkgiDgpJHgpKHgpL/gpK/gpYsg4KSf4KWN4KSw4KWI4KSVIOCkqOCkueClgOCkgiDgpK7gpL/gpLLgpL7gpaQiOwogICAgfQogICAgYXdhaXQgc29jay5zZW5kTWVzc2FnZShqaWQsIHsgdGV4dDogYOKdjCAqTVAzIGNvbnZlcnNpb24gZmFpbGVkKlxuXG4ke21lc3NhZ2Uuc2xpY2UoMCwgMzUwKX1gIH0sIHsgcXVvdGVkIH0pLmNhdGNoKCgpID0+IHt9KTsKICB9IGZpbmFsbHkgewogICAgaWYgKHdvcmtEaXIpIGZzLnJtU3luYyh3b3JrRGlyLCB7IHJlY3Vyc2l2ZTogdHJ1ZSwgZm9yY2U6IHRydWUgfSk7CiAgICBhd2FpdCBjbGVhckFjdGlvblByZXNlbmNlKHNvY2ssIGppZCkuY2F0Y2goKCkgPT4ge30pOwogIH0KfQoKbW9kdWxlLmV4cG9ydHMgPSB7IGhhbmRsZVRvTXAzQ29tbWFuZCB9Owo=', 'base64').toString('utf8');
-eval(_0xfb0c51c5);
+"use strict";
+
+const { downloadContentFromMessage } = require("@whiskeysockets/baileys");
+let ffmpegStaticPath = null;
+try {
+  ffmpegStaticPath = require("ffmpeg-static");
+} catch (error) {
+  console.error("TOMP3: ffmpeg-static package could not be loaded:", error.message);
+}
+const { spawn } = require("child_process");
+const fs = require("fs");
+const os = require("os");
+const path = require("path");
+const crypto = require("crypto");
+const { pipeline } = require("stream/promises");
+
+const MAX_VIDEO_BYTES = 80 * 1024 * 1024;
+const MAX_AUDIO_BYTES = 64 * 1024 * 1024;
+const FFMPEG_TIMEOUT_MS = 180000;
+
+function unwrapMessage(message) {
+  let current = message;
+  for (let i = 0; i < 8 && current; i++) {
+    if (current.ephemeralMessage?.message) current = current.ephemeralMessage.message;
+    else if (current.viewOnceMessage?.message) current = current.viewOnceMessage.message;
+    else if (current.viewOnceMessageV2?.message) current = current.viewOnceMessageV2.message;
+    else if (current.viewOnceMessageV2Extension?.message) current = current.viewOnceMessageV2Extension.message;
+    else break;
+  }
+  return current || null;
+}
+
+function getQuotedMessage(msg) {
+  return msg?.message?.extendedTextMessage?.contextInfo?.quotedMessage || null;
+}
+
+async function saveVideoStream(videoMessage, destination) {
+  const mediaStream = await downloadContentFromMessage(videoMessage, "video");
+  let bytes = 0;
+  const limiter = new (require("stream").Transform)({
+    transform(chunk, encoding, callback) {
+      bytes += chunk.length;
+      if (bytes > MAX_VIDEO_BYTES) {
+        callback(new Error("Video is larger than the 80 MB limit."));
+        return;
+      }
+      callback(null, chunk);
+    }
+  });
+  await pipeline(mediaStream, limiter, fs.createWriteStream(destination, { flags: "wx" }));
+  if (!bytes) throw new Error("WhatsApp returned an empty video file.");
+  return bytes;
+}
+
+function convertToMp3(inputPath, outputPath) {
+  return new Promise((resolve, reject) => {
+    // Some hosts block the ffmpeg-static postinstall download. In that case,
+    // try the system-installed ffmpeg from PATH before reporting failure.
+    const candidates = [];
+    if (ffmpegStaticPath) candidates.push(ffmpegStaticPath);
+    candidates.push("ffmpeg");
+    let index = 0;
+    let lastStartError = null;
+
+    const tryNextBinary = () => {
+      if (index >= candidates.length) {
+        const detail = lastStartError ? ` (${lastStartError.message})` : "";
+        reject(new Error(
+          `FFmpeg executable unavailable. Install ffmpeg-static successfully or install system FFmpeg and ensure it is in PATH${detail}.`
+        ));
+        return;
+      }
+
+      const binary = candidates[index++];
+      const child = spawn(binary, [
+        "-hide_banner", "-loglevel", "error", "-nostdin", "-y",
+        "-i", inputPath,
+        "-vn", "-map", "0:a:0?",
+        "-codec:a", "libmp3lame", "-b:a", "192k",
+        "-f", "mp3", outputPath
+      ], { stdio: ["ignore", "ignore", "pipe"] });
+
+      let stderr = "";
+      let settled = false;
+      let started = false;
+      let candidateFailedToStart = false;
+      const timer = setTimeout(() => {
+        child.kill("SIGKILL");
+        if (!settled) {
+          settled = true;
+          reject(new Error("Conversion timed out after 3 minutes."));
+        }
+      }, FFMPEG_TIMEOUT_MS);
+      const finish = (error) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        if (error) reject(error);
+        else resolve();
+      };
+
+      child.once("spawn", () => { started = true; });
+      child.stderr.on("data", chunk => { stderr = (stderr + chunk.toString()).slice(-3000); });
+      child.once("error", error => {
+        clearTimeout(timer);
+        lastStartError = error;
+        // spawn() can emit both 'error' and 'close'. Ignore close when it never started.
+        if (error.code === "ENOENT" || error.code === "EACCES") {
+          candidateFailedToStart = true;
+          tryNextBinary();
+        } else {
+          finish(new Error(`Could not start FFmpeg: ${error.message}`));
+        }
+      });
+      child.once("close", code => {
+        if (settled || candidateFailedToStart) return;
+        if (code === 0) finish();
+        else if (!started && index < candidates.length) tryNextBinary();
+        else finish(new Error(stderr.trim() || `FFmpeg exited with code ${code}.`));
+      });
+    };
+
+    tryNextBinary();
+  });
+}
+
+async function handleToMp3Command({ sock, jid, msg, quoted, prefix = ".", clearActionPresence = async () => {} }) {
+  let workDir;
+  try {
+    const quotedMessage = unwrapMessage(getQuotedMessage(msg));
+    const videoMessage = quotedMessage?.videoMessage;
+    if (!videoMessage) {
+      await sock.sendMessage(jid, {
+        text: `🎵 *VIDEO TO MP3*\n\nवीडियो पर रिप्लाई करके *${prefix}tomp3* भेजें।\n\nअधिकतम वीडियो आकार: 80 MB`
+      }, { quoted });
+      return;
+    }
+
+    if (videoMessage.fileLength && Number(videoMessage.fileLength) > MAX_VIDEO_BYTES) {
+      await sock.sendMessage(jid, { text: "❌ Video 80 MB से बड़ा है। कृपया छोटा वीडियो भेजें।" }, { quoted });
+      return;
+    }
+
+    await sock.sendMessage(jid, { text: "⏳ वीडियो डाउनलोड करके MP3 बनाया जा रहा है..." }, { quoted });
+    workDir = path.join(os.tmpdir(), `deva-tomp3-${crypto.randomBytes(8).toString("hex")}`);
+    fs.mkdirSync(workDir, { recursive: false });
+    const inputPath = path.join(workDir, "input-video");
+    const outputPath = path.join(workDir, "audio.mp3");
+
+    await saveVideoStream(videoMessage, inputPath);
+    await convertToMp3(inputPath, outputPath);
+    const stats = fs.statSync(outputPath);
+    if (!stats.size) throw new Error("इस वीडियो में ऑडियो ट्रैक नहीं मिला।");
+    if (stats.size > MAX_AUDIO_BYTES) throw new Error("बनी हुई MP3 64 MB से बड़ी है, इसलिए WhatsApp पर भेजना संभव नहीं है।");
+
+    const audio = fs.readFileSync(outputPath);
+    await sock.sendMessage(jid, {
+      audio,
+      mimetype: "audio/mpeg",
+      fileName: "deva-audio.mp3",
+      ptt: false
+    }, { quoted });
+  } catch (error) {
+    console.error("TOMP3 ERROR:", error?.stack || error);
+    let message = String(error?.message || "Unknown error");
+    if (/no such file|not found|ENOENT/i.test(message) && /ffmpeg/i.test(message)) {
+      message = "इस होस्टिंग पर FFmpeg उपलब्ध नहीं है। npm install के बाद bot दोबारा शुरू करें।";
+    } else if (/larger than the 80 MB/i.test(message)) {
+      message = "वीडियो 80 MB से बड़ा है। कृपया छोटा वीडियो भेजें।";
+    } else if (/does not contain any stream|matches no streams|does not contain any.*audio|Output file #0 does not contain any stream/i.test(message)) {
+      message = "इस वीडियो में ऑडियो ट्रैक नहीं मिला।";
+    }
+    await sock.sendMessage(jid, { text: `❌ *MP3 conversion failed*\n\n${message.slice(0, 350)}` }, { quoted }).catch(() => {});
+  } finally {
+    if (workDir) fs.rmSync(workDir, { recursive: true, force: true });
+    await clearActionPresence(sock, jid).catch(() => {});
+  }
+}
+
+module.exports = { handleToMp3Command };
