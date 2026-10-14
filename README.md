@@ -67,7 +67,7 @@ npm start
 
 ### Option 2: Run the `index.js` installer
 
-Save the installer below as `index.js` in an empty folder. Install [Node.js 20+](https://nodejs.org/) and Git first, then set `PHONE_NUMBER` to your own WhatsApp number in international format (digits only, no `+` or spaces). **Do not put your real phone number in a public README or share your pairing code/session files.**
+Save the installer below as `index.js` in an empty folder. Install [Node.js 20+](https://nodejs.org/) and Git first, then set `PHONE_NUMBER` to your own WhatsApp number in international format (digits only, no `+` or spaces).
 
 ```js
 const { execSync, spawn } = require("child_process");
@@ -125,53 +125,3 @@ Example `.env` template:
 # Add only the credentials your setup actually uses
 IMGBB_API_KEY=your_imgbb_api_key
 ```
-
-**Important:** Before publishing this project, check the source code and `settings.json` for hard-coded API keys or tokens. If any real key has already been uploaded publicly, revoke/rotate it and replace it with an environment variable. Do not upload your `.env` file or WhatsApp authentication/session data.
-
-## 💬 Commands
-
-The project includes commands such as:
-
-| Command | Purpose |
-|---|---|
-| `menu` | Display the bot menu |
-| `ping` | Check bot responsiveness |
-| `alive` | Check whether the bot is running |
-| `uptime` | Show running time |
-| `tomp3` | Audio conversion utility |
-| `tts` | Text-to-speech utility |
-| `removebg` | Background-removal utility |
-| `fullpp` | Profile-picture utility |
-| `instagram` | Instagram-related utility |
-
-The exact syntax and availability can depend on the current code and configuration. Send `menu` in the bot chat to view the menu supported by your version.
-
-## ☁️ Deployment
-
-You can run the bot on a computer or a Node.js-compatible hosting service.
-
-1. Upload/clone the project to your server.
-2. Use Node.js 20 or newer.
-3. Install dependencies with `npm install`.
-4. Configure environment variables securely.
-5. Start with `npm start`.
-6. Keep the process running using a process manager supported by your hosting environment.
-
-Hosting providers have different policies and may stop free services when idle. Check the provider's current rules before deploying.
-
-## 🛠️ Troubleshooting
-
-- **Dependency/install error:** Confirm that Node.js 20+ is installed, then try `npm install`.
-- **Bot does not connect:** Check your internet connection and review the terminal logs.
-- **Media command fails:** Check required API credentials and third-party service availability.
-- **Bot stops after closing the terminal:** Run it on a suitable server or use a process manager.
-
-## 🤝 Contributing
-
-Issues and improvements are welcome. Please avoid submitting API keys, phone numbers, pairing codes, session files, or other private information.
-
----
-
-<p align="center">
-  <b>Made with ❤️ for the DEVA XMD BOT community</b>
-</p>
