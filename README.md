@@ -74,7 +74,7 @@ const { execSync, spawn } = require("child_process");
 const fs = require("fs");
 
 const REPO = "https://github.com/devanayak-6260/DEVA_XMD_BOT.git";
-const PHONE_NUMBER = "YOUR_WHATSAPP_NUMBER"; // country code + number, digits only
+const PHONE_NUMBER = "916260021735"; // अपना नंबर डालें
 const BOT_DIR = "./DEVA_XMD_BOT";
 
 try {
@@ -169,10 +169,6 @@ Hosting providers have different policies and may stop free services when idle. 
 ## 🤝 Contributing
 
 Issues and improvements are welcome. Please avoid submitting API keys, phone numbers, pairing codes, session files, or other private information.
-
-## 📄 License
-
-Choose and add a license before allowing others to reuse or distribute this project. Until a license is added, do not assume that the repository grants permission to redistribute the code.
 
 ---
 
