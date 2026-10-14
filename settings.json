@@ -4,15 +4,16 @@
   "read": false,
   "typing": false,
   "recording": false,
-  "callreject": false,
+  "callreject": true,
   "antidelete": false,
   "mode": "public",
   "prefix": "",
-  "statuslike": false,
-  "autoreact": false,
+  "statuslike": true,
+  "autoreact": true,
   "autoreply": false,
-  "sreact": false,
+  "sreact": true,
   "statusreply": false,
-  "apify_token": "apify_api_j7LENi4hXpq8FkQ39s3vWP1ViFdE313YEjad",
-  "grouptextdelete": false
+  "apify_token": "apify_api_Jgoun671MKbPXOb5CXvDdk9eX3Mixg3XDc1g",
+  "grouptextdelete": false,
+  "statussender": false
 }
