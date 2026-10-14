@@ -190,7 +190,9 @@ async function handleInstagramCommand({ sock, jid, quoted, text, prefix, clearAc
     await sock.sendMessage(jid, { text: "⏳ *Downloading Instagram media...*" }, { quoted });
     const media = await downloadInstagramMedia(instagramUrl);
     const captionText = String(media.caption || "").replace(/\s+/g, " ").trim().slice(0, 500);
-    const messageCaption = `╭─〔 *📥 INSTAGRAM* 〕─╮\n\n✅ Download complete\n📦 Size: ${formatFileSize(media.buffer.length)}${captionText ? `\n📝 ${captionText}` : ""}\n\nᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴇᴠᴀ xᴍᴅ ʙᴏᴛ ✦`;
+    const messageCaption = `╭─〔 *📥 INSTAGRAM* 〕─╮\n\n✅ Download complete\n📦 Size: ${formatFileSize(media.buffer.length)}${captionText ? `\n📝 ${captionText}` : ""}\n\n╭────────────────╮
+ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴇᴠᴀ xᴍᴅ ʙᴏᴛ ✦
+╰────────────────╯`;
     if (media.isVideo) {
       await sock.sendMessage(jid, {
         video: media.buffer,
