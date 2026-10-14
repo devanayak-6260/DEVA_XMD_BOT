@@ -109,19 +109,3 @@ Run the installer:
 ```bash
 node index.js
 ```
-
-The script clones (or updates) the repository, writes `phone.js`, installs the bot's dependencies, and runs `npm start`. Only use this with a WhatsApp account you own or are authorized to link. Keep the installer and generated `phone.js` private if they contain your personal number.
-
-## 🔐 Configuration & Security
-
-1. Review `settings.json` and configure the options for your setup.
-2. Put API keys and private configuration in environment variables (for example, in a local `.env` file) instead of committing secrets to GitHub.
-3. Add `.env`, WhatsApp session/authentication files, logs, and other credentials to `.gitignore`.
-4. Never share your pairing code or WhatsApp session files.
-
-Example `.env` template:
-
-```env
-# Add only the credentials your setup actually uses
-IMGBB_API_KEY=your_imgbb_api_key
-```
