@@ -107,5 +107,5 @@ try {
 Run the installer:
 
 ```bash
-node index.js
+index.js
 ```
