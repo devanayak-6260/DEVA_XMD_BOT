@@ -2,8 +2,9 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
   const ownerName = "DEVA-NAYAK";
   const mode = String(botSettings?.mode || "public").toUpperCase();
   const pfx = prefix;
-  return `╭━〔 👑 DEVA XMD BOT 〕━╮
-┃ ⚡  ULTRA PRO BOT v4.1
+  return `
+╭─❏ 👑 DEVA XMD BOT ❏─⊷
+┃ ⚡ULTRA PRO BOT v4.1
 ┣━━━━━━━━━━━━━━━━━━━┫
 ┃ 👤 OWNER ➜ *${ownerName}*
 ┃https://wa.me/916260021735
@@ -13,21 +14,21 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ ⏱️ UPTIME ➜ ${uptime}
 ╰━━━━━━━━━━━━━━━━━
 ┃
-╭━━〔 ⚡ GENERAL 〕━━╮
+╭────❏ GENERAL ❏
 ┃ • ${pfx}menu
 ┃ • ${pfx}ping
 ┃ • ${pfx}alive
 ┃ • ${pfx}uptime
-╰━━━━━━━━━━━━━━━━━━╯
+╰━━━━━━━━━━━━━━──⊷
 ┃
-╭━〔 ⚙️ BOT SETTINGS 〕━╮
+╭────❏ BOT SETTINGS ❏
 ┃ • mode public/private
 ┃ • prefix
 ┃ • settings
 ┃ • ${pfx}restart
-╰━━━━━━━━━━━━━━━━━━╯
+╰━━━━━━━━━━━━━━──⊷
 ┃
-╭━〔 ✨ AUTO SYSTEM 〕━╮
+╭────❏ AUTO SYSTEM ❏
 ┃ • ${pfx}online on/off
 ┃ • ${pfx}Typing on/off
 ┃ • ${pfx}Recording on/off
@@ -39,17 +40,17 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}Statuslike on/off
 ┃ • ${pfx}Autoreact on/off
 ┃ • ${pfx}Sreact on/off
-╰━━━━━━━━━━━━━━━━━━╯
+╰━━━━━━━━━━━━━━──⊷
 ┃
-╭━━〔 👥 GROUP 〕━━╮
+╭────❏ GROUP ❏
 ┃ • ${pfx}groupinfo
 ┃ • ${pfx}Tagall
 ┃ • ${pfx}kick
 ┃ • ${pfx}promote / ${pfx}demote
 ┃ • ${pfx}GroupTextDelete on/off
-╰━━━━━━━━━━━━━━━━━━╯
+╰━━━━━━━━━━━━━━──⊷
 ┃
-╭━━━〔 🎨 MEDIA 〕━━━╮
+╭────❏ MEDIA ❏
 ┃ • ${pfx}Save
 ┃ • ${pfx}sticker
 ┃ • ${pfx}vv
@@ -59,19 +60,19 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}fancytext
 ┃ • ${pfx}tts <text>
 ┃ • ${pfx}tomp3 (reply to video)
-╰━━━━━━━━━━━━━━━━━━╯
+╰━━━━━━━━━━━━━━──⊷
 ┃
-╭━〔 🖼️ IMAGE EDITING 〕━╮
-┃ • ${pfx}removebg
-╰━━━━━━━━━━━━━━━━━━━╯
+╭────❏ IMAGE EDITING ❏
+│ • ${pfx}removebg
+╰━━━━━━━━━━━━━━──⊷
 ┃
-╭━━〔  📥 DOWNLOAD 〕━━╮
+╭────❏ DOWNLOAD ❏
 ┃ • ${pfx}song
 ┃ • ${pfx}instagram
 ┃ • ${pfx}pinterest
-╰━━━━━━━━━━━━━━━━━━╯
+╰━━━━━━━━━━━━━━──⊷
 ┃
-╭━━〔 👑 OWNER 〕━━╮
+╭────❏ 👑 OWNER ❏──⊷
 ┃ • ${pfx}owner
 ┃ • ${pfx}pair 91XXXXXXXXXX
 ┃ • ${pfx}block
