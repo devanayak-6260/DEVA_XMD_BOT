@@ -53,6 +53,15 @@ function formatInstagramFileSize(bytes) {
   return `${mb.toFixed(1)} MB`;
 }
 
+function formatInstagramFileSize(bytes) {
+  const n = Number(bytes) || 0;
+  if (n < 1024) return `${n} B`;
+  const kb = n / 1024;
+  if (kb < 1024) return `${kb.toFixed(1)} KB`;
+  const mb = kb / 1024;
+  return `${mb.toFixed(1)} MB`;
+}
+
 // Fetch JSON with a timeout and useful errors (used by the song downloader).
 async function fetchJson(url, timeoutMs = 30000) {
   const controller = new AbortController();
@@ -101,8 +110,7 @@ function extractPinterestUrl(value) {
     .replace(/\s+/g, " ")
     .trim();
 
-  const match = input.match(/https?:\/\/(?:www\.)?(?:[a-z]{2,3}\.)?pinterest\.(?:com|co\.uk|ca|de|fr|it|es|com\.au|com\.mx|com\.br)\/[^
-\s<>]+|https?:\/\/pin\.it\/[A-Za-z0-9_-]+/i);
+  const match = input.match(/https?:\/\/(?:www\.)?(?:[a-z]{2,3}\.)?pinterest\.(?:com|co\.uk|ca|de|fr|it|es|com\.au|com\.mx|com\.br)\/[^\s<>]+|https?:\/\/pin\.it\/[A-Za-z0-9_-]+/i);
   return match ? match[0].replace(/[),.!]+$/g, "") : "";
 }
 
@@ -252,7 +260,16 @@ function buildPinterestDownloadCaption(media) {
     .trim()
     .slice(0, 500);
 
-  return `╭─〔 *📌 PINTEREST* 〕─╮\n\n     ᴅᴏᴡɴʟᴏᴀᴅ ᴄᴏᴍᴘʟᴇᴛᴇ ✅\n\n📦 File Size   ─ ${formatInstagramFileSize(media?.buffer?.length)}\n📝 Title       ─ ${title || "No title"}\n\n╭────────────────╮\n ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴇᴠᴀ xᴍᴅ ʙᴏᴛ ✦\n╰────────────────╯`;
+  return `╭─〔 *📌 PINTEREST* 〕─╮
+
+     ᴅᴏᴡɴʟᴏᴀᴅ ᴄᴏᴍᴘʟᴇᴛᴇ ✅
+
+📦 File Size   ─ ${formatInstagramFileSize(media?.buffer?.length)}
+📝 Title       ─ ${title || "No title"}
+
+╭────────────────╮
+ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴇᴠᴀ xᴍᴅ ʙᴏᴛ ✦
+╰────────────────╯`;
 }
 
 function delay(ms) {
@@ -280,51 +297,13 @@ function loadSettings() {
       mode: data.mode === "private" ? "private" : "public",
       prefix: typeof data.prefix === "string" ? data.prefix : ""
     };
-  } catch (err) {
-    // Return safe defaults when settings.json is missing or invalid
-    return {
-      online: true,
-      status: true,
-      read: false,
-      typing: false,
-      recording: false,
-      callreject: false,
-      antidelete: false,
-      statuslike: true,
-      statusreply: false,
-      statussender: false,
-      grouptextdelete: false,
-      autoreact: true,
-      autoreply: false,
-      sreact: true,
-      mode: "public",
-      prefix: ""
-    };
+  } catch {
+    return { online: true, status: true, read: false, typing: false, recording: false, callreject: false, antidelete: false, statuslike: false, statusreply: false, statussender: false, grouptextdelete: false, autoreact: false, autoreply: false, sreact: false, mode: "public", prefix: "" };
   }
 }
 
 function saveSettings(settings) {
-  try {
-    const sanitized = {
-      online: Boolean(settings.online),
-      status: Boolean(settings.status),
-      read: Boolean(settings.read),
-      typing: Boolean(settings.typing),
-      recording: Boolean(settings.recording),
-      callreject: Boolean(settings.callreject),
-      antidelete: Boolean(settings.antidelete),
-      statuslike: Boolean(settings.statuslike),
-      statusreply: Boolean(settings.statusreply),
-      statussender: Boolean(settings.statussender),
-      grouptextdelete: Boolean(settings.grouptextdelete),
-      autoreact: Boolean(settings.autoreact),
-      autoreply: Boolean(settings.autoreply),
-      sreact: Boolean(settings.sreact),
-      mode: settings.mode === "private" ? "private" : "public",
-      prefix: typeof settings.prefix === "string" ? settings.prefix : ""
-    };
-    fs.writeFileSync(SETTINGS_PATH, JSON.stringify(sanitized, null, 2));
-  } catch (e) {
+  try { fs.writeFileSync(SETTINGS_PATH, JSON.stringify(settings, null, 2)); } catch (e) {
     console.error("SETTINGS SAVE ERROR:", e?.message || e);
   }
 }
@@ -362,22 +341,25 @@ const AUTO_REPLY_DATA = [
   ["merry christmas", "Same to you 🎄😊"], ["eid mubarak", "Khair Mubarak 🤲😊"],
   ["kya kar rahe ho", "Bas relax kar raha hoon 😊"], ["kahan ho", "Yahin hoon 😊"], ["free ho", "Haan, bolo 😊"], ["busy ho", "Thoda busy hoon 😊"],
   ["kya hua", "Kuch nahi, sab theek 😊"], ["kahan ja rahe ho", "Bas thoda bahar ja raha hoon 😊"], ["khana khaya", "Haan, kha liya 😊"],
-  ["😂😂", "Hahaha 😂"], ["🤣", "😂😂"], ["😭", "Arey, kya hua? 🥺"], ["😍", "❤️😊"], ["🥰", "Aww 🥰❤️"], ["😘", "😊❤️"], ["😎", "😎🔥"], ["🔥", "🔥"],
+  ["😂😂", "Hahaha 😂"], ["🤣", "😂😂"], ["😭", "Arey, kya hua? 🥺"], ["😍", "❤️😊"], ["🥰", "Aww 🥰❤️"], ["😘", "😊❤️"], ["😎", "😎🔥"], ["🔥", "🔥😎"],
   ["❤️", "❤️😊"], ["💔", "Kya hua? 🥺"], ["👍", "👍😊"], ["👌", "Perfect 👌"], ["🙏", "🙏❤️"], ["🤝", "🤝😊"], ["👋", "Bye 👋😊"], ["🥺", "Kya hua? 🥺"],
   ["😡", "Gussa kyun? 😊"], ["😴", "Good night 🌙😴"], ["🎉", "Party time 😄🎉"],
   ["kya scene hai", "Sab set hai 😎"], ["kya scene", "Sab chill 😄"], ["mast", "Bilkul mast 😎"], ["sab badhiya", "Haan, ekdum badhiya 😊"],
   ["aur batao", "Bas sab badhiya 😄"], ["batao", "Ji, bolo 😊"], ["suno", "Haan ji, boliye 😊"], ["oye", "Haan bolo 😄"], ["arey", "Haan ji 😄"], ["wah", "Wahhh 😍"],
   ["online ho", "Haan 😊"], ["ek minute ruk", "Haan, no problem 👍"], ["reply kyu nahi kiya", "Abhi dekha 😊"], ["message mila", "Haan, mil gaya 😊"], ["seen kiya", "Haan 😊"],
-  ["call karu", "Haan, kar sakte ho 😊"], ["call karo", "Haan, karta hoon 📞"], ["call kar sakta hoon", "Haan 😊"], ["phone uthao", "Haan, ek minute 📱"], ["voice call", "Haan, kar sakte ho"],
+  ["call karu", "Haan, kar sakte ho 😊"], ["call karo", "Haan, karta hoon 📞"], ["call kar sakta hoon", "Haan 😊"], ["phone uthao", "Haan, ek minute 📱"], ["voice call", "Haan, kar sakte ho 😊"],
   ["video call", "Haan 😊📱"], ["network nahi hai", "Koi baat nahi 😊"],
-  ["good", "Yes, all good 😊"], ["ready", "Yes 👍"], ["samjhe", "Haan, samajh gaya 😊"], ["samjha", "Haan bilkul 😊"], ["pagal ho kya", "Thoda sa 😂"], ["pagal", "Tumse kam 😂"],
-  ["chal jhoothe", "Sach bol raha hoon 😂"], ["mazak kar raha tha", "Hahaha 😄"], ["seriously", "Haan bilkul 😄"], ["really", "Haan 😎"], ["lol", "😂😂"], ["omg", "Hahaha 😄"],
-  ["kal kya plan hai", "Abhi decide nahi kiya 😊"], ["aaj free ho", "Haan, thoda 😊"], ["kal miloge", "Haan, milte hain 🤝"], ["kahin ghoomne chale", "Haan, bilkul 😎"],
+  ["good", "Yes, all good 😊"], ["ready", "Yes 👍"], ["samjhe", "Haan, samajh gaya 😊"], ["samjha", "Haan bilkul 😊"], ["pagal ho kya", "Thoda sa 😂"], ["pagal", "Tumse kam 😂"], ["buddhu", "Haan ji 😄"],
+  ["chal jhoothe", "Sach bol raha hoon 😂"], ["mazak kar raha tha", "Hahaha 😄"], ["seriously", "Haan bilkul 😄"], ["really", "Haan 😎"], ["lol", "😂😂"], ["omg", "Hahaha 😄"], ["oho", "😄🔥"], ["wow", "Thank you 😊❤️"],
+  ["kal kya plan hai", "Abhi decide nahi kiya 😊"], ["aaj free ho", "Haan, thoda 😊"], ["kal miloge", "Haan, milte hain 🤝"], ["kahin ghoomne chale", "Haan, bilkul 😎"], ["kab milna hai", "Jab convenient ho 😊"],
   ["ghar pahunch gaye", "Haan, pahunch gaya 😊"], ["kab aaoge", "Jaldi aaunga 😊"], ["safar kaisa raha", "Badhiya raha 😊"], ["train mein ho", "Haan 🚆"], ["bus mein ho", "Haan 🚌"],
   ["kya khaya", "Abhi khana khaya 😊"], ["khana ho gaya", "Haan, ho gaya 😊"], ["bhookh lagi", "Haan, thodi 😄"],
   ["i miss you", "Aww, main bhi 😊❤️"], ["miss you", "Miss you too ❤️"], ["love you", "Love you too ❤️"], ["sad hoon", "Kya hua? 🥺"], ["mood off hai", "Sab theek ho jayega ❤️"],
-  ["kahan gayab ho", "Yahin hoon 😄"], ["kal milte hain", "Haan, kal milte hain 🤝"], ["jaldi aao", "Haan, aa raha hoon 😄"], ["itna late reply", "Sorry, abhi dekha 😅"],
-  ["message kyun delete kiya", "Galti se ho gaya 😅"], ["ek baat bolun", "Haan, bolo 😊"], ["sun rahe ho", "Haan, bolo 👂"], ["sach batao", "Haan, sach bataunga 😊"], ["soya nahi", "Thoda rest lo"]
+  ["kahan gayab ho", "Yahin hoon 😄"], ["kal milte hain", "Haan, kal milte hain 🤝"], ["jaldi aao", "Haan, aa raha hoon 😄"], ["itna late reply", "Sorry, abhi dekha 😅"], ["ignore kar rahe ho", "Nahi nahi 😊"],
+  ["message kyun delete kiya", "Galti se ho gaya 😅"], ["ek baat bolun", "Haan, bolo 😊"], ["sun rahe ho", "Haan, bolo 👂"], ["sach batao", "Haan, sach bataunga 😊"], ["soya nahi", "Thoda rest kar lo 😴"],
+  ["aaj busy hu", "Okay, no problem 😊"], ["kaam kar raha hu", "Okay, kaam karo 👍"], ["college ja raha hu", "Best of luck 📚😊"], ["office ja raha hu", "All the best 👍"], ["file bhejo", "Haan, bhejta hoon 📎"], ["link bhejo", "Haan, bhejta hoon 🔗"],
+  ["kasam se", "Haan, samajh gaya 😄"], ["status dekha", "Haan, dekha 👍"], ["contact save kiya", "Haan, save kar liya 👍"], ["ek baat puchu", "Haan, pucho 😊"],
+  ["tum kaun ho", "Main DEVA XMD BOT Virtual Assistant hoon. 🚀"], ["tumhara naam kya hai", "Mera naam Deva Nayak hai 😊"], ["kahan rehte ho", "Main online rehta hoon 😄🤖"], ["kahan se ho", "Main Chhattisgarh se hoon ❤️😊"]
 ];
 
 function normalizeAutoReplyText(value) {
@@ -414,7 +396,16 @@ const AUTO_REPLY_VARIANTS = [
   [/^kahan rehte ho$/, "Main online rehta hoon 😄🤖"]
 ];
 
-// Smart AutoReply matching: (unchanged)
+// Smart AutoReply matching:
+// - Exact full message wins.
+// - A specific phrase can appear anywhere in a longer message.
+// - Small spelling mistakes are tolerated.
+// - The most specific phrase wins, so generic triggers such as "bro" never
+//   steal a more relevant phrase such as "good morning" or "jai shri ram".
+// - Only one reply is returned for each incoming message.
+// Build intent aliases for every configured trigger. The goal is to make
+// natural short/long forms resolve to the same reply without making generic
+// words such as "bro", "good" or "ram" steal a more specific intent.
 const AUTO_REPLY_CONTEXT_WORDS = new Set([
   "tum", "aap", "ap", "tumhara", "mera", "meri", "mere", "mujhe", "mujhse",
   "please", "zara", "batao", "bata", "bolo", "bol", "na", "re", "ji"
@@ -425,8 +416,10 @@ function buildAutoReplyAliases(phrase) {
   const aliases = new Set([phrase]);
   if (words.length < 2) return [...aliases];
 
+  // Drop only conversational pronouns/fillers. Never remove content words.
   const kept = words.filter(word => !AUTO_REPLY_CONTEXT_WORDS.has(word));
   if (kept.length >= 2 && kept.length < words.length) aliases.add(kept.join(" "));
+
 
   return [...aliases];
 }
@@ -498,6 +491,8 @@ function phraseSimilarity(message, phrase) {
 
       const average = scores.reduce((sum, score) => sum + score, 0) / pw.length;
       const minimum = Math.min(...scores);
+      // Prevent semantically unrelated phrases from winning just because one
+      // word happens to match. Every trigger word must be reasonably close.
       const minimumRequired = pw.length === 1 ? 0.90 : pw.length === 2 ? 0.68 : 0.60;
       if (minimum < minimumRequired) continue;
       best = Math.max(best, average);
@@ -520,6 +515,9 @@ function getAutoReply(text) {
 
   const messageWords = normalized.split(/\s+/).filter(Boolean);
 
+  // Score exact and fuzzy matches together. An exact generic word such as
+  // "bro" must NOT beat a fuzzy match for a more specific phrase such as
+  // "jai shri ram" or "kaise ho". Specificity is the primary signal.
   const candidates = [];
   for (const entry of AUTO_REPLY_ENTRIES) {
     const { words } = entry;
@@ -548,6 +546,8 @@ function getAutoReply(text) {
       continue;
     }
 
+    // Fuzzy phrase containment. Compare each trigger against local windows,
+    // so extra words before/after the intent are harmless.
     const wordCount = entry.words.length;
     const minSize = Math.max(1, wordCount - (wordCount >= 3 ? 1 : 0));
     const maxSize = Math.min(messageWords.length, wordCount + (wordCount >= 2 ? 1 : 0));
@@ -581,10 +581,13 @@ function getAutoReply(text) {
 }
 
 // Keep recent incoming messages in memory so Anti Delete can restore them.
+// Media is downloaded while the original message is still available because
+// WhatsApp media URLs can expire before a later delete event arrives.
 const messageCache = new Map();
 const MAX_CACHED_MESSAGES = 500;
 
 // Track our own outgoing message keys so .clear can revoke messages observed
+// by this bot. Baileys does not provide complete historical chat retrieval.
 const OWN_MESSAGES_PATH = path.join(__dirname, "own-message-keys.json");
 const MAX_OWN_MESSAGES_PER_CHAT = 2000;
 let ownMessageKeys = {};
@@ -607,10 +610,1972 @@ function trackOwnMessage(msg) {
   saveOwnMessageKeys();
 }
 
-// ... rest of index.js is unchanged
+async function cacheMessage(msg) {
+  const id = msg?.key?.id;
+  const message = msg?.message;
+  if (!id || !message || message.protocolMessage) return;
 
-process.on("uncaughtException", e => console.error("UNCAUGHT:", e?.message || e));
-process.on("unhandledRejection", e => console.error("UNHANDLED:", e?.message || e));
+  const entry = {
+    key: msg.key,
+    pushName: msg.pushName || '',
+    type: 'text',
+    text: getText(msg)
+  };
+
+  try {
+    if (message.imageMessage) {
+      entry.type = 'image';
+      entry.caption = message.imageMessage.caption || '';
+      entry.buffer = await downloadContentFromMessage(message.imageMessage, 'image')
+        .then(async stream => {
+          const chunks = [];
+          for await (const chunk of stream) chunks.push(chunk);
+          return Buffer.concat(chunks);
+        });
+    } else if (message.videoMessage) {
+      entry.type = 'video';
+      entry.caption = message.videoMessage.caption || '';
+      entry.buffer = await downloadContentFromMessage(message.videoMessage, 'video')
+        .then(async stream => {
+          const chunks = [];
+          for await (const chunk of stream) chunks.push(chunk);
+          return Buffer.concat(chunks);
+        });
+    } else if (message.audioMessage) {
+      entry.type = 'audio';
+      entry.ptt = message.audioMessage.ptt === true;
+      entry.mimetype = message.audioMessage.mimetype || 'audio/ogg; codecs=opus';
+      entry.buffer = await downloadContentFromMessage(message.audioMessage, 'audio')
+        .then(async stream => {
+          const chunks = [];
+          for await (const chunk of stream) chunks.push(chunk);
+          return Buffer.concat(chunks);
+        });
+    } else if (message.documentMessage) {
+      entry.type = 'document';
+      entry.fileName = message.documentMessage.fileName || 'document';
+      entry.mimetype = message.documentMessage.mimetype || 'application/octet-stream';
+      entry.caption = message.documentMessage.caption || '';
+      entry.buffer = await downloadContentFromMessage(message.documentMessage, 'document')
+        .then(async stream => {
+          const chunks = [];
+          for await (const chunk of stream) chunks.push(chunk);
+          return Buffer.concat(chunks);
+        });
+    } else if (message.stickerMessage) {
+      entry.type = 'sticker';
+      entry.buffer = await downloadContentFromMessage(message.stickerMessage, 'sticker')
+        .then(async stream => {
+          const chunks = [];
+          for await (const chunk of stream) chunks.push(chunk);
+          return Buffer.concat(chunks);
+        });
+    } else if (message.contactMessage || message.contactsArrayMessage || message.locationMessage || message.liveLocationMessage) {
+      // These message types are kept as-is for text-style fallback below.
+      entry.type = 'special';
+      entry.message = message;
+    } else if (!entry.text) {
+      entry.type = 'special';
+      entry.message = message;
+    }
+  } catch (e) {
+    // Keep text/caption information even if media download fails.
+    console.error('ANTI DELETE CACHE ERROR:', e?.message || e);
+  }
+
+  messageCache.set(id, entry);
+  while (messageCache.size > MAX_CACHED_MESSAGES) {
+    const first = messageCache.keys().next().value;
+    messageCache.delete(first);
+  }
+}
+
+async function restoreDeletedMessage(sock, target, cached) {
+  if (!target || !cached) return false;
+
+  if (cached.type === 'image' && cached.buffer) {
+    await sock.sendMessage(target, { image: cached.buffer, caption: cached.caption || '' });
+    return true;
+  }
+  if (cached.type === 'video' && cached.buffer) {
+    await sock.sendMessage(target, { video: cached.buffer, caption: cached.caption || '' });
+    return true;
+  }
+  if (cached.type === 'audio' && cached.buffer) {
+    await sock.sendMessage(target, { audio: cached.buffer, mimetype: cached.mimetype, ptt: cached.ptt });
+    return true;
+  }
+  if (cached.type === 'document' && cached.buffer) {
+    await sock.sendMessage(target, {
+      document: cached.buffer,
+      mimetype: cached.mimetype,
+      fileName: cached.fileName,
+      caption: cached.caption || ''
+    });
+    return true;
+  }
+  if (cached.type === 'sticker' && cached.buffer) {
+    await sock.sendMessage(target, { sticker: cached.buffer });
+    return true;
+  }
+  if (cached.text) {
+    await sock.sendMessage(target, { text: cached.text });
+    return true;
+  }
+
+  // Last-resort notice for unsupported message types.
+  await sock.sendMessage(target, { text: '📎 Deleted message restored (unsupported message type).' });
+  return true;
+}
+
+async function sendActionPresence(sock, jid) {
+  if (botSettings.recording) {
+    try { await sock.sendPresenceUpdate("recording", jid); } catch {}
+    return;
+  }
+  if (botSettings.typing) {
+    try {
+      await sock.sendPresenceUpdate("composing", jid);
+      // Keep the typing indicator visible long enough before processing the reply.
+      await delay(1500);
+    } catch (e) {
+      console.error("TYPING PRESENCE ERROR:", e?.message || e);
+    }
+  }
+}
+
+async function clearActionPresence(sock, jid) {
+  if (botSettings.typing || botSettings.recording) {
+    try { await sock.sendPresenceUpdate("paused", jid); } catch {}
+  }
+}
+
+const PHONE_NUMBER = require("./phone");
+const OWNER_NUMBER = PHONE_NUMBER.replace(/\D/g, "");
+const AUTH_DIR = "./auth_info";
+
+const reconnectingSessions = new Set();
+const activeSessionNumbers = new Set();
+let primarySocket = null;
+const SESSION_ROOT = path.join(__dirname, "auth_sessions");
+const SESSION_REGISTRY = path.join(SESSION_ROOT, "numbers.json");
+function readSessionNumbers() {
+  try { const list = JSON.parse(fs.readFileSync(SESSION_REGISTRY, "utf8")); return Array.isArray(list) ? [...new Set(list.map(v => String(v).replace(/\D/g, "")).filter(v => /^\d{10,15}$/.test(v) && v !== OWNER_NUMBER))] : []; } catch { return []; }
+}
+function saveSessionNumbers(list) { fs.mkdirSync(SESSION_ROOT, { recursive: true }); fs.writeFileSync(SESSION_REGISTRY, JSON.stringify([...new Set(list)], null, 2)); }
+
+function normalizeJid(jid) {
+  if (!jid) return "";
+  try { return jidNormalizedUser(jid); } catch { return String(jid).split(":")[0]; }
+}
+
+function getOwnerNumbers(sock) {
+  const numbers = new Set([OWNER_NUMBER]);
+  try {
+    const self = normalizeJid(sock?.user?.id || "").split("@")[0].split(":")[0].replace(/\D/g, "");
+    if (self) numbers.add(self);
+  } catch {}
+  return numbers;
+}
+
+function getText(msg) {
+  return (
+    msg?.message?.conversation ||
+    msg?.message?.extendedTextMessage?.text ||
+    msg?.message?.imageMessage?.caption ||
+    msg?.message?.videoMessage?.caption ||
+    ""
+  ).trim();
+}
+
+if (!global.botStartTime) global.botStartTime = Date.now();
+
+function formatUptime(ms) {
+  const sec = Math.floor(ms / 1000) % 60;
+  const min = Math.floor(ms / (1000 * 60)) % 60;
+  const hr = Math.floor(ms / (1000 * 60 * 60)) % 24;
+  const day = Math.floor(ms / (1000 * 60 * 60 * 24));
+  const parts = [];
+  if (day) parts.push(`${day} day${day > 1 ? "s" : ""}`);
+  if (hr) parts.push(`${hr} h`);
+  if (min) parts.push(`${min} m`);
+  parts.push(`${sec} s`);
+  return parts.join(", ");
+}
+
+async function streamToBuffer(stream) {
+  const chunks = [];
+  for await (const chunk of stream) chunks.push(chunk);
+  return Buffer.concat(chunks);
+}
+
+function unwrapMessage(message) {
+  let current = message;
+  for (let i = 0; i < 5 && current; i++) {
+    if (current.viewOnceMessage?.message) current = current.viewOnceMessage.message;
+    else if (current.viewOnceMessageV2?.message) current = current.viewOnceMessageV2.message;
+    else if (current.viewOnceMessageV2Extension?.message) current = current.viewOnceMessageV2Extension.message;
+    else if (current.ephemeralMessage?.message) current = current.ephemeralMessage.message;
+    else break;
+  }
+  return current || null;
+}
+
+function getQuotedMessage(msg) {
+  return msg?.message?.extendedTextMessage?.contextInfo?.quotedMessage || null;
+}
+
+function getMediaMessage(msg, kind) {
+  const direct = unwrapMessage(msg?.message);
+  const quoted = unwrapMessage(getQuotedMessage(msg));
+  return direct?.[`${kind}Message`] || quoted?.[`${kind}Message`] || null;
+}
+
+// Build the real WhatsApp Status message used as the quoted reference for
+// StatusReply. Keep the existing DEVA XMD PREMIUM content while also carrying
+// the actual status payload so WhatsApp can render the native Status header
+// plus text/photo/video preview.
+function getStatusReplySource(message) {
+  const root = message?.message;
+  const unwrap = (value) => unwrapMessage(value);
+  const isStatusContent = (value) => Boolean(
+    value && typeof value === "object" &&
+    (value.conversation || value.extendedTextMessage || value.imageMessage || value.videoMessage)
+  );
+
+  const direct = unwrap(root);
+  if (isStatusContent(direct)) return { ...message, message: direct };
+
+  const seen = new Set();
+  const find = (value) => {
+    if (!value || typeof value !== "object" || seen.has(value)) return null;
+    seen.add(value);
+    if (isStatusContent(value)) return unwrap(value);
+    for (const [key, child] of Object.entries(value)) {
+      if (/status.?mention/i.test(key) || /status/i.test(key)) {
+        const candidate = unwrap(child?.message || child);
+        if (isStatusContent(candidate)) return candidate;
+      }
+      const nested = find(child);
+      if (nested) return nested;
+    }
+    return null;
+  };
+
+  const found = find(root);
+  return found ? { ...message, message: found } : message;
+}
+
+function buildStatusReplyQuoted(statusMsg, participant) {
+  const source = getStatusReplySource(statusMsg);
+  const originalMessage = unwrapMessage(source?.message) || source?.message || null;
+  if (!originalMessage) return null;
+
+  // Keep the existing premium quoted-message identity alongside the real
+  // WhatsApp Status payload. The actual status media/text remains the quoted
+  // payload so WhatsApp can render its native Status preview.
+  const quoted = {
+    key: {
+      fromMe: false,
+      participant: "0@s.whatsapp.net",
+      remoteJid: "status@broadcast"
+    },
+    message: {
+      conversation: "*👑 DEVA XMD BOT ✦*"
+    }
+  };
+  const premium = quoted.message.conversation;
+  let quotedMessage = originalMessage;
+
+  // Preserve the existing premium StatusReply content instead of replacing
+  // it. For text statuses, keep the real status text visible underneath it.
+  if (originalMessage.conversation) {
+    quotedMessage = {
+      ...originalMessage,
+      conversation: `${premium}\n${originalMessage.conversation}`
+    };
+  } else if (originalMessage.extendedTextMessage) {
+    quotedMessage = {
+      ...originalMessage,
+      extendedTextMessage: {
+        ...originalMessage.extendedTextMessage,
+        text: `${premium}\n${originalMessage.extendedTextMessage.text || ""}`
+      }
+    };
+  } else if (originalMessage.imageMessage) {
+    quotedMessage = {
+      ...originalMessage,
+      imageMessage: {
+        ...originalMessage.imageMessage,
+        caption: [premium, originalMessage.imageMessage.caption].filter(Boolean).join("\n")
+      }
+    };
+  } else if (originalMessage.videoMessage) {
+    quotedMessage = {
+      ...originalMessage,
+      videoMessage: {
+        ...originalMessage.videoMessage,
+        caption: [premium, originalMessage.videoMessage.caption].filter(Boolean).join("\n")
+      }
+    };
+  }
+
+  return {
+    key: {
+      ...quoted.key,
+      ...(source?.key || {}),
+      fromMe: false,
+      remoteJid: "status@broadcast",
+      participant: "0@s.whatsapp.net"
+    },
+    message: quotedMessage,
+    messageTimestamp: source?.messageTimestamp,
+    pushName: source?.pushName
+  };
+}
+
+async function downloadMediaFromMessage(mediaMessage, kind) {
+  if (!mediaMessage) return null;
+  return streamToBuffer(await downloadContentFromMessage(mediaMessage, kind));
+}
+
+async function downloadQuotedImage(msg) {
+  const imageMessage = getMediaMessage(msg, "image");
+  return downloadMediaFromMessage(imageMessage, "image");
+}
+
+async function downloadStickerMedia(msg) {
+  const imageMessage = getMediaMessage(msg, "image");
+  const videoMessage = getMediaMessage(msg, "video");
+  if (imageMessage) return { type: "image", message: imageMessage };
+  if (videoMessage) return { type: "video", message: videoMessage };
+  return null;
+}
+
+async function makeImageSticker(buffer) {
+  return sharp(buffer)
+    .resize(512, 512, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .webp({ quality: 85 })
+    .toBuffer();
+}
+
+async function makeVideoSticker(buffer) {
+  const os = require("os");
+  const { spawn } = require("child_process");
+  const input = path.join(os.tmpdir(), `deva-sticker-${Date.now()}-${Math.random().toString(36).slice(2)}.mp4`);
+  const output = path.join(os.tmpdir(), `deva-sticker-${Date.now()}-${Math.random().toString(36).slice(2)}.webp`);
+  fs.writeFileSync(input, buffer);
+
+  try {
+    await new Promise((resolve, reject) => {
+      const ff = spawn("ffmpeg", [
+        "-y", "-i", input,
+        "-t", "6",
+        "-vf", "scale=512:512:force_original_aspect_ratio=decrease,fps=12,pad=512:512:(ow-iw)/2:(oh-ih)/2:color=black@0",
+        "-loop", "0",
+        "-an",
+        "-c:v", "libwebp",
+        "-q:v", "65",
+        output
+      ], { stdio: ["ignore", "ignore", "pipe"] });
+      let err = "";
+      ff.stderr.on("data", d => { err += d.toString(); });
+      ff.on("error", reject);
+      ff.on("close", code => code === 0 ? resolve() : reject(new Error(err.slice(-500) || `ffmpeg exited with ${code}`)));
+    });
+    return fs.readFileSync(output);
+  } finally {
+    try { fs.unlinkSync(input); } catch {}
+    try { fs.unlinkSync(output); } catch {}
+  }
+}
+
+async function downloadQuotedImageLegacy(msg) {
+  const imageMessage = getQuotedMessage(msg)?.imageMessage;
+  return downloadMediaFromMessage(imageMessage, "image");
+}
+
+async function downloadImageForUrl(msg) {
+  const directImage = msg?.message?.imageMessage;
+  const quotedImage = msg?.message?.extendedTextMessage?.contextInfo?.quotedMessage?.imageMessage;
+  const imageMessage = directImage || quotedImage;
+  if (!imageMessage) return null;
+
+  const stream = await downloadContentFromMessage(imageMessage, "image");
+  const chunks = [];
+  for await (const chunk of stream) chunks.push(chunk);
+  return Buffer.concat(chunks);
+}
+
+async function uploadImageToImgBB(imageBuffer) {
+  if (!IMGBB_API_KEY) throw new Error("IMGBB_API_KEY is not configured");
+
+  const base64 = imageBuffer.toString("base64");
+  const body = new URLSearchParams({
+    key: IMGBB_API_KEY,
+    image: base64
+  });
+
+  const response = await fetch("https://api.imgbb.com/1/upload", {
+    method: "POST",
+    headers: { "content-type": "application/x-www-form-urlencoded" },
+    body
+  });
+
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok || !data?.success || !data?.data?.url) {
+    const reason = data?.error?.message || data?.status_txt || `HTTP ${response.status}`;
+    throw new Error(reason);
+  }
+
+  return {
+    url: data.data.url,
+    displayUrl: data.data.display_url || data.data.url,
+    deleteUrl: data.data.delete_url || ""
+  };
+}
+
+async function setProfilePicture(sock, imageBuffer) {
+  const resized = await sharp(imageBuffer)
+    .resize(720, 720, { fit: "inside", withoutEnlargement: true })
+    .jpeg({ quality: 90 })
+    .toBuffer();
+
+  return sock.query({
+    tag: "iq",
+    attrs: {
+      to: "s.whatsapp.net",
+      type: "set",
+      xmlns: "w:profile:picture"
+    },
+    content: [{
+      tag: "picture",
+      attrs: { type: "image" },
+      content: resized
+    }]
+  });
+}
+
+async function start(sessionPhone = PHONE_NUMBER, sessionDir = AUTH_DIR, pairingReplyJid = "") {
+  const sessionNumber = String(sessionPhone || "").replace(/\D/g, "");
+  if (!/^\d{10,15}$/.test(sessionNumber)) throw new Error("Invalid WhatsApp phone number");
+  const sessionKey = path.resolve(sessionDir);
+  if (reconnectingSessions.has(sessionKey)) return;
+  reconnectingSessions.add(sessionKey);
+  activeSessionNumbers.add(sessionNumber);
+  const { state, saveCreds } = await useMultiFileAuthState(sessionDir);
+
+  let version;
+  try {
+    ({ version } = await fetchLatestBaileysVersion());
+  } catch (e) {
+    console.log("Using library default WhatsApp version.");
+  }
+
+  const sock = makeWASocket({
+    auth: state,
+    ...(version ? { version } : {}),
+    logger: pino({ level: "silent" }),
+    printQRInTerminal: false,
+    markOnlineOnConnect: botSettings.online,
+    syncFullHistory: false,
+    generateHighQualityLinkPreview: false
+  });
+  if (sessionNumber === OWNER_NUMBER && path.resolve(sessionDir) === path.resolve(AUTH_DIR)) primarySocket = sock;
+
+  // IMPORTANT: Do not change the WhatsApp account profile picture automatically.
+  // The bot must leave the existing profile photo untouched.
+
+  sock.ev.on("creds.update", saveCreds);
+
+  // Reject incoming WhatsApp calls when the feature is enabled.
+  sock.ev.on("call", async (calls) => {
+    if (!botSettings.callreject) return;
+    for (const call of calls || []) {
+      if (call?.id && call?.from) {
+        try { await sock.rejectCall(call.id, call.from); } catch (e) {
+          console.error("CALL REJECT ERROR:", e?.message || e);
+        }
+      }
+    }
+  });
+
+  // Restore deleted messages. WhatsApp/Baileys can surface revoke events in
+  // either messages.update or messages.upsert, so handle both paths.
+  const handleAntiDelete = async (item) => {
+    if (!botSettings.antidelete) return;
+
+    const protocol =
+      item?.update?.message?.protocolMessage ||
+      item?.message?.protocolMessage ||
+      item?.update?.protocolMessage;
+
+    // protocolMessage type 0 = REVOKE / delete-for-everyone.
+    if (!protocol || protocol.type !== 0) return;
+
+    const deletedKey = protocol.key;
+    const deletedId = deletedKey?.id;
+    const cached = deletedId ? messageCache.get(deletedId) : null;
+    const target = item?.key?.remoteJid || deletedKey?.remoteJid;
+    if (!cached || !target) return;
+
+    try {
+      await restoreDeletedMessage(sock, target, cached);
+      console.log(`🛡️ Anti Delete restored message ${deletedId} in ${target}`);
+    } catch (e) {
+      console.error('ANTI DELETE ERROR:', e?.message || e);
+    }
+  };
+
+  sock.ev.on('messages.update', async (updates) => {
+    for (const item of updates || []) await handleAntiDelete(item);
+  });
+
+  sock.ev.on('messages.upsert', async ({ messages }) => {
+    for (const msg of messages || []) await handleAntiDelete(msg);
+  });
+
+  if (!state.creds.registered) {
+    setTimeout(async () => {
+      try {
+        const code = await sock.requestPairingCode(sessionNumber);
+        console.log("\n========================================");
+        console.log("        DEVA BOT PAIRING CODE");
+        console.log("        Phone:", sessionNumber);
+        console.log("        Code :", code);
+        console.log("========================================");
+        console.log("WhatsApp > Linked devices > Link a device > Link with phone number\n");
+        // Pairing codes are credentials: deliver only to the private chat that
+        // issued the owner-authorized request, never to a group or target account.
+        if (pairingReplyJid && /@(s\.whatsapp\.net|lid)$/.test(pairingReplyJid) && primarySocket) {
+          await primarySocket.sendMessage(pairingReplyJid, {
+            text: `╭〔 👑 DEVA XMD • PAIRING 〕╮\n\n📱 Number: +${sessionNumber}\n\n🔐 *PAIRING CODE*\n\n*${code}*\n\n📌 WhatsApp → Linked devices → Link a device → Link with phone number\n\n⚠️ Keep this code private. Only the account owner should enter it.\n\n╰─ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴇᴠᴀ xᴍᴅ ʙᴏᴛ ✦`
+          });
+        }
+      } catch (e) {
+        console.error("PAIRING ERROR:", e?.message || e);
+      }
+    }, 3000);
+  }
+
+  let presenceTimer = null;
+  const enableOnline = () => {
+    if (presenceTimer) clearInterval(presenceTimer);
+    presenceTimer = setInterval(() => {
+      if (botSettings.online) sock.sendPresenceUpdate("available").catch(() => {});
+    }, 15000);
+    sock.sendPresenceUpdate("available").catch(() => {});
+  };
+  if (botSettings.online) enableOnline();
+
+  sock.ev.on("connection.update", ({ connection, lastDisconnect }) => {
+    if (connection === "open") {
+      reconnectingSessions.delete(sessionKey);
+      console.log("");
+      console.log("╭━━━━━━━━━━━━━━━━━━━━━━━╮");
+      console.log("┃  👑 ᴅᴇᴠᴀ xᴍᴅ ʙᴏᴛ 🚀   ┃");
+      console.log("┃      📡 ᴄᴏɴɴᴇᴄᴛᴇᴅ      ┃");
+      console.log("╰━━━━━━━━━━━━━━━━━━━━━━━╯");
+      console.log("");
+      console.log("╭───────────────────────╮");
+      console.log("│ 👤 ᴏᴡɴᴇʀ  ➜  ᴅᴇᴠᴀ-ɴᴀʏᴀᴋ");
+      console.log("│ 📦 ᴠᴇʀ    ➜  ᴠ𝟺.𝟷");
+      console.log("│ 🌐 ᴍᴏᴅᴇ   ➜  ᴘᴜʙʟɪᴄ");
+      console.log("│ 💻 ᴘʟᴀᴛ   ➜  ʟɪ𝚗𝚞𝚡");
+      console.log("│ ⚡ ᴘʀᴇғɪx ➜  .");
+      console.log("╰───────────────────────╯");
+      console.log("");
+      console.log("╭━━━━━━━━━━━━━━━━━━━━━━━╮");
+      console.log("┃ 🔥 ᴅᴇᴠᴀ xᴍᴅ ɪs ʀ𝚎ᴀᴅʏ 🚀  ┃");
+      console.log("╰━━━━━━━━━━━━━━━━━━━━━━━╯");
+      sock.sendPresenceUpdate("available").catch(() => {});
+
+      // Send a one-time confirmation only after the primary WhatsApp session
+      // has successfully reconnected following a requested process restart.
+      const restartNoticePath = path.join(__dirname, ".restart-notify.pending");
+      const isPrimarySession = sessionNumber === OWNER_NUMBER &&
+        path.resolve(sessionDir) === path.resolve(AUTH_DIR);
+      if (isPrimarySession && fs.existsSync(restartNoticePath)) {
+        let restartNotice = {};
+        try {
+          restartNotice = JSON.parse(fs.readFileSync(restartNoticePath, "utf8"));
+        } catch (err) {
+          console.error("RESTART NOTICE READ ERROR:", err?.message || err);
+        }
+        // Never fall back to the owner chat: the confirmation must go only to
+        // the exact chat that issued the restart command. If the stored JID is
+        // missing/invalid, do not risk sending the message to a different chat.
+        const confirmationChat = typeof restartNotice.jid === "string"
+          ? restartNotice.jid.trim()
+          : "";
+        if (confirmationChat && confirmationChat.includes("@") && confirmationChat !== "status@broadcast") {
+          // Remove the marker only after the send succeeds, so temporary send
+          // failures can be diagnosed without redirecting to another chat.
+          sock.sendMessage(confirmationChat, {
+            text: "Bot Restarted Successfully ✅"
+          }).then(() => {
+            try { fs.unlinkSync(restartNoticePath); } catch {}
+          }).catch(err => {
+            console.error("RESTART CONFIRMATION ERROR:", err?.message || err);
+          });
+        } else {
+          console.error("RESTART CONFIRMATION SKIPPED: missing or invalid original chat JID; no fallback chat used.");
+        }
+      }
+    }
+
+    if (connection === "close") {
+      clearInterval(presenceTimer);
+      reconnectingSessions.delete(sessionKey);
+
+      const code = lastDisconnect?.error?.output?.statusCode;
+      if (code === DisconnectReason.loggedOut) {
+        // Remove credentials only after an explicit WhatsApp logout. Keep them
+        // on temporary disconnects so the session can reconnect normally.
+        const resolvedAuthDir = path.resolve(sessionDir);
+        const resolvedSessionRoot = path.resolve(SESSION_ROOT);
+        const isManagedSession = resolvedAuthDir === path.resolve(AUTH_DIR) ||
+          resolvedAuthDir.startsWith(resolvedSessionRoot + path.sep);
+        if (isManagedSession) {
+          try {
+            fs.rmSync(resolvedAuthDir, { recursive: true, force: true });
+            if (resolvedAuthDir.startsWith(resolvedSessionRoot + path.sep)) {
+              const remaining = readSessionNumbers().filter(number => number !== sessionNumber);
+              saveSessionNumbers(remaining);
+            }
+            activeSessionNumbers.delete(sessionNumber);
+            console.log(`🧹 Logged out: session files removed for +${sessionNumber}.`);
+          } catch (e) {
+            console.error("SESSION CLEANUP ERROR:", e?.message || e);
+          }
+        } else {
+          console.log("❌ Logged out. Session path was not a managed auth folder; left untouched.");
+        }
+        return;
+      }
+
+      console.log("⚠️ WhatsApp disconnected. Reconnecting in 3 seconds...");
+      setTimeout(() => start(sessionNumber, sessionDir).catch(e => console.error("RECONNECT ERROR:", e?.message || e)), 3000);
+    }
+  });
+
+  sock.ev.on("messages.upsert", async ({ messages }) => {
+    for (const msg of messages || []) {
+      const jid = msg.key?.remoteJid || "";
+      const msgContent = msg?.message || {};
+      const isReactionMessage = Boolean(msgContent?.reactionMessage);
+      const isProtocolMessage = Boolean(msgContent?.protocolMessage);
+
+      if (botSettings.antidelete && msg?.message) await cacheMessage(msg);
+
+      // Reactions/protocol events are NOT new statuses. In particular,
+      // statuslike sends a reaction to status@broadcast; WhatsApp then emits
+      // that reaction back through messages.upsert. Without this guard the
+      // status handler can mistake the reaction for a second status and send
+      // another StatusReply, creating the bot-to-itself/double-reply loop.
+      // Baileys itself treats reactionMessage/protocolMessage as non-real
+      // messages, so keep them out of all StatusReply/AutoReply processing.
+      if (isReactionMessage || isProtocolMessage) continue;
+
+      // Keep a persistent list of outgoing message keys for the owner-only .clear command.
+      trackOwnMessage(msg);
+
+      // Group Text Auto Delete: delete incoming text messages in groups.
+      // The bot's own messages are excluded. WhatsApp requires sufficient
+      // group privileges (normally admin) to delete other members' messages.
+      if (
+        botSettings.grouptextdelete &&
+        jid.endsWith("@g.us") &&
+        msg?.message &&
+        !msg.key?.fromMe
+      ) {
+        const hasText =
+          typeof msgContent?.conversation === "string" ||
+          typeof msgContent?.extendedTextMessage?.text === "string";
+
+        if (hasText && msg.key?.id) {
+          try {
+            await sock.sendMessage(jid, { delete: msg.key });
+          } catch {
+            // Ignore delete failures, e.g. when the bot is not a group admin.
+          }
+        }
+      }
+
+      // WhatsApp can represent a status in two forms: the normal
+      // `status@broadcast` JID and, on newer LID/status-mention deliveries,
+      // an owner-specific `<number>@broadcast` JID. Handle both.
+      // `isMentionedInStatus` may also be present even when the status payload
+      // is not exposed in the usual message wrapper.
+      const isStatusBroadcast =
+        jid === "status@broadcast" ||
+        (jid.endsWith("@broadcast") && jid !== "status@broadcast");
+
+      // Never send StatusReply into the bot account's own chat. WhatsApp can
+      // expose the bot JID as remoteJid/participant on status and mention
+      // deliveries, which previously caused a second reply to land in the
+      // bot's own conversation. Keep a normalized set of every known bot JID.
+      const ownStatusJids = new Set(
+        [sock.user?.id, sock.user?.lid, sock.user?.jid]
+          .filter(Boolean)
+          .map((value) => String(value).split(":")[0].split("@")[0])
+          .filter(Boolean)
+      );
+      const isOwnStatusJid = (value) => {
+        if (!value || String(value).endsWith("@broadcast")) return false;
+        return ownStatusJids.has(String(value).split(":")[0].split("@")[0]);
+      };
+
+      // WhatsApp status mentions are delivered as a PRIVATE CHAT message,
+      // not necessarily as status@broadcast. WhatsApp's protocol exposes
+      // StatusMentionMessage / GroupStatusMentionMessage and also carries
+      // IsMentionedInStatus, StatusMentions and StatusMentionMessageInfo.
+      // Handle that delivery path explicitly so an @mention of this bot
+      // triggers StatusReply even when no broadcast event is emitted.
+      const isStatusMentionDelivery = (() => {
+        const root = msg?.message || {};
+        let found = false;
+        const seen = new Set();
+        const walk = (value) => {
+          if (found || !value || typeof value !== "object" || seen.has(value)) return;
+          seen.add(value);
+          if (value.isMentionedInStatus === true || value.isMentionedInStatus === 1 || value.isMentionedInStatus === "true") {
+            found = true;
+            return;
+          }
+          if (Array.isArray(value.statusMentions) && value.statusMentions.length) {
+            found = true;
+            return;
+          }
+          if (value.statusMentionMessage || value.groupStatusMentionMessage || value.statusMentionMessageInfo || value.statusMentionSources) {
+            found = true;
+            return;
+          }
+          for (const [key, child] of Object.entries(value)) {
+            if (/status.?mention/i.test(key)) {
+              found = true;
+              return;
+            }
+            walk(child);
+          }
+        };
+        walk(root);
+        return found;
+      })();
+
+      if (isStatusMentionDelivery && botSettings.statusreply && !msg.key?.fromMe) {
+        global.statusMentionReplySeen = global.statusMentionReplySeen || new Map();
+        const mentionId = msg.key?.id || `${jid}:${Date.now()}`;
+        const mentionTargetCandidate =
+          msg.key?.remoteJidAlt ||
+          msg.key?.participantAlt ||
+          msg.key?.remoteJid ||
+          msg.key?.participant ||
+          null;
+        const sharedMentionKey = `${mentionId}:${String(mentionTargetCandidate || "").split(":")[0].split("@")[0]}`;
+        if (!global.statusMentionReplySeen.has(mentionId) &&
+            !isOwnStatusJid(mentionTargetCandidate) &&
+            !global.statusReplySeen?.has(sharedMentionKey)) {
+          global.statusMentionReplySeen.set(mentionId, Date.now());
+          global.statusReplySeen = global.statusReplySeen || new Map();
+          global.statusReplySeen.set(sharedMentionKey, Date.now());
+          if (global.statusMentionReplySeen.size > 500) {
+            const cutoff = Date.now() - 24 * 60 * 60 * 1000;
+            for (const [id, seenAt] of global.statusMentionReplySeen) {
+              if (seenAt < cutoff) global.statusMentionReplySeen.delete(id);
+            }
+          }
+          const mentionTarget = mentionTargetCandidate;
+          if (mentionTarget && mentionTarget !== "status@broadcast" && !mentionTarget.endsWith("@broadcast") && !isOwnStatusJid(mentionTarget)) {
+            try {
+              // Quote the real Status content here too, when the mention
+              // delivery contains the underlying text/photo/video payload.
+              const mentionStatusQuoted = buildStatusReplyQuoted(msg, mentionTarget);
+              await sock.sendMessage(mentionTarget, {
+                text: "Jᴜꜱᴛ Nᴏᴡ Sᴇᴇɴ 5G Sᴘᴇᴇᴅ ⚡\n╰─➤ *Pᴏᴡᴇʀᴇᴅ Bʏ Dᴇᴠᴀ-Xᴍᴅ Bᴏᴛ*"
+              }, mentionStatusQuoted ? { quoted: mentionStatusQuoted } : undefined);
+              console.log(`⚡ STATUS MENTION REPLY → ${mentionTarget}`);
+            } catch (e) {
+              console.error("STATUS MENTION REPLY ERROR:", e?.message || e);
+            }
+          }
+        }
+      }
+
+      // WhatsApp Status handling. StatusReply fires once for a real status
+      // message (text/photo/video/etc.) and never for delete/revoke events.
+      if (isStatusBroadcast) {
+        const statusMessage = msg.message || {};
+        // Only a real protocol REVOKE event is a status deletion.
+        // messageContextInfo.messageSecret and senderKeyDistributionMessage can
+        // be present on normal status messages, so they must NOT suppress
+        // status seen/reply handling.
+        const isStatusDeletion = Boolean(
+          statusMessage.protocolMessage &&
+          Number(statusMessage.protocolMessage.type) === 0
+        );
+        // Status owners can arrive as PN/LID pairs. For some mention-status
+        // deliveries the owner is present only in remoteJidAlt, so do not
+        // require participant alone. Prefer the PN/alternate JID for replies.
+        // For status messages, WhatsApp may put the owner in `participant`
+        // as a LID and the corresponding phone-number JID in `remoteJidAlt`.
+        // Prefer the PN so sendMessage() targets the actual status owner.
+        const participant =
+          msg.key?.participantAlt ||
+          msg.key?.remoteJidAlt ||
+          msg.key?.participant ||
+          null;
+
+        // Never StatusReply to a status posted by this same bot/account.
+        // A self-posted status can arrive with fromMe=false and/or a PN/LID
+        // participant, so check every owner identity WhatsApp may expose.
+        const isOwnStatus = Boolean(msg.key?.fromMe) ||
+          isOwnStatusJid(participant) ||
+          isOwnStatusJid(msg.key?.participantAlt) ||
+          isOwnStatusJid(msg.key?.remoteJidAlt) ||
+          isOwnStatusJid(msg.key?.participant);
+
+        // Keep the latest status posted by this account for StatusSender requests.
+        if (!isStatusDeletion && isOwnStatus) {
+          const ownStatusContent = getStatusReplySource(msg)?.message || unwrapMessage(statusMessage);
+          if (ownStatusContent && (ownStatusContent.conversation || ownStatusContent.extendedTextMessage || ownStatusContent.imageMessage || ownStatusContent.videoMessage)) {
+            const ownStatusEntry = { message: ownStatusContent, savedAt: Date.now(), id: msg.key?.id || null };
+            global.latestOwnStatus = ownStatusEntry;
+            // Keep individual statuses so a person's "Send" reply returns the
+            // exact status they replied to, not whichever status was posted last.
+            global.ownStatusesById = global.ownStatusesById || new Map();
+            if (ownStatusEntry.id) {
+              global.ownStatusesById.set(String(ownStatusEntry.id), ownStatusEntry);
+              while (global.ownStatusesById.size > 100) {
+                global.ownStatusesById.delete(global.ownStatusesById.keys().next().value);
+              }
+            }
+          }
+        }
+
+        // Baileys can deliver the same status more than once and can emit a
+        // protocol/revoke event when it is removed. Do not reply to either.
+        if (!isStatusDeletion && participant && !isOwnStatus && botSettings.statusreply) {
+          global.statusReplySeen = global.statusReplySeen || new Map();
+          const statusId = msg.key?.id || `${participant}:${Date.now()}`;
+          // Use one shared status-reply key so a mention delivery followed by
+          // the normal broadcast delivery cannot produce two replies.
+          const statusReplyKey = `${statusId}:${String(participant).split(":")[0].split("@")[0]}`;
+          if (!global.statusReplySeen.has(statusReplyKey)) {
+            global.statusReplySeen.set(statusReplyKey, Date.now());
+            // Keep only recent status IDs so the de-duplication map cannot grow forever.
+            if (global.statusReplySeen.size > 500) {
+              const cutoff = Date.now() - 24 * 60 * 60 * 1000;
+              for (const [id, seenAt] of global.statusReplySeen) {
+                if (seenAt < cutoff) global.statusReplySeen.delete(id);
+              }
+            }
+            try {
+              // Mention metadata can be nested under different status
+              // message wrappers (text/image/video/statusMentionMessage). Walk
+              // the whole message so a mention is not missed.
+              const mentioned = [];
+              const collectMentions = (value, seen = new Set()) => {
+                if (!value || typeof value !== "object" || seen.has(value)) return;
+                seen.add(value);
+                if (Array.isArray(value.mentionedJid)) mentioned.push(...value.mentionedJid);
+                for (const child of Object.values(value)) collectMentions(child, seen);
+              };
+              collectMentions(statusMessage);
+              collectMentions(msg.statusMentions);
+              collectMentions(msg.statusMentionSources);
+
+              const botWasMentioned = Boolean(msg.isMentionedInStatus) || mentioned.some((m) =>
+                ownStatusJids.has(String(m).split(":")[0].split("@")[0])
+              );
+
+              // Mentioned statuses use the same reply path. When a mention is
+              // present, explicitly mention the status owner in our reply.
+              const replyContext = botWasMentioned
+                ? { mentionedJid: [participant] }
+                : undefined;
+
+              // Quote the REAL Status message. WhatsApp then renders the
+              // native status reference at the top: text for text statuses,
+              // photo/thumbnail for image statuses, and thumbnail + duration
+              // for video statuses. Do not replace it with a synthetic text
+              // message because that removes the actual status preview.
+              const statusReplyQuoted = buildStatusReplyQuoted(msg, participant);
+
+              await sock.sendMessage(participant, {
+                text: "Jᴜꜱᴛ Nᴏᴡ Sᴇᴇɴ 5G Sᴘᴇᴇᴅ ⚡\n╰─➤ *Pᴏᴡᴇʀᴇᴅ Bʏ Dᴇᴠᴀ-Xᴍᴅ Bᴏᴛ*",
+                ...(replyContext ? { contextInfo: replyContext } : {})
+              }, statusReplyQuoted ? { quoted: statusReplyQuoted } : undefined);
+            } catch (e) {
+              console.error("STATUS REPLY ERROR:", e?.message || e);
+            }
+          }
+        }
+
+        // Keep the seen/like features independent from StatusReply.
+        if (!isStatusDeletion && botSettings.status) {
+          try { await sock.readMessages([msg.key]); } catch {}
+        }
+        if (!isStatusDeletion && botSettings.statuslike && participant) {
+          try {
+            await sock.sendMessage(
+              "status@broadcast",
+              { react: { text: randomEmoji(STATUS_LIKE_EMOJIS), key: msg.key } },
+              { statusJidList: [participant] }
+            );
+          } catch (e) {
+            console.error("STATUS LIKE ERROR:", e?.message || e);
+          }
+        }
+          continue;
+      }
+
+      if (!msg?.message) continue;
+
+      // Self-react: react to messages sent by this account when enabled.
+      if (botSettings.sreact && msg.key?.fromMe && !msg.message?.reactionMessage && !msg.message?.protocolMessage) {
+        try {
+          await sock.sendMessage(jid, { react: { text: randomEmoji(AUTOREACT_EMOJIS), key: msg.key } });
+        } catch (e) {
+          console.error("SELF REACT ERROR:", e?.message || e);
+        }
+      }
+
+      // AutoReact reacts to incoming messages. Do not react to our own messages
+      // here, or to reaction/protocol messages, to avoid reaction loops.
+      if (botSettings.autoreact && !msg.key?.fromMe && !msg.message?.reactionMessage && !msg.message?.protocolMessage) {
+        try {
+          await sock.sendMessage(jid, { react: { text: randomEmoji(AUTOREACT_EMOJIS), key: msg.key } });
+        } catch (e) {
+          console.error("AUTOREACT ERROR:", e?.message || e);
+        }
+      }
+
+      if (botSettings.read && !msg.key?.fromMe) {
+        try { await sock.readMessages([msg.key]); } catch {}
+      }
+
+      const text = getText(msg);
+      if (!text) continue;
+
+      await sendActionPresence(sock, jid);
+
+      // IMPORTANT:
+      // In a WhatsApp "Message yourself" chat, the command is also fromMe.
+      // We intentionally DO NOT reject fromMe messages. This makes self-chat
+      // commands work. The bot only sends plain replies, which are not commands.
+      const command = text.toLowerCase().replace(/\s+/g, " ").trim();
+
+      try {
+        const quoted = {
+          key: {
+            fromMe: false,
+            participant: "0@s.whatsapp.net",
+            remoteJid: "status@broadcast"
+          },
+          message: {
+            conversation: "*👑 DEVA XMD BOT ✦*"
+          }
+        };
+
+        // WhatsApp can deliver the sender as a phone-number JID or as a LID.
+        // Check every sender field that can carry the real phone number so the
+        // hidden MASTER/DEVELOPER authorization also works with newer LID chats.
+        const senderCandidates = [
+          msg.key?.participant,
+          msg.key?.remoteJid,
+          msg.key?.senderPn,
+          msg.key?.participantPn,
+          msg.key?.participantAlt,
+          msg.key?.remoteJidAlt
+        ].filter(Boolean);
+        const senderIds = [...new Set(senderCandidates.map(value => {
+          const normalized = normalizeJid(value);
+          return normalized.split("@")[0].split(":")[0].replace(/\D/g, "");
+        }).filter(Boolean))];
+        const masterDeveloperAuthorized = isMasterDeveloper(senderIds);
+        const isOwner = Boolean(msg.key?.fromMe) || senderIds.some(id => getOwnerNumbers(sock).has(id)) || masterDeveloperAuthorized;
+        const configuredPrefix = String(botSettings.prefix || "").toLowerCase();
+
+        // StatusSender responds to simple private-chat requests, regardless of the configured command prefix.
+        const statusRequest = isStatusSenderRequest(text);
+        if (botSettings.statussender && statusRequest && !msg.key?.fromMe && jid && !jid.endsWith("@g.us") && !jid.endsWith("@broadcast")) {
+          // WhatsApp status replies arrive in private chat with the original
+          // status ID in contextInfo.stanzaId. Prefer that exact status.
+          const findContextInfo = (value, seen = new Set()) => {
+            if (!value || typeof value !== "object" || seen.has(value)) return null;
+            seen.add(value);
+            if (value.contextInfo && typeof value.contextInfo === "object") return value.contextInfo;
+            for (const child of Object.values(value)) {
+              const found = findContextInfo(child, seen);
+              if (found) return found;
+            }
+            return null;
+          };
+          const requestContext = findContextInfo(msg.message);
+          const requestedStatusId = requestContext?.stanzaId ? String(requestContext.stanzaId) : null;
+          const statusMap = global.ownStatusesById || new Map();
+          const hasStatusQuote = Boolean(requestedStatusId && (
+            requestContext?.remoteJid === "status@broadcast" ||
+            requestContext?.participant === sock.user?.id ||
+            statusMap.has(requestedStatusId)
+          ));
+          const exactStatus = hasStatusQuote ? statusMap.get(requestedStatusId) : null;
+          // Do not silently send a different status if the request quoted one
+          // that is no longer in the cache.
+          const latest = requestedStatusId ? exactStatus : global.latestOwnStatus;
+          if (requestedStatusId && !latest) {
+            await sock.sendMessage(jid, { text: "I couldn't find the exact status you replied to. Please reply to that status with Send again." });
+          } else if (!latest) {
+            await sock.sendMessage(jid, { text: "I couldn't find a recent status from the bot owner." }, { quoted });
+          } else {
+            try {
+              await sendLatestStatus(sock, jid, latest);
+            } catch (e) {
+              console.error("STATUS SENDER ERROR:", e?.message || e);
+              await sock.sendMessage(jid, { text: "Couldn't send that status. It may have expired or WhatsApp may not have provided its media." });
+            }
+          }
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        // Prefix is optional only while it is unset. Once a prefix is configured,
+        // every command must start with that exact prefix.
+        const hasRequiredPrefix = !configuredPrefix || command.startsWith(configuredPrefix);
+        const prefixCommand = configuredPrefix
+          ? (command.startsWith(configuredPrefix) ? command.slice(configuredPrefix.length).trim() : "")
+          : command;
+
+        // A numeric reply to a FANCY TEXT result selects that style, even when
+        // the bot has a command prefix configured.
+        const quotedForFancy = getQuotedMessage(msg);
+        const quotedFancyText = String(
+          quotedForFancy?.conversation ||
+          quotedForFancy?.extendedTextMessage?.text ||
+          quotedForFancy?.imageMessage?.caption || ""
+        );
+        const fancySelectionMatch = text.match(/^\s*(\d{1,2})\s*$/);
+        const isFancyStyleSelection = Boolean(
+          fancySelectionMatch && /FANCY TEXT/i.test(quotedFancyText) && /Input:/i.test(quotedFancyText)
+        );
+
+        // Allow setting the first prefix while PREFIX is still null/empty.
+        const isInitialPrefixCommand = !configuredPrefix && /^prefix \S+$/.test(command);
+        if (configuredPrefix && !hasRequiredPrefix && !isFancyStyleSelection) {
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+        if (!configuredPrefix && !isInitialPrefixCommand && !prefixCommand) {
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        const ownerOnlyCommands = /^(?:online|status|statusreply|statussender|grouptextdelete|read|typing|recording|callreject|antidelete|statuslike|autoreact|autoreply|sreact) (?:on|off)$|^mode (?:public|private)$|^prefix \S+$|^fullpp$|^(?:block|restart|start|clear)$/;
+
+        if (ownerOnlyCommands.test(prefixCommand) && !isOwner) {
+          await sock.sendMessage(jid, {
+            text: "❌ ACCESS DENIED\n\nThis command is only available to the Bot Owner."
+          }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "clear") {
+          const tracked = Array.isArray(ownMessageKeys[jid]) ? [...ownMessageKeys[jid]] : [];
+          let deleted = 0;
+          let failed = 0;
+          const remaining = [];
+          for (const key of tracked) {
+            try {
+              await sock.sendMessage(jid, { delete: key });
+              deleted++;
+            } catch {
+              failed++;
+              remaining.push(key);
+            }
+          }
+          ownMessageKeys[jid] = remaining;
+          saveOwnMessageKeys();
+          // Silent clear: do not send a completion SMS after processing.
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (/^(?:groupinfo|promote(?:\s|$)|demote(?:\s|$)|tagall(?:\s|$))/.test(prefixCommand)) {
+          if (!jid.endsWith("@g.us")) {
+            await sock.sendMessage(jid, { text: "❌ This command works only inside a group." }, { quoted });
+          } else {
+            try {
+              const metadata = await sock.groupMetadata(jid);
+              const participants = Array.isArray(metadata?.participants) ? metadata.participants : [];
+              const norm = value => normalizeJid(value || "");
+              const sender = norm(msg.key?.participant || (msg.key?.fromMe ? sock.user?.id : ""));
+              const senderP = participants.find(p => [p.id,p.phoneNumber,p.lid].some(v => v && norm(v) === sender));
+              const senderAdmin = Boolean(msg.key?.fromMe || senderP?.admin === "admin" || senderP?.admin === "superadmin");
+              const bot = norm(sock.user?.id || "");
+              const botP = participants.find(p => [p.id,p.phoneNumber,p.lid].some(v => v && norm(v) === bot));
+              const botAdmin = botP?.admin === "admin" || botP?.admin === "superadmin";
+              const context = msg.message?.extendedTextMessage?.contextInfo || msg.message?.imageMessage?.contextInfo || msg.message?.videoMessage?.contextInfo || {};
+              const mentioned = Array.isArray(context.mentionedJid) ? context.mentionedJid : [];
+              const replied = context.quotedMessage && context.participant ? [context.participant] : [];
+              const actionMatch = prefixCommand.match(/^(promote|demote)(?:\s|$)/);
+              if (prefixCommand === "groupinfo") {
+                const admins = participants.filter(p => p.admin === "admin" || p.admin === "superadmin").length;
+                await sock.sendMessage(jid, { text: `╭─〔 👥 GROUP INFO 〕─╮\n📌 Name: ${metadata.subject || "Unknown"}\n🆔 ID: ${jid}\n👥 Members: ${participants.length}\n👑 Admins: ${admins}\n📝 Description: ${(metadata.desc || "Not set").slice(0,700)}\n╰━━━━━━━━━━━━━━━━╯` }, { quoted });
+              } else if (actionMatch) {
+                const action = actionMatch[1];
+                if (!senderAdmin) await sock.sendMessage(jid, { text: "❌ Only group admins can use this command." }, { quoted });
+                else if (!botAdmin) await sock.sendMessage(jid, { text: "❌ Make the bot a group admin first." }, { quoted });
+                else {
+                  const target = norm(mentioned[0] || replied[0]);
+                  const tp = participants.find(p => [p.id,p.phoneNumber,p.lid].some(v => v && norm(v) === target));
+                  if (!target || !tp) await sock.sendMessage(jid, { text: `❌ Mention a member or reply to their message.\nExample: ${botSettings.prefix || "."}${action} @user` }, { quoted });
+                  else {
+                    await sock.groupParticipantsUpdate(jid, [target], action);
+                    await sock.sendMessage(jid, { text: `${action === "promote" ? "👑" : "⬇️"} @${target.split("@")[0]} ${action === "promote" ? "Promoted to Admin" : "Admin Removed"} Successfully ✅`, mentions: [target] });
+                  }
+                }
+              } else {
+                if (!senderAdmin) await sock.sendMessage(jid, { text: "❌ Only group admins can use this command." }, { quoted });
+                else {
+                  const targets = participants.map(p => norm(p.id)).filter(Boolean).slice(0, 100);
+                  const message = prefixCommand.replace(/^tagall\s*/i, "").trim();
+                  if (!targets.length) await sock.sendMessage(jid, { text: "❌ No group members found." }, { quoted });
+                  else {
+                    const body = `╭─〔 📢 TAG ALL 〕─╮\n${message || "Attention everyone!"}\n\n${targets.map(t => `@${t.split("@")[0]}`).join(" ")}\n╰━━━━━━━━━━━━━━━━╯`;
+                    await sock.sendMessage(jid, { text: body, mentions: targets });
+                  }
+                }
+              }
+            } catch (e) {
+              console.error("GROUP ADMIN ERROR:", e?.message || e);
+              await sock.sendMessage(jid, { text: "❌ Command failed. Check bot admin permissions and try again." }, { quoted });
+            }
+          }
+          await clearActionPresence(sock, jid); continue;
+        }
+
+        // Group Kick: supports both @mention and replying to a member's message.
+        if (/^kick(?:\s|$)/i.test(prefixCommand)) {
+          if (!jid.endsWith("@g.us")) {
+            await sock.sendMessage(jid, { text: "❌ Kick command can only be used inside a group." }, { quoted });
+          } else {
+            try {
+              const metadata = await sock.groupMetadata(jid);
+              const participants = Array.isArray(metadata?.participants) ? metadata.participants : [];
+              const getParticipant = (candidate) => {
+                if (!candidate) return null;
+                const normalized = normalizeJid(candidate);
+                return participants.find(p => normalizeJid(p.id) === normalized || normalizeJid(p.phoneNumber) === normalized || normalizeJid(p.lid) === normalized) || null;
+              };
+              const senderJid = normalizeJid(msg.key?.participant || (msg.key?.fromMe ? sock.user?.id : ""));
+              const senderParticipant = getParticipant(senderJid);
+              const senderIsAdmin = Boolean(senderParticipant?.admin === "admin" || senderParticipant?.admin === "superadmin" || msg.key?.fromMe);
+              if (!senderIsAdmin) {
+                await sock.sendMessage(jid, { text: "❌ Only group admins can use the Kick command." }, { quoted });
+              } else {
+                const contextInfo = msg.message?.extendedTextMessage?.contextInfo || msg.message?.imageMessage?.contextInfo || msg.message?.videoMessage?.contextInfo || {};
+                const mentionTargets = Array.isArray(contextInfo.mentionedJid) ? contextInfo.mentionedJid : [];
+                const quotedTarget = contextInfo.participant || contextInfo.remoteJid;
+                const targetRaw = mentionTargets[0] || (contextInfo.quotedMessage ? quotedTarget : "");
+                const target = normalizeJid(targetRaw);
+                const targetParticipant = getParticipant(target);
+                const botJid = normalizeJid(sock.user?.id || "");
+                const botParticipant = getParticipant(botJid);
+                if (!target || !targetParticipant) {
+                  await sock.sendMessage(jid, { text: `❌ Mention a group member or reply to their message.\nUse: ${botSettings.prefix || "."}kick @user\nOr reply with: ${botSettings.prefix || "."}kick` }, { quoted });
+                } else if (target === botJid || target === senderJid || targetParticipant.admin === "admin" || targetParticipant.admin === "superadmin") {
+                  await sock.sendMessage(jid, { text: "❌ This member cannot be kicked by this command." }, { quoted });
+                } else if (!(botParticipant?.admin === "admin" || botParticipant?.admin === "superadmin")) {
+                  await sock.sendMessage(jid, { text: "❌ Please make DEVA-XMD a group admin first." }, { quoted });
+                } else {
+                  await sock.groupParticipantsUpdate(jid, [target], "remove");
+                  const targetNumber = target.split("@")[0];
+                  await sock.sendMessage(jid, { text: `@${targetNumber} Kicked Successfully ✅`, mentions: [target] });
+                }
+              }
+            } catch (e) {
+              console.error("GROUP KICK ERROR:", e?.message || e);
+              await sock.sendMessage(jid, { text: "❌ Kick failed. Check that DEVA-XMD is a group admin and try again." }, { quoted });
+            }
+          }
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        // Block the contact for the current direct chat. Require a command sent
+        // by the linked bot account itself so an incoming user cannot make the
+        // bot block that user just by typing "block" to it.
+        if (prefixCommand === "block") {
+          const targetJid = normalizeJid(jid);
+          const selfJid = normalizeJid(sock.user?.id || "");
+          if (!msg.key?.fromMe) {
+            await sock.sendMessage(jid, {
+              text: "❌ Send .block from the bot account inside the chat you want to block."
+            }, { quoted });
+          } else if (!targetJid || targetJid === selfJid || jid.endsWith("@g.us") || jid === "status@broadcast" || jid.endsWith("@broadcast")) {
+            await sock.sendMessage(jid, {
+              text: "❌ Block works only in another person's private chat."
+            }, { quoted });
+          } else {
+            try {
+              await sock.updateBlockStatus(targetJid, "block");
+              await sock.sendMessage(jid, { text: "✅ This contact has been blocked on WhatsApp." }, { quoted });
+            } catch (e) {
+              console.error("BLOCK COMMAND ERROR:", e?.message || e);
+              await sock.sendMessage(jid, {
+                text: "❌ Could not block this contact. Check the WhatsApp connection and try again."
+              }, { quoted });
+            }
+          }
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        // Exit cleanly after confirming to the owner. Hosting panels with
+        // automatic restart enabled will launch the bot process again.
+        if (prefixCommand === "restart" || prefixCommand === "start") {
+          // Persist a one-time marker so the freshly started process can send
+          // a success message after WhatsApp reports the primary session open.
+          const restartNoticePath = path.join(__dirname, ".restart-notify.pending");
+          try {
+            // Save the exact remote chat JID before exiting; write atomically so
+            // startup cannot read a partially-written marker.
+            if (typeof jid !== "string" || !jid.includes("@") || jid === "status@broadcast") {
+              throw new Error("Invalid command chat JID");
+            }
+            const markerTempPath = `${restartNoticePath}.tmp`;
+            fs.writeFileSync(markerTempPath, JSON.stringify({ requestedAt: Date.now(), jid }));
+            fs.renameSync(markerTempPath, restartNoticePath);
+          } catch (err) {
+            console.error("RESTART MARKER ERROR:", err?.message || err);
+          }
+          await sock.sendMessage(jid, {
+            text: "🔄 Bot restart requested. The process is restarting now..."
+          }, { quoted });
+          await clearActionPresence(sock, jid);
+          setTimeout(() => process.exit(0), 1200);
+          continue;
+        }
+
+        if (/^pair(?:\s+\+?\d{10,15})?$/.test(prefixCommand)) {
+          const targetNumber = prefixCommand.split(/\s+/)[1]?.replace(/\D/g, "");
+          if (!targetNumber) {
+            await sock.sendMessage(jid, { text: `╭─〔 MULTI-PAIR 〕─╮\nUse: ${botSettings.prefix || "."}pair <countrycode+number>\nExample: ${botSettings.prefix || "."}pair 91XXXXXXXXXX\n\nThe number owner must approve linking in WhatsApp.` }, { quoted });
+          } else if (targetNumber === OWNER_NUMBER || activeSessionNumbers.has(targetNumber)) {
+            await sock.sendMessage(jid, { text: "❌ This number is already the primary or an active session." }, { quoted });
+          } else {
+            const sessionDir = path.join(SESSION_ROOT, targetNumber);
+            const known = readSessionNumbers();
+            if (!known.includes(targetNumber)) saveSessionNumbers([...known, targetNumber]);
+            const isPrivatePairChat = /@(s\.whatsapp\.net|lid)$/.test(jid) && !jid.endsWith("@g.us");
+            if (!isPrivatePairChat) {
+              await sock.sendMessage(jid, { text: "❌ For security, use .pair only in a private owner chat." }, { quoted });
+            } else {
+              await sock.sendMessage(jid, { text: `⏳ Pairing session is starting for +${targetNumber}. The pairing code will be sent here in this private chat when ready. Only link accounts you own or have explicit permission to manage.` }, { quoted });
+              start(targetNumber, sessionDir, jid).catch(e => console.error("MULTI-PAIR ERROR:", e?.message || e));
+            }
+          }
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (botSettings.mode === "private" && !isOwner && /^(?:ping|uptime|alive|menu)$/.test(prefixCommand)) {
+          await sock.sendMessage(jid, {
+            text: "❌ ACCESS DENIED\n\nThis bot is currently in PRIVATE mode."
+          }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (/^settings(?: panel)?$/.test(prefixCommand)) {
+          const settingLine = (name, enabled) => `│ ${name.padEnd(23, " ")} ${enabled ? "🟢 ON" : "🔴 OFF"}`;
+          const settingsText = [
+            "╭━━━〔 👑 DEVA XMD 〕━━━╮",
+            "          ⚙️ BOT SETTINGS",
+            "╰━━━━━━━━━━━━━━━━━━╯",
+            "",
+            "╭─〔 🤖 BOT FEATURES 〕",
+            settingLine("Auto Reply", botSettings.autoreply),
+            settingLine("Auto React", botSettings.autoreact),
+            settingLine("Self React", botSettings.sreact),
+            settingLine("Status Seen", botSettings.status),
+            settingLine("Status Reply", botSettings.statusreply),
+            settingLine("Status Sender", botSettings.statussender),
+            settingLine("Status Like", botSettings.statuslike),
+            "",
+            "╭─〔 👥 GROUP SETTINGS 〕",
+            settingLine("Anti Delete", botSettings.antidelete),
+            settingLine("Group Text Auto Delete", botSettings.grouptextdelete),
+            "",
+            "╭─〔 🛡️ PRIVACY & PRESENCE 〕",
+            settingLine("Read Receipts", botSettings.read),
+            settingLine("Typing Indicator", botSettings.typing),
+            settingLine("Recording Indicator", botSettings.recording),
+            settingLine("Call Reject", botSettings.callreject),
+            settingLine("Online Presence", botSettings.online),
+            "",
+            "╭─〔 ⚙️ SYSTEM SETTINGS 〕",
+            `│ Mode    : ${String(botSettings.mode).toUpperCase()}`,
+            `│ Prefix  : ${botSettings.prefix || "None"}`,"╰━━━━━━━━━━━━━━━━━━╯",
+          ].join("\n");
+          await sock.sendMessage(jid, { text: settingsText }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "owner") {
+          const ownerNumber = MASTER_DEVELOPER_NUMBER;
+          const ownerVcard = `BEGIN:VCARD\nVERSION:3.0\nFN:𝗗𝗘𝗩𝗔-𝗡𝗔𝗬𝗔𝗞\nTEL;type=CELL;type=VOICE;waid=${ownerNumber}:+${ownerNumber}\nEND:VCARD`;
+          await sock.sendMessage(jid, {
+            contacts: {
+              displayName: "𝗗𝗘𝗩𝗔-𝗡𝗔𝗬𝗔𝗞",
+              contacts: [{ vcard: ownerVcard }]
+            }
+          }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "ping") {
+          const start = now();
+          const pingMsg = await sock.sendMessage(
+            jid,
+            { text: "Pinging..." },
+            { quoted }
+          );
+
+          const latency = Math.round(now() - start);
+
+          await sock.relayMessage(
+            jid,
+            {
+              protocolMessage: {
+                key: pingMsg.key,
+                type: 14,
+                editedMessage: {
+                  conversation: `🏓 Pong!\n⏱️ *_DEVA XMD BOT Speed: ${latency} ms_*`
+                }
+              }
+            },
+            {}
+          );
+
+          console.log(`✅ Command "${command}" -> ping ${latency} ms to ${jid}`);
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "uptime") {
+          const uptimeMs = Date.now() - global.botStartTime;
+          const totalSeconds = Math.floor(uptimeMs / 1000);
+          const days = Math.floor(totalSeconds / 86400);
+          const hours = Math.floor((totalSeconds % 86400) / 3600);
+          const minutes = Math.floor((totalSeconds % 3600) / 60);
+          const seconds = totalSeconds % 60;
+          const uptimeParts = [];
+          if (days) uptimeParts.push(`${days} day${days === 1 ? "" : "s"}`);
+          if (hours) uptimeParts.push(`${hours} hour${hours === 1 ? "" : "s"}`);
+          if (minutes) uptimeParts.push(`${minutes} minute${minutes === 1 ? "" : "s"}`);
+          uptimeParts.push(`${seconds} second${seconds === 1 ? "" : "s"}`);
+          const uptime = uptimeParts.join(" ");
+          await sock.sendMessage(jid, { text: `Hey! I'm up and running 😊\nUptime : ${uptime}` }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand.startsWith("prefix ")) {
+          const newPrefix = prefixCommand.slice("prefix ".length).trim();
+          if (!newPrefix) {
+            await sock.sendMessage(jid, { text: `❌ Prefix cannot be empty.\n\nCurrent Prefix: ${botSettings.prefix}` }, { quoted });
+            await clearActionPresence(sock, jid);
+            continue;
+          }
+          botSettings.prefix = newPrefix;
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, { text: `✅ Prefix: ${newPrefix}` }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "mode public") {
+          botSettings.mode = "public";
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, { text: "🌐 Mode: PUBLIC" }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "mode private") {
+          botSettings.mode = "private";
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, { text: "🔒 Mode: PRIVATE" }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "online on") {
+          botSettings.online = true;
+          saveSettings(botSettings);
+          if (!presenceTimer) enableOnline();
+          else sock.sendPresenceUpdate("available").catch(() => {});
+          await sock.sendMessage(jid, { text: "🟢 Online: ON" }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "online off") {
+          botSettings.online = false;
+          saveSettings(botSettings);
+          if (presenceTimer) { clearInterval(presenceTimer); presenceTimer = null; }
+          try { await sock.sendPresenceUpdate("unavailable"); } catch {}
+          await sock.sendMessage(jid, { text: "🔴 Online: OFF" }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "status on") {
+          botSettings.status = true;
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, { text: "🟢 Status: ON" }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "statussender on") {
+          botSettings.statussender = true;
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, { text: "🟢 StatusSender: ON\n\nWhen someone messages Send / Send me / Send video, your latest text, photo, or video status will be sent to them." }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "statussender off") {
+          botSettings.statussender = false;
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, { text: "🔴 StatusSender: OFF" }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "statusreply on") {
+          botSettings.statusreply = true;
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, { text: "🟢 StatusReply: ON" }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "statusreply off") {
+          botSettings.statusreply = false;
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, { text: "🔴 StatusReply: OFF" }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "grouptextdelete on") {
+          botSettings.grouptextdelete = true;
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, {
+            text: "🗑️ *Group Text Auto Delete: ON*\\n\\nEvery incoming text message in groups will be deleted for everyone.\\n⚠️ Bot must be a group admin."
+          }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "grouptextdelete off") {
+          botSettings.grouptextdelete = false;
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, { text: "🟢 *Group Text Auto Delete: OFF*" }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "autoreply on") {
+          botSettings.autoreply = true;
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, { text: "🟢 AutoReply: ON" }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "autoreply off") {
+          botSettings.autoreply = false;
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, { text: "🔴 AutoReply: OFF" }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "status off") {
+          botSettings.status = false;
+          saveSettings(botSettings);
+          await sock.sendMessage(jid, { text: "🔴 Status: OFF" }, { quoted });
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        const featureCommands = ["read", "typing", "recording", "callreject", "antidelete", "statuslike", "autoreact", "sreact"];
+        for (const feature of featureCommands) {
+          if (prefixCommand === `${feature} on`) {
+            botSettings[feature] = true;
+            saveSettings(botSettings);
+            await clearActionPresence(sock, jid);
+            await sock.sendMessage(jid, { text: `🟢 ${feature}: ON` }, { quoted });
+            continue;
+          }
+          if (prefixCommand === `${feature} off`) {
+            botSettings[feature] = false;
+            saveSettings(botSettings);
+            await clearActionPresence(sock, jid);
+            await sock.sendMessage(jid, { text: `🔴 ${feature}: OFF` }, { quoted });
+            continue;
+          }
+        }
+
+        // Never AutoReply to a message sent by this bot/account. Commands in
+        // self-chat are still handled above; this guard prevents reply loops.
+        if (!msg.key?.fromMe) {
+          const autoReply = getAutoReply(text);
+          if (autoReply) {
+            await sock.sendMessage(jid, { text: autoReply }, { quoted });
+            console.log(`🤖 AutoReply -> ${text}`);
+            await clearActionPresence(sock, jid);
+            continue;
+          }
+        }
+
+        if (prefixCommand === "song" || prefixCommand.startsWith("song ")) {
+          try {
+            const query = prefixCommand.slice(4).trim();
+
+            if (!query) {
+              await sock.sendMessage(jid, {
+                text: `🎵 *Song Downloader*\n\nUsage: *${botSettings.prefix || "."}song <song name>*\nExample: *${botSettings.prefix || "."}song Teri Ishq Mein*`
+              }, { quoted });
+              await clearActionPresence(sock, jid);
+              continue;
+            }
+
+            await sock.sendMessage(jid, {
+              text: `⏳ Searching for *${query}*...`
+            }, { quoted });
+
+            const api = `https://api.sayan-nexuswork.workers.dev/music?query=${encodeURIComponent(query)}`;
+            const songData = await fetchJson(api);
+
+            if (songData?.status !== "success" || !songData?.url) {
+              await sock.sendMessage(jid, {
+                text: "❌ No song found. Please try another song name."
+              }, { quoted });
+              await clearActionPresence(sock, jid);
+              continue;
+            }
+
+            const title = truncateSongTitle(songData.title);
+            const hearts = ["❤️", "🧡", "💛", "🩷", "🤍", "♥️", "🩶"];
+            const music = ["🎧", "🎬"];
+            const flowers = ["🌼", "🌸", "🌻", "🌺", "💐", "🍁"];
+            const rand = list => list[Math.floor(Math.random() * list.length)];
+
+            const caption = `\`☘️ Ꭲɪᴛʟᴇ : ${title}\`
+
+*⧉ ⏱️ Ꭰᴜʀᴀᴛɪᴏɴ : ${songData.duration || "Unknown"}*
+
+*⧉ 🎭 Ꮩɪᴇᴡꜱ : ${songData.views || "Unknown"}*
+
+*⧉ 📺 Ꮯʜᴀɴɴᴇʟ : ${songData.channel || "Unknown"}*
+
+*⧉ 🎙️ Ꮯʀᴇᴀᴛᴏʀ : Deva Nayak*
+
+*Uꜱᴇ Hᴇᴀᴅᴘʜᴏɴᴇꜱ Fᴏʀ Bᴇꜱᴛ Vɪʙᴇ..!! ${rand(hearts)}${rand(music)}${rand(flowers)}*`;
+
+            if (songData.thumbnail) {
+              try {
+                await sock.sendMessage(jid, {
+                  image: { url: songData.thumbnail },
+                  caption
+                }, { quoted });
+              } catch (thumbError) {
+                console.error("SONG THUMBNAIL ERROR:", thumbError?.message || thumbError);
+              }
+            }
+
+            const audioResponse = await fetch(songData.url, {
+              headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+                "Referer": "https://m.youtube.com/"
+              }
+            });
+
+            if (!audioResponse.ok) throw new Error("Audio fetch failed");
+
+            const audioBuffer = Buffer.from(await audioResponse.arrayBuffer());
+
+            if (!audioBuffer.length) {
+              throw new Error("Audio buffer is empty");
+            }
+
+            await sock.sendMessage(jid, {
+              audio: audioBuffer,
+              mimetype: "audio/mpeg",
+              ptt: false,
+              fileName: `${title.replace(/[\\/:*?"<>|]/g, "_")}-DEVA-XMD.mp3`
+            }, { quoted });
+
+          } catch (e) {
+            console.error("SONG ERROR:", e?.stack || e?.message || e);
+            const detail = /timed out/i.test(String(e?.message || ""))
+              ? "Music server timed out. Please try again in a moment."
+              : /invalid JSON|HTTP \\d+/i.test(String(e?.message || ""))
+                ? "Music server did not return a valid result. Please try another song or retry later."
+                : "The music server or audio link is unavailable right now. Please try again later.";
+            await sock.sendMessage(jid, {
+              text: `❌ *Song download failed* ${detail}`
+            }, { quoted });
+          }
+
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "save") {
+          try {
+            const quotedMessage = getQuotedMessage(msg);
+            const media = unwrapMessage(quotedMessage);
+
+            if (!quotedMessage || !media) {
+              await sock.sendMessage(jid, {
+                text: `❌ पहले किसी WhatsApp Status को *Reply* करो, फिर *${botSettings.prefix || "."}save* भेजो।`
+              }, { quoted });
+              await clearActionPresence(sock, jid);
+              continue;
+            }
+
+            const statusImage = media.imageMessage;
+            const statusVideo = media.videoMessage;
+            const statusAudio = media.audioMessage;
+            const statusText =
+              media.conversation ||
+              media.extendedTextMessage?.text ||
+              "";
+
+            if (statusImage) {
+              const buffer = await downloadMediaFromMessage(statusImage, "image");
+              await sock.sendMessage(jid, {
+                image: buffer,
+                caption: statusImage.caption || "𝗦𝗧𝗔𝗧𝗨𝗦 𝗦𝗔𝗩𝗘𝗗 𝗦𝗨𝗖𝗖𝗘𝗦𝗦𝗙𝗨𝗟𝗟𝗬 ✅ ┃  ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴇᴠᴀ xᴍᴅ ʙᴏᴛ ✦"
+              }, { quoted });
+            } else if (statusVideo) {
+              const buffer = await downloadMediaFromMessage(statusVideo, "video");
+              await sock.sendMessage(jid, {
+                video: buffer,
+                caption: statusVideo.caption || "𝗦𝗧𝗔𝗧𝗨𝗦 𝗦𝗔𝗩𝗘𝗗 𝗦𝗨𝗖𝗖𝗘𝗦𝗦𝗙𝗨𝗟𝗟𝗬 ✅ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴇᴠᴀ xᴍᴅ ʙᴏᴛ ✦"
+              }, { quoted });
+            } else if (statusAudio) {
+              const buffer = await downloadMediaFromMessage(statusAudio, "audio");
+              await sock.sendMessage(jid, {
+                audio: buffer,
+                mimetype: statusAudio.mimetype || "audio/ogg; codecs=opus",
+                ptt: statusAudio.ptt === true
+              }, { quoted });
+            } else if (statusText) {
+              await sock.sendMessage(jid, {
+                text: `💾 *Saved Status*\n\n${statusText}`
+              }, { quoted });
+            } else {
+              await sock.sendMessage(jid, {
+                text: "❌ इस Status का media/text उपलब्ध नहीं है।"
+              }, { quoted });
+            }
+          } catch (e) {
+            console.error("STATUS SAVE ERROR:", e?.message || e);
+            await sock.sendMessage(jid, {
+              text: "❌ Status save नहीं हो पाया। Status को दोबारा reply करके .save भेजें।"
+            }, { quoted });
+          }
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "vv") {
+          try {
+            const quotedMessage = getQuotedMessage(msg);
+            const media = unwrapMessage(quotedMessage);
+            const imageMessage = media?.imageMessage;
+            const videoMessage = media?.videoMessage;
+            const audioMessage = media?.audioMessage;
+
+            if (!quotedMessage || (!imageMessage && !videoMessage && !audioMessage)) {
+              await sock.sendMessage(jid, {
+                text: `❌ Reply to a *View Once* photo, video or audio with *${botSettings.prefix || "."}vv*.`
+              }, { quoted });
+              await clearActionPresence(sock, jid);
+              continue;
+            }
+
+            if (imageMessage) {
+              const buffer = await downloadMediaFromMessage(imageMessage, "image");
+              await sock.sendMessage(jid, { image: buffer, caption: "👁️‍🗨️ ᴠɪᴇᴡ ᴏɴᴄᴇ ┃ ᴍᴇᴅɪᴀ sᴜᴄᴄᴇssғᴜʟʟʏ ʀᴇᴄᴏᴠᴇʀᴇᴅ ✅" }, { quoted });
+            } else if (videoMessage) {
+              const buffer = await downloadMediaFromMessage(videoMessage, "video");
+              await sock.sendMessage(jid, { video: buffer, caption: "👁️‍🗨️ ᴠɪᴇᴡ ᴏɴᴄᴇ ┃ ᴍᴇᴅɪᴀ sᴜᴄᴄᴇssғᴜʟʟʏ ʀᴇᴄᴏᴠᴇʀᴇᴅ ✅" }, { quoted });
+            } else {
+              const buffer = await downloadMediaFromMessage(audioMessage, "audio");
+              await sock.sendMessage(jid, { audio: buffer, mimetype: audioMessage.mimetype || "audio/ogg; codecs=opus", ptt: audioMessage.ptt === true }, { quoted });
+            }
+          } catch (e) {
+            console.error("VV ERROR:", e?.message || e);
+            await sock.sendMessage(jid, { text: "❌ Failed to retrieve the View Once media." }, { quoted });
+          }
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "tomp3") {
+          await handleToMp3Command({
+            sock,
+            jid,
+            msg,
+            quoted,
+            prefix: botSettings.prefix || ".",
+            clearActionPresence
+          });
+          continue;
+        }
+
+        if (prefixCommand === "sticker") {
+          try {
+            const media = await downloadStickerMedia(msg);
+            if (!media) {
+              await sock.sendMessage(jid, {
+                text: `❌ Send/reply to a photo or video with *${botSettings.prefix || "."}sticker* to convert it into a sticker.`
+              }, { quoted });
+              await clearActionPresence(sock, jid);
+              continue;
+            }
+
+            await sock.sendMessage(jid, { text: "⏳ Creating premium sticker..." }, { quoted });
+            const source = await downloadMediaFromMessage(media.message, media.type);
+            const sticker = media.type === "image"
+              ? await makeImageSticker(source)
+              : await makeVideoSticker(source);
+
+            await sock.sendMessage(jid, { sticker }, { quoted });
+          } catch (e) {
+            console.error("STICKER ERROR:", e?.message || e);
+            await sock.sendMessage(jid, {
+              text: "❌ Sticker creation failed. Please use a supported photo/video (video up to 6 seconds works best)."
+            }, { quoted });
+          }
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "url") {
+          try {
+            const imageBuffer = await downloadImageForUrl(msg);
+            if (!imageBuffer) {
+              await sock.sendMessage(jid, {
+                text: `❌ Reply to an image with *${botSettings.prefix || "."}url* to generate a direct URL.`
+              }, { quoted });
+              await clearActionPresence(sock, jid);
+              continue;
+            }
+
+            await sock.sendMessage(jid, { text: "⏳ Uploading image to ImgBB..." }, { quoted });
+            const uploaded = await uploadImageToImgBB(imageBuffer);
+            const reply = `╭━━〔 🔗 IMAGE URL 〕━━╮
+┃
+┃ ${uploaded.url}
+┃
+╰━━━━━━━━━━━━━━━━━━╯
+
+✅ Uploaded successfully via ImgBB.`;
+            await sock.sendMessage(jid, { text: reply }, { quoted });
+          } catch (e) {
+            console.error("URL ERROR:", e?.message || e);
+            await sock.sendMessage(jid, {
+              text: `❌ URL upload failed.\n\nReason: ${e?.message || "Unknown error"}`
+            }, { quoted });
+          }
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "fullpp") {
+          await handleFullppCommand({
+            sock,
+            jid,
+            quoted,
+            msg,
+            prefix: botSettings.prefix || "."
+          });
+          continue;
+        }
+
+        if (/^removebg(?:\s|$)/i.test(prefixCommand)) {
+          await handleRemoveBgCommand({
+            sock,
+            jid,
+            quoted,
+            msg,
+            prefix: botSettings.prefix || ".",
+            clearActionPresence
+          });
+          continue;
+        }
+
+        if (/^tts(?:\s|$)/i.test(prefixCommand)) {
+          await handleTtsCommand({
+            sock,
+            jid,
+            quoted,
+            prefixCommand,
+            prefix: botSettings.prefix || ".",
+            clearActionPresence
+          });
+          continue;
+        }
+
+        if (prefixCommand === "alive") {
+          const uptimeMs = Date.now() - global.botStartTime;
+          const totalSeconds = Math.floor(uptimeMs / 1000);
+          const days = Math.floor(totalSeconds / 86400);
+          const hours = Math.floor((totalSeconds % 86400) / 3600);
+          const minutes = Math.floor((totalSeconds % 3600) / 60);
+          const seconds = totalSeconds % 60;
+          const uptimeParts = [];
+          if (days) uptimeParts.push(`${days} day${days === 1 ? "" : "s"}`);
+          if (hours) uptimeParts.push(`${hours} hour${hours === 1 ? "" : "s"}`);
+          if (minutes) uptimeParts.push(`${minutes} minute${minutes === 1 ? "" : "s"}`);
+          uptimeParts.push(`${seconds} second${seconds === 1 ? "" : "s"}`);
+          const uptime = uptimeParts.join(" ");
+
+          await sock.sendMessage(
+            jid,
+            { text: `I'm here and ready 🚀\nUptime : ${uptime}` },
+            { quoted }
+          );
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (/^(?:instagram|insta|ig)(?:\s|$)/.test(prefixCommand)) {
+          await handleInstagramCommand({
+            sock, jid, quoted, text,
+            prefix: botSettings.prefix || "",
+            clearActionPresence
+          });
+          continue;
+        }
+
+
+        if (/^(?:pinterest|pin)(?:\s|$)/.test(prefixCommand)) {
+          const pinterestUrl = extractPinterestUrl(text);
+
+          if (!pinterestUrl) {
+            await sock.sendMessage(jid, {
+              text: `❌ Pinterest URL missing.\n\nUse:\n${botSettings.prefix || ""}pinterest <Pinterest Pin URL>\n\nExample:\n${botSettings.prefix || ""}pinterest https://pin.it/xxxxx`
+            }, { quoted });
+            await clearActionPresence(sock, jid);
+            continue;
+          }
+
+          if (!isPinterestUrl(pinterestUrl)) {
+            await sock.sendMessage(jid, {
+              text: "❌ Invalid Pinterest URL.\n\nSend a public Pinterest Pin or pin.it link."
+            }, { quoted });
+            await clearActionPresence(sock, jid);
+            continue;
+          }
+
+          try {
+            await sock.sendMessage(jid, {
+              text: "⏳ *Downloading Pinterest media...*"
+            }, { quoted });
+
+            const media = await downloadPinterestMedia(pinterestUrl);
+            const caption = buildPinterestDownloadCaption(media);
+
+            if (media.isVideo) {
+              await sock.sendMessage(jid, {
+                video: media.buffer,
+                mimetype: media.contentType.startsWith("video/") ? media.contentType : "video/mp4",
+                caption
+              }, { quoted });
+            } else {
+              await sock.sendMessage(jid, {
+                image: media.buffer,
+                mimetype: media.contentType.startsWith("image/") ? media.contentType : "image/jpeg",
+                caption
+              }, { quoted });
+            }
+          } catch (e) {
+            console.error("PINTEREST ERROR:", e?.message || e);
+            await sock.sendMessage(jid, {
+              text: `❌ *Pinterest download failed.*\n\n${e?.message || "Please try another public Pinterest Pin."}`
+            }, { quoted });
+          }
+
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (isFancyStyleSelection) {
+          const styleNumber = Number(fancySelectionMatch[1]);
+          const inputMatch = quotedFancyText.match(/Input:\s*([^\n]*)/i);
+          const originalInput = inputMatch?.[1]?.trim() || "";
+          const styleMap = fancy[styleNumber - 1];
+          if (styleNumber < 1 || styleNumber > 34 || !styleMap || !originalInput) {
+            await sock.sendMessage(jid, {
+              text: "❌ Invalid style selection. Reply to the FANCY TEXT result with a number from 1 to 34."
+            }, { quoted });
+          } else {
+            const styledText = fancy.apply(styleMap, originalInput);
+            await sock.sendMessage(jid, {
+              text: `🎨 *FANCY TEXT — STYLE ${styleNumber}*\n\n${styledText}`
+            }, { quoted });
+          }
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (/^fancytext(?:\s|$)/.test(prefixCommand)) {
+          const originalText = String(text || "").trim();
+          const rawCommand = configuredPrefix && originalText.toLowerCase().startsWith(configuredPrefix)
+            ? originalText.slice(configuredPrefix.length).trim()
+            : originalText;
+          const input = rawCommand.replace(/^fancytext\b/i, "").trim();
+          if (!input) {
+            await sock.sendMessage(jid, {
+              text: `╭━〔 🎨 FANCY TEXT 〕━╮\n\nUse: ${botSettings.prefix || "."}fancytext Your Text\nExample: ${botSettings.prefix || "."}fancytext Hello World\n\nSend any text after the command to see its stylish font variations.`
+            }, { quoted });
+          } else {
+            const output = fancy.list(input, fancy);
+            await sock.sendMessage(jid, {
+              text: `╭━〔 🎨 FANCY TEXT 〕━╮\nInput: ${input.slice(0, 200)}\n${output}\nReply with the style number you want, or copy any style above.`
+            }, { quoted });
+          }
+          await clearActionPresence(sock, jid);
+          continue;
+        }
+
+        if (prefixCommand === "menu") {
+          await handleMenuCommand({ sock, jid, quoted, botSettings, formatUptime, menuImagePath: MENU_IMAGE_PATH });
+          continue;
+        }
+      } catch (e) {
+        console.error("❌ COMMAND ERROR:", e?.message || e);
+      }
+    }
+  });
+}
+
+process.on("uncaughtException", e => console.error("UNCAUGHT:", e?.stack || e));
+process.on("unhandledRejection", e => console.error("UNHANDLED:", e?.stack || e));
 
 start().then(() => {
   for (const number of readSessionNumbers()) {
@@ -620,6 +2585,6 @@ start().then(() => {
     }
   }
 }).catch(e => {
-  console.error("START ERROR:", e?.message || e);
+  console.error("START ERROR:", e?.stack || e);
   process.exit(1);
 });
