@@ -14,7 +14,7 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ ⏱️ *Uᴘᴛɪᴍᴇ* ➜ ${uptime}
 ╰━━━━━━━━━━━━━━━──⊷
 ┃
-╭───❏ *🌐 Gᴇɴᴇʀᴀʟ* ❏─⊷
+╭───❏ *🌐 Gᴇɴᴇʀᴀʟ* ❏──⊷
 ┃ • ${pfx}ᴍᴇɴᴜ
 ┃ • ${pfx}Pɪɴɢ
 ┃ • ${pfx}Aʟɪᴠᴇ
@@ -42,7 +42,7 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}Sʀᴇᴀᴄᴛ Oɴ/Oꜰꜰ
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ *👥 Gʀᴏᴜᴘ* ❏─⊷
+╭────❏ *👥 Gʀᴏᴜᴘ* ❏──⊷
 ┃ • ${pfx}Gʀᴏᴜᴘɪɴꜰᴏ
 ┃ • ${pfx}Tᴀɢᴀʟʟ
 ┃ • ${pfx}Kɪᴄᴋ
