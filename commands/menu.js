@@ -3,82 +3,84 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
   const mode = String(botSettings?.mode || "public").toUpperCase();
   const pfx = prefix;
   return `╭━〔 👑 DEVA XMD BOT 〕━╮
- ┃ ⚡  ULTRA PRO BOT v4.1
- ┣━━━━━━━━━━━━━━━━━━━┫
- ┃ 👤 OWNER ➜ *${ownerName}*
- ┃https://wa.me/916260021735
- ┃ 💻 PLATFORM ➜ ${platform}
- ┃ 🔐 MODE ➜ ${mode}
- ┃ ⚡ PREFIX ➜ ${pfx}
- ┃ ⏱️ UPTIME ➜ ${uptime}
- ╰━━━━━━━━━━━━━━━━━
- ┃
- ╭━━〔 ⚡ GENERAL 〕━━╮
- ┃ • ${pfx}menu
- ┃ • ${pfx}ping
- ┃ • ${pfx}alive
- ┃ • ${pfx}uptime
- ╰━━━━━━━━━━━━━━━━━━╯
- ┃
- ╭━〔 ⚙️ BOT SETTINGS 〕━╮
- ┃ • mode public/private
- ┃ • prefix
- ┃ • settings
- ┃ • ${pfx}restart
- ╰━━━━━━━━━━━━━━━━━━╯
- ┃
- ╭━〔 ✨ AUTO SYSTEM 〕━╮
- ┃ • ${pfx}online on/off
- ┃ • ${pfx}Typing on/off
- ┃ • ${pfx}Recording on/off
- ┃ • ${pfx}Callreject on/off
- ┃ • ${pfx}Antidelete on/off
- ┃ • ${pfx}Read on/off
- ┃ • ${pfx}StatusReply on/off
- ┃ • ${pfx}StatusSender on/off
- ┃ • ${pfx}Statuslike on/off
- ┃ • ${pfx}Autoreact on/off
- ┃ • ${pfx}Sreact on/off
- ╰━━━━━━━━━━━━━━━━━━╯
- ┃
- ╭━━〔 👥 GROUP 〕━━╮
- ┃ • ${pfx}groupinfo
- ┃ • ${pfx}Tagall
- ┃ • ${pfx}kick
- ┃ • ${pfx}promote / ${pfx}demote
- ┃ • ${pfx}GroupTextDelete on/off
- ╰━━━━━━━━━━━━━━━━━━╯
- ┃
- ╭━━━〔 🎨 MEDIA 〕━━━╮
- ┃ • ${pfx}Save
- ┃ • ${pfx}sticker
- ┃ • ${pfx}vv
- ┃ • ${pfx}url
- ┃ • ${pfx}fullpp
- ┃ • ${pfx}sticker
- ┃ • ${pfx}fancytext
- ┃ • ${pfx}tts <text>
- ┃ • ${pfx}tomp3 (reply to video)
- ╰━━━━━━━━━━━━━━━━━━╯
- ┃
- ╭━〔 🖼️ IMAGE EDITING 〕━╮
- ┃ • ${pfx}removebg
- ╰━━━━━━━━━��━━━━━━━━━╯
- ┃
- ╭━━〔  📥 DOWNLOAD 〕━━╮
- ┃ • ${pfx}song
- ┃ • ${pfx}instagram
- ┃ • ${pfx}pinterest
- ╰━━━━━━━━━━━━━━━━━━╯
- ┃
- ╭━━〔 👑 OWNER 〕━━╮
- ┃ • ${pfx}owner
- ┃ • ${pfx}pair 91XXXXXXXXXX
- ┃ • ${pfx}block
- ┃ • ${pfx}clear
- ┃
- ╰━💻 CODED BY : DEVA❤️`;
+┃ ⚡  ULTRA PRO BOT v4.1
+┣━━━━━━━━━━━━━━━━━━━┫
+┃ 👤 OWNER ➜ *${ownerName}*
+┃https://wa.me/916260021735
+┃ 💻 PLATFORM ➜ ${platform}
+┃ 🔐 MODE ➜ ${mode}
+┃ ⚡ PREFIX ➜ ${pfx}
+┃ ⏱️ UPTIME ➜ ${uptime}
+╰━━━━━━━━━━━━━━━━━
+┃
+╭━━〔 ⚡ GENERAL 〕━━╮
+┃ • ${pfx}menu
+┃ • ${pfx}ping
+┃ • ${pfx}alive
+┃ • ${pfx}uptime
+╰━━━━━━━━━━━━━━━━━━╯
+┃
+╭━〔 ⚙️ BOT SETTINGS 〕━╮
+┃ • mode public/private
+┃ • prefix
+┃ • settings
+┃ • ${pfx}restart
+╰━━━━━━━━━━━━━━━━━━╯
+┃
+╭━〔 ✨ AUTO SYSTEM 〕━╮
+┃ • ${pfx}online on/off
+┃ • ${pfx}Typing on/off
+┃ • ${pfx}Recording on/off
+┃ • ${pfx}Callreject on/off
+┃ • ${pfx}Antidelete on/off
+┃ • ${pfx}Read on/off
+┃ • ${pfx}StatusReply on/off
+┃ • ${pfx}StatusSender on/off
+┃ • ${pfx}Statuslike on/off
+┃ • ${pfx}Autoreact on/off
+┃ • ${pfx}Sreact on/off
+╰━━━━━━━━━━━━━━━━━━╯
+┃
+╭━━〔 👥 GROUP 〕━━╮
+┃ • ${pfx}groupinfo
+┃ • ${pfx}Tagall
+┃ • ${pfx}kick
+┃ • ${pfx}promote / ${pfx}demote
+┃ • ${pfx}GroupTextDelete on/off
+╰━━━━━━━━━━━━━━━━━━╯
+┃
+╭━━━〔 🎨 MEDIA 〕━━━╮
+┃ • ${pfx}Save
+┃ • ${pfx}sticker
+┃ • ${pfx}vv
+┃ • ${pfx}url
+┃ • ${pfx}fullpp
+┃ • ${pfx}sticker
+┃ • ${pfx}fancytext
+┃ • ${pfx}tts <text>
+┃ • ${pfx}tomp3 (reply to video)
+╰━━━━━━━━━━━━━━━━━━╯
+┃
+╭━〔 🖼️ IMAGE EDITING 〕━╮
+┃ • ${pfx}removebg
+╰━━━━━━━━━━━━━━━━━━━╯
+┃
+╭━━〔  📥 DOWNLOAD 〕━━╮
+┃ • ${pfx}song
+┃ • ${pfx}instagram
+┃ • ${pfx}pinterest
+╰━━━━━━━━━━━━━━━━━━╯
+┃
+╭━━〔 👑 OWNER 〕━━╮
+┃ • ${pfx}owner
+┃ • ${pfx}pair 91XXXXXXXXXX
+┃ • ${pfx}block
+┃ • ${pfx}clear
+┃
+╰━💻 CODED BY : DEVA❤️`;
 }
+
+module.exports = { buildMenuCaption };
 
 const fs = require("fs");
 
@@ -97,4 +99,4 @@ async function handleMenuCommand({ sock, jid, quoted, botSettings, formatUptime,
   }
 }
 
-module.exports = { buildMenuCaption, handleMenuCommand };
+module.exports = { handleMenuCommand };

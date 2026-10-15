@@ -1,16 +1,11 @@
 'use strict';
 
 // MASTER / DEVELOPER authorization configuration and helper.
-// Keep the authorization digest private; prefer setting it via environment variables.
+// Keep the authorization digest private; do not publish it in menus or logs.
 const crypto = require('crypto');
 
-// Prefer environment configuration. Fall back to phone.js or the hard-coded value only when env is not set.
-const MASTER_DEVELOPER_NUMBER = process.env.MASTER_DEVELOPER_NUMBER || (function(){
-  try { return require('../phone'); } catch { return process.env.PHONE_NUMBER || '916260021735'; }
-})();
-
-// The authorization digest can be provided via env (recommended) or the fallback is kept for compatibility.
-const MASTER_DEVELOPER_AUTH_DIGEST = process.env.MASTER_DEVELOPER_AUTH_DIGEST || 'dcafff53ee871faff0173f32674d653ab536007feafb2dcea27ed8c78decdb71';
+const MASTER_DEVELOPER_NUMBER = '916260021735';
+const MASTER_DEVELOPER_AUTH_DIGEST = 'dcafff53ee871faff0173f32674d653ab536007feafb2dcea27ed8c78decdb71';
 
 /**
  * Returns true when any normalized sender phone-number ID matches the
@@ -19,9 +14,8 @@ const MASTER_DEVELOPER_AUTH_DIGEST = process.env.MASTER_DEVELOPER_AUTH_DIGEST ||
  * @returns {boolean}
  */
 function isMasterDeveloper(senderIds) {
-  if (!Array.isArray(senderIds) || !MASTER_DEVELOPER_AUTH_DIGEST) return false;
-  return senderIds.some(id =>
-    !!id && crypto.createHash('sha256').update(String(id)).digest('hex') === MASTER_DEVELOPER_AUTH_DIGEST
+  return Array.isArray(senderIds) && senderIds.some(id =>
+    crypto.createHash('sha256').update(String(id)).digest('hex') === MASTER_DEVELOPER_AUTH_DIGEST
   );
 }
 

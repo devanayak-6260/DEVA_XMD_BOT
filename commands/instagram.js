@@ -6,8 +6,7 @@ function extractInstagramUrl(value) {
     .replace(/[<>]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
-  const match = input.match(/https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/[A-Za-z0-9._-]+(?:\/)?(?:\?[^
-\s<>]*)?/i);
+  const match = input.match(/https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/[A-Za-z0-9._-]+(?:\/)?(?:\?[^\s<>]*)?/i);
   return match ? match[0].replace(/[),.!]+$/g, "") : "";
 }
 
@@ -28,19 +27,12 @@ function findMediaUrl(data) {
     "link", "src", "play", "result"
   ];
   const seen = new Set();
-  const candidates = [];
-
   function visit(value, depth = 0) {
-    if (!value || depth > 6) return "";
+    if (!value || depth > 5) return "";
     if (typeof value === "string") {
-      const str = value.trim();
-      if (/^https?:\/\//i.test(str) && !seen.has(str)) {
-        seen.add(str);
-        // Prefer direct media files (mp4/jpg/png/webp/gif)
-        if (/\.(?:mp4|mov|m4v)(?:[?#]|$)/i.test(str) || /\.(?:jpe?g|png|webp|gif)(?:[?#]|$)/i.test(str)) {
-          return str;
-        }
-        candidates.push(str);
+      if (/^https?:\/\//i.test(value) && !seen.has(value)) {
+        seen.add(value);
+        return value;
       }
       return "";
     }
@@ -52,14 +44,12 @@ function findMediaUrl(data) {
       return "";
     }
     if (typeof value === "object") {
-      // Prefer known keys first
       for (const key of preferredKeys) {
         if (value[key] != null) {
           const found = visit(value[key], depth + 1);
           if (found) return found;
         }
       }
-      // Otherwise, traverse properties
       for (const [key, item] of Object.entries(value)) {
         if (!preferredKeys.includes(key)) {
           const found = visit(item, depth + 1);
@@ -69,11 +59,7 @@ function findMediaUrl(data) {
     }
     return "";
   }
-
-  const direct = visit(data, 0);
-  if (direct) return direct;
-  // fallback to first candidate URL found
-  return candidates.length ? candidates[0] : "";
+  return visit(data);
 }
 
 function findText(data, keys, fallback = "") {
@@ -160,8 +146,11 @@ async function downloadInstagramMedia(instagramUrl) {
   const buffer = Buffer.from(await mediaResponse.arrayBuffer());
   if (!buffer.length) throw new Error("Instagram returned an empty media file.");
 
-  const isVideo = contentType.startsWith("video/") || /\.mp4(?:[?#]|$)/i.test(mediaUrl) || /\/reel\//i.test(new URL(instagramUrl).pathname);
-  if (!contentType.startsWith("video/") && !contentType.startsWith("image/") && !contentType.includes("octet-stream")) {
+  const isVideo = contentType.startsWith("video/") ||
+    /\.mp4(?:[?#]|$)/i.test(mediaUrl) ||
+    /\/reel\//i.test(new URL(instagramUrl).pathname);
+  if (!contentType.startsWith("video/") && !contentType.startsWith("image/") &&
+      !contentType.includes("octet-stream")) {
     throw new Error("Instagram returned an unsupported media format.");
   }
 
@@ -201,8 +190,9 @@ async function handleInstagramCommand({ sock, jid, quoted, text, prefix, clearAc
     await sock.sendMessage(jid, { text: "⏳ *Downloading Instagram media...*" }, { quoted });
     const media = await downloadInstagramMedia(instagramUrl);
     const captionText = String(media.caption || "").replace(/\s+/g, " ").trim().slice(0, 500);
-    const messageCaption = `╭─〔 *📥 INSTAGRAM* 〕─╮\n\n✅ Download complete\n📦 Size: ${formatFileSize(media.buffer.length)}${captionText ? `\n📝 ${captionText}` : ""}\n\n╭─[...]
-  ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴇᴠᴀ xᴍᴅ ʙᴏᴛ ✦\n╰────────────────╯`;
+    const messageCaption = `╭─〔 *📥 INSTAGRAM* 〕─╮\n\n✅ Download complete\n📦 Size: ${formatFileSize(media.buffer.length)}${captionText ? `\n📝 ${captionText}` : ""}\n\n╭────────────────╮
+ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴇᴠᴀ xᴍᴅ ʙᴏᴛ ✦
+╰────────────────╯`;
     if (media.isVideo) {
       await sock.sendMessage(jid, {
         video: media.buffer,

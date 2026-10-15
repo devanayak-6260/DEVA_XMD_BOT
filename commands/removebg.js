@@ -41,71 +41,39 @@ async function handleRemoveBgCommand({ sock, jid, quoted, msg, prefix = ".", cle
       return;
     }
 
-    // Basic mimetype validation before downloading/uploading to remove.bg
-    const mimetype = String(imageMessage.mimetype || "").toLowerCase();
-    if (!mimetype.startsWith("image/")) {
-      await sock.sendMessage(jid, { text: "❌ This file does not look like an image. Please provide a valid image." }, { quoted });
-      return;
-    }
-
     const apiKey = String(process.env.REMOVE_BG_API_KEY || "").trim();
     if (!apiKey) {
       await sock.sendMessage(jid, {
-        text: "⚙️ *Remove Background setup required*\n\nAdd your Remove.bg API key as the environment variable:\n*REMOVE_BG_API_KEY*\n\nThen restart the bot and use .removebg again."
+        text: "⚙️ *Remove Background setup required*\n\nAdd your Remove.bg API key as the environment variable:\n*REMOVE_BG_API_KEY*\n\nThen restart the bot and use .removebg again. The API may have usage limits or charges."
       }, { quoted });
       return;
     }
 
     await sock.sendMessage(jid, { text: "⏳ *Removing photo background...*" }, { quoted });
-
-    const imageStream = await downloadContentFromMessage(imageMessage, "image");
-    const imageBuffer = await streamToBuffer(imageStream);
-
-    if (!imageBuffer || !imageBuffer.length) {
-      throw new Error("Could not download the image. Please try another photo.");
-    }
-
-    // Ensure global FormData/Blob support exists in the runtime
-    if (typeof FormData === 'undefined' || typeof Blob === 'undefined') {
-      await sock.sendMessage(jid, { text: "❌ Remove.bg requires Node 18+ (global FormData/Blob/fetch). Your runtime does not provide these globals." }, { quoted });
-      return;
-    }
+    const imageBuffer = await streamToBuffer(await downloadContentFromMessage(imageMessage, "image"));
+    if (!imageBuffer.length) throw new Error("Could not download the image. Please try another photo.");
 
     const form = new FormData();
     form.append("image_file", new Blob([imageBuffer], { type: imageMessage.mimetype || "image/jpeg" }), "photo.jpg");
     form.append("size", "auto");
 
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 90000);
-    let response;
-    try {
-      response = await fetch("https://api.remove.bg/v1.0/removebg", {
-        method: "POST",
-        headers: { "X-Api-Key": apiKey, "Accept": "image/png" },
-        body: form,
-        signal: controller.signal
-      });
-    } finally {
-      clearTimeout(timer);
-    }
+    const response = await fetch("https://api.remove.bg/v1.0/removebg", {
+      method: "POST",
+      headers: { "X-Api-Key": apiKey, "Accept": "image/png" },
+      body: form,
+      signal: AbortSignal.timeout(90000)
+    });
 
-    if (!response || !response.ok) {
-      const detail = response ? (await response.text().catch(() => "")).slice(0, 350) : "No response from service.";
-      if (response && response.status === 401) throw new Error("API key is invalid or not authorized. Check REMOVE_BG_API_KEY.");
-      if (response && response.status === 402) throw new Error("Remove.bg API credits are exhausted or payment is required.");
-      if (response && response.status === 429) throw new Error("Remove.bg rate limit reached. Please try again later.");
-      throw new Error(`Remove.bg API error. ${detail}`);
-    }
-
-    const contentType = (response.headers.get("content-type") || "").toLowerCase();
-    if (!contentType.startsWith("image/")) {
-      const text = await response.text().catch(() => "");
-      throw new Error(`Remove.bg returned unexpected content-type: ${contentType}. ${String(text).slice(0, 300)}`);
+    if (!response.ok) {
+      const detail = (await response.text()).slice(0, 350);
+      if (response.status === 401 || response.status === 403) throw new Error("API key is invalid or not authorized. Check REMOVE_BG_API_KEY.");
+      if (response.status === 402) throw new Error("Remove.bg API credits are exhausted or payment is required.");
+      if (response.status === 429) throw new Error("Remove.bg rate limit reached. Please try again later.");
+      throw new Error(`Remove.bg API error (${response.status}). ${detail}`);
     }
 
     const output = Buffer.from(await response.arrayBuffer());
     if (!output.length) throw new Error("The background-removal service returned an empty image.");
-
     await sock.sendMessage(jid, {
       image: output,
       mimetype: "image/png",
