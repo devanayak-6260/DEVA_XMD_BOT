@@ -15,68 +15,67 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ╰━━━━━━━━━━━━━━━──⊷
 ┃
 ╭────❏ *Gᴇɴᴇʀᴀʟ* ❏
-┃ • ${pfx}menu
-┃ • ${pfx}ping
-┃ • ${pfx}alive
-┃ • ${pfx}uptime
+┃ • ${pfx}ᴍᴇɴᴜ
+┃ • ${pfx}Pɪɴɢ
+┃ • ${pfx}Aʟɪᴠᴇ
+┃ • ${pfx}ᴜᴘᴛɪᴍᴇ
 ╰━━━━━━━━━━━━━━──⊷
 ┃
 ╭────❏ *Bᴏᴛ Sᴇᴛᴛɪɴɢꜱ* ❏
-┃ • ${pfx}mode public/private
-┃ • ${pfx}prefix
-┃ • ${pfx}settings
-┃ • ${pfx}restart
+┃ • ${pfx}Mᴏᴅᴇ ᴘᴜʙʟɪᴄ/ᴘʀɪᴠᴀᴛᴇ
+┃ • ${pfx}Pʀᴇꜰɪx
+┃ • ${pfx}Sᴇᴛᴛɪɴɢꜱ
+┃ • ${pfx}Rᴇꜱᴛᴀʀᴛ
 ╰━━━━━━━━━━━━━━──⊷
 ┃
 ╭────❏ *Aᴜᴛᴏ ꜱʏꜱᴛᴇᴍ* ❏
-┃ • ${pfx}online on/off
-┃ • ${pfx}Typing on/off
-┃ • ${pfx}Recording on/off
-┃ • ${pfx}Callreject on/off
-┃ • ${pfx}Antidelete on/off
-┃ • ${pfx}Read on/off
-┃ • ${pfx}StatusReply on/off
-┃ • ${pfx}StatusSender on/off
-┃ • ${pfx}Statuslike on/off
-┃ • ${pfx}Autoreact on/off
-┃ • ${pfx}Sreact on/off
+┃ • ${pfx}Oɴʟɪɴᴇ  Oɴ/Oꜰꜰ
+┃ • ${pfx}Tʏᴘɪɴɢ Oɴ/Oꜰꜰ
+┃ • ${pfx}Rᴇᴄᴏʀᴅɪɴɢ Oɴ/Oꜰꜰ
+┃ • ${pfx}Cᴀʟʟʀᴇᴊᴇᴄᴛ Oɴ/Oꜰꜰ
+┃ • ${pfx}Aɴᴛɪᴅᴇʟᴇᴛᴇ Oɴ/Oꜰꜰ
+┃ • ${pfx}Rᴇᴀᴅ Oɴ/Oꜰꜰ
+┃ • ${pfx}SᴛᴀᴛᴜꜱRᴇᴘʟʏ Oɴ/Oꜰꜰ
+┃ • ${pfx}Sᴛᴀᴛᴜꜱꜱᴇɴᴅᴇʀ  Oɴ/Oꜰꜰ
+┃ • ${pfx}Sᴛᴀᴛᴜꜱʟɪᴋᴇ Oɴ/Oꜰꜰ
+┃ • ${pfx}Aᴜᴛᴏʀᴇᴀᴄᴛ Oɴ/Oꜰꜰ
+┃ • ${pfx}Sʀᴇᴀᴄᴛ Oɴ/Oꜰꜰ
 ╰━━━━━━━━━━━━━━──⊷
 ┃
 ╭────❏ *Gʀᴏᴜᴘ* ❏
-┃ • ${pfx}groupinfo
-┃ • ${pfx}Tagall
-┃ • ${pfx}kick
-┃ • ${pfx}promote /demote
-┃ • ${pfx}GroupTextDelete on/off
+┃ • ${pfx}Gʀᴏᴜᴘɪɴꜰᴏ
+┃ • ${pfx}Tᴀɢᴀʟʟ
+┃ • ${pfx}Kɪᴄᴋ
+┃ • ${pfx}Pʀᴏᴍᴏᴛᴇ/Dᴇᴍᴏᴛᴇ
+┃ • ${pfx}GʀᴏᴜᴘTᴇxᴛDᴇʟᴇᴛᴇ Oɴ/Oꜰꜰ
 ╰━━━━━━━━━━━━━━──⊷
 ┃
 ╭────❏ *Mᴇᴅɪᴀ* ❏
-┃ • ${pfx}Save
-┃ • ${pfx}sticker
-┃ • ${pfx}vv
-┃ • ${pfx}url
-┃ • ${pfx}fullpp
-┃ • ${pfx}sticker
-┃ • ${pfx}fancytext
-┃ • ${pfx}tts <text>
-┃ • ${pfx}tomp3 (reply to video)
+┃ • ${pfx}Sᴀᴠᴇ
+┃ • ${pfx}Sᴛɪᴄᴋᴇʀ
+┃ • ${pfx}Vᴠ
+┃ • ${pfx}Uʀʟ
+┃ • ${pfx}Fᴜʟʟᴘᴘ 
+┃ • ${pfx}Fᴀɴᴄʏᴛᴇxᴛ
+┃ • ${pfx}Tᴛꜱ <ᴛᴇxᴛ>
+┃ • ${pfx}Tᴏᴍᴘ3 (ʀᴇᴘʟʏ ᴛᴏ ᴠɪᴅᴇᴏ)
 ╰━━━━━━━━━━━━━━──⊷
 ┃
 ╭────❏ *Iᴍɢ Eᴅɪᴛɪɴɢ* ❏
-│ • ${pfx}removebg
+│ • ${pfx}Rᴇᴍᴏᴠᴇʙɢ 
 ╰━━━━━━━━━━━━━━──⊷
 ┃
 ╭────❏ *Dᴏᴡɴʟᴏᴀᴅ* ❏
-┃ • ${pfx}song
-┃ • ${pfx}instagram
-┃ • ${pfx}pinterest
+┃ • ${pfx}Sᴏɴɢ
+┃ • ${pfx}Iɴꜱᴛᴀɢʀᴀᴍ
+┃ • ${pfx}Pɪɴᴛᴇʀᴇꜱᴛ 
 ╰━━━━━━━━━━━━━━──⊷
 ┃
 ╭────❏ 👑 *Oᴡɴᴇʀ* ❏──⊷
-┃ • ${pfx}owner
-┃ • ${pfx}pair 91XXXXXXXXXX
-┃ • ${pfx}block
-┃ • ${pfx}clear
+┃ • ${pfx}Oᴡɴᴇʀ
+┃ • ${pfx}Pᴀɪʀ 91XXXXXXXXXX
+┃ • ${pfx}Bʟᴏᴄᴋ
+┃ • ${pfx}Cʟᴇᴀʀ
 ┃
 ╰━💻 *Cᴏᴅᴇᴅ ʙʏ : ᴅᴇᴠᴀ*❤️`;
 }
