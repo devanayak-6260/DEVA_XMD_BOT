@@ -3,15 +3,15 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
   const mode = String(botSettings?.mode || "public").toUpperCase();
   const pfx = prefix;
   return `
-╭─❏ 👑 DEVA XMD BOT ❏─⊷
-┃ 🚀 ULTRA PRO BOT v4.1┃
+╭─❏ 👑 *DEVA XMD BOT* ❏─⊷
+┃ 🚀  *ULTRA PRO BOT v4.1*  ┃
 ┣━━━━━━━━━━━━━━━━━━━
 ┃ 👤 *Oᴡɴᴇʀ* ➜ *${ownerName}*
 ┃https://wa.me/916260021735
-┃ 💻 PLATFORM ➜ ${platform}
-┃ 🔐 MODE ➜ ${mode}
-┃ ⚡ PREFIX ➜ ${pfx}
-┃ ⏱️ UPTIME ➜ ${uptime}
+┃ 💻 *Pʟᴀᴛꜰᴏʀᴍ* ➜ ${platform}
+┃ 🔐 *Mᴏᴅᴇ* ➜ ${mode}
+┃ ⚡ *Pʀᴇꜰɪx* ➜ ${pfx}
+┃ ⏱️ *Uᴘᴛɪᴍᴇ* ➜ ${uptime}
 ╰━━━━━━━━━━━━━━━──⊷
 ┃
 ╭────❏ *Gᴇɴᴇʀᴀʟ* ❏
@@ -21,14 +21,14 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}uptime
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ BOT SETTINGS ❏
+╭────❏ *Bᴏᴛ Sᴇᴛᴛɪɴɢꜱ* ❏
 ┃ • ${pfx}mode public/private
 ┃ • ${pfx}prefix
 ┃ • ${pfx}settings
 ┃ • ${pfx}restart
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ AUTO SYSTEM ❏
+╭────❏ *Aᴜᴛᴏ ꜱʏꜱᴛᴇᴍ* ❏
 ┃ • ${pfx}online on/off
 ┃ • ${pfx}Typing on/off
 ┃ • ${pfx}Recording on/off
@@ -42,7 +42,7 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}Sreact on/off
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ GROUP ❏
+╭────❏ *Gʀᴏᴜᴘ* ❏
 ┃ • ${pfx}groupinfo
 ┃ • ${pfx}Tagall
 ┃ • ${pfx}kick
@@ -50,7 +50,7 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}GroupTextDelete on/off
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ MEDIA ❏
+╭────❏ *Mᴇᴅɪᴀ* ❏
 ┃ • ${pfx}Save
 ┃ • ${pfx}sticker
 ┃ • ${pfx}vv
@@ -62,7 +62,7 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}tomp3 (reply to video)
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ *IMAGE EDITING* ❏
+╭────❏ *Iᴍɢ Eᴅɪᴛɪɴɢ* ❏
 │ • ${pfx}removebg
 ╰━━━━━━━━━━━━━━──⊷
 ┃
@@ -78,7 +78,7 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}block
 ┃ • ${pfx}clear
 ┃
-╰━💻 CODED BY : DEVA❤️`;
+╰━💻 *Cᴏᴅᴇᴅ ʙʏ : ᴅᴇᴠᴀ❤️`;
 }
 
 module.exports = { buildMenuCaption };
