@@ -78,7 +78,7 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}block
 ┃ • ${pfx}clear
 ┃
-╰━💻 *Cᴏᴅᴇᴅ ʙʏ : ᴅᴇᴠᴀ❤️`;
+╰━💻 *Cᴏᴅᴇᴅ ʙʏ : ᴅᴇᴠᴀ*❤️`;
 }
 
 module.exports = { buildMenuCaption };
