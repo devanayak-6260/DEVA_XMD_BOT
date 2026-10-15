@@ -42,7 +42,7 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}Sʀᴇᴀᴄᴛ Oɴ/Oꜰꜰ
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ *👥 Gʀᴏᴜᴘ* ❏
+╭────❏ *👥 Gʀᴏᴜᴘ* ❏─⊷
 ┃ • ${pfx}Gʀᴏᴜᴘɪɴꜰᴏ
 ┃ • ${pfx}Tᴀɢᴀʟʟ
 ┃ • ${pfx}Kɪᴄᴋ
