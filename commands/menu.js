@@ -14,7 +14,7 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ ⏱️ *Uᴘᴛɪᴍᴇ* ➜ ${uptime}
 ╰━━━━━━━━━━━━━━━──⊷
 ┃
-╭───❏ *🌐 Gᴇɴᴇʀᴀʟ* ❏
+╭───❏ *🌐 Gᴇɴᴇʀᴀʟ* ❏─⊷
 ┃ • ${pfx}ᴍᴇɴᴜ
 ┃ • ${pfx}Pɪɴɢ
 ┃ • ${pfx}Aʟɪᴠᴇ
@@ -28,7 +28,7 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}Rᴇꜱᴛᴀʀᴛ
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ * Aᴜᴛᴏ Sʏꜱᴛᴇᴍ* ❏
+╭───❏ *🧬 Aᴜᴛᴏ Sʏꜱᴛᴇᴍ* ❏
 ┃ • ${pfx}Oɴʟɪɴᴇ  Oɴ/Oꜰꜰ
 ┃ • ${pfx}Tʏᴘɪɴɢ Oɴ/Oꜰꜰ
 ┃ • ${pfx}Rᴇᴄᴏʀᴅɪɴɢ Oɴ/Oꜰꜰ
@@ -65,13 +65,13 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 │ • ${pfx}Rᴇᴍᴏᴠᴇʙɢ 
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭───❏ 📥 *Dᴏᴡɴʟᴏᴀᴅᴇʀ* ❏
+╭───❏ *📥 Dᴏᴡɴʟᴏᴀᴅᴇʀ* ❏
 ┃ • ${pfx}Sᴏɴɢ
 ┃ • ${pfx}Iɴꜱᴛᴀɢʀᴀᴍ
 ┃ • ${pfx}Pɪɴᴛᴇʀᴇꜱᴛ 
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ 👑 *Oᴡɴᴇʀ* ❏──⊷
+╭────❏ *💠 Oᴡɴᴇʀ* ❏──⊷
 ┃ • ${pfx}Oᴡɴᴇʀ
 ┃ • ${pfx}Pᴀɪʀ 91XXXXXXXXXX
 ┃ • ${pfx}Bʟᴏᴄᴋ
