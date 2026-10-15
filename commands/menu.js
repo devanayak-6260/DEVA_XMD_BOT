@@ -4,17 +4,17 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
   const pfx = prefix;
   return `
 ╭─❏ 👑 DEVA XMD BOT ❏─⊷
-┃ ⚡ULTRA PRO BOT v4.1
-┣━━━━━━━━━━━━━━━━━━━┫
-┃ 👤 OWNER ➜ *${ownerName}*
+┃ 🚀 ULTRA PRO BOT v4.1┃
+┣━━━━━━━━━━━━━━━━━━━
+┃ 👤 *Oᴡɴᴇʀ* ➜ *${ownerName}*
 ┃https://wa.me/916260021735
 ┃ 💻 PLATFORM ➜ ${platform}
 ┃ 🔐 MODE ➜ ${mode}
 ┃ ⚡ PREFIX ➜ ${pfx}
 ┃ ⏱️ UPTIME ➜ ${uptime}
-╰━━━━━━━━━━━━━━━━━
+╰━━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ GENERAL ❏
+╭────❏ *Gᴇɴᴇʀᴀʟ* ❏
 ┃ • ${pfx}menu
 ┃ • ${pfx}ping
 ┃ • ${pfx}alive
@@ -22,9 +22,9 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ╰━━━━━━━━━━━━━━──⊷
 ┃
 ╭────❏ BOT SETTINGS ❏
-┃ • mode public/private
-┃ • prefix
-┃ • settings
+┃ • ${pfx}mode public/private
+┃ • ${pfx}prefix
+┃ • ${pfx}settings
 ┃ • ${pfx}restart
 ╰━━━━━━━━━━━━━━──⊷
 ┃
@@ -46,7 +46,7 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}groupinfo
 ┃ • ${pfx}Tagall
 ┃ • ${pfx}kick
-┃ • ${pfx}promote / ${pfx}demote
+┃ • ${pfx}promote /demote
 ┃ • ${pfx}GroupTextDelete on/off
 ╰━━━━━━━━━━━━━━──⊷
 ┃
@@ -62,17 +62,17 @@ function buildMenuCaption({ botSettings, prefix = "", uptime = "", platform = pr
 ┃ • ${pfx}tomp3 (reply to video)
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ IMAGE EDITING ❏
+╭────❏ *IMAGE EDITING* ❏
 │ • ${pfx}removebg
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ DOWNLOAD ❏
+╭────❏ *Dᴏᴡɴʟᴏᴀᴅ* ❏
 ┃ • ${pfx}song
 ┃ • ${pfx}instagram
 ┃ • ${pfx}pinterest
 ╰━━━━━━━━━━━━━━──⊷
 ┃
-╭────❏ 👑 OWNER ❏──⊷
+╭────❏ 👑 *Oᴡɴᴇʀ* ❏──⊷
 ┃ • ${pfx}owner
 ┃ • ${pfx}pair 91XXXXXXXXXX
 ┃ • ${pfx}block
